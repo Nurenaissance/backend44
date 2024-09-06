@@ -9217,3 +9217,8 @@ WARNING 2024-09-02 14:10:16,314 log Not Found: /dynamic-models/BRAND/
 WARNING 2024-09-02 14:10:16,314 basehttp "GET /dynamic-models/BRAND/ HTTP/1.1" 404 20222
 INFO 2024-09-02 14:10:38,458 basehttp "GET /dynamic-model-data/BRAND/ HTTP/1.1" 200 65
 >>>>>>> ad1da1cdca1c8ccc18ee33877c1227834c8d96aa
+INFO 2024-09-06 20:36:26,406 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-06 20:40:47,042 log Bad Request: /leads/
+WARNING 2024-09-06 20:40:47,046 basehttp "GET /leads/ HTTP/1.1" 400 21
+INFO 2024-09-06 20:41:02,459 basehttp "GET /leads/ HTTP/1.1" 200 7147
+INFO 2024-09-06 21:06:22,360 autoreload Watching for file changes with StatReloader
