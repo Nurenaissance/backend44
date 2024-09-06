@@ -1,5 +1,7 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import status, generics
+from communication.serializers import MessageSerializer
+from rest_framework.decorators import api_view
 
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -294,3 +296,32 @@ class GroupViewSet(viewsets.ModelViewSet):
         group = self.get_object()
         group.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['POST'])
+def save_whatsapp_conversations_to_messages(request):
+    # Fetch all interaction conversations (or apply any filter if needed)
+    conversations = Conversation.objects.all()
+
+    if not conversations:
+        return Response({"message": "No WhatsApp conversations found."}, status=status.HTTP_404_NOT_FOUND)
+
+    for conversation in conversations:
+        # Prepare the message data
+        message_data = {
+            'sender': 3,
+            'content': conversation.message_text,
+            'sent_at': datetime.now(),  # Or use a field from the conversation if available
+            'platform': 'whatsapp',  # Adjust as needed
+            'userid': conversation.contact_id  # Adjust based on your model
+        }
+
+        # Serialize and save the data
+        serializer = MessageSerializer(data=message_data)
+        if serializer.is_valid():
+            serializer.save()
+        else:
+            # Return an error if serialization fails
+            return Response({"error": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+    return Response({"message": "WhatsApp conversations saved to messages successfully."}, status=status.HTTP_201_CREATED)

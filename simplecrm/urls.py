@@ -59,9 +59,9 @@ from topicmodelling import views as topicviews
 from whatsapp_chat import views as wa_chat_views
 from rest_framework.routers import DefaultRouter
 from communication import insta_msg as imsg 
-from whatsapp_chat.views import get_whatsapp_tenant_data, create_whatsapp_tenant_table, insert_whatsapp_tenant_data, update_message_status, get_status
-
 from communication import views as commviews
+from communication import prompting as commprom
+
 router = DefaultRouter()
 router.register(r'groups', inviews.GroupViewSet, basename='group')
 
@@ -152,6 +152,7 @@ urlpatterns = [
     path('drafts/', draftview.DraftListCreateAPIView.as_view()),           # List and create drafts
     path('drafts/<int:id>/', draftview.DraftDetailAPIView.as_view()),
     path('contacts_of_account/<int:account_id>/',cviews.ContactByAccountAPIView.as_view(), name='contacts-by-account'),
+    path('contacts-by-phone/<int:phone>/', cviews.ContactByPhoneAPIView.as_view(), name='contacts-by-phone'),
     path('wallet/recharge/',wallview.recharge_wallet, name='recharge_wallet'),
     path('wallet/deduct/',wallview.deduct_from_wallet, name='deduct_from_wallet'),
     path('wallet/balance/',wallview.get_wallet_balance, name='get_wallet_balance'),
@@ -161,7 +162,7 @@ urlpatterns = [
     path('addrows/' , add_nodes, name="add nodes"),
     path('processrows/' ,process_nodes, name="process nodes"),
     path('test/', edfc, name="export_custom_field"),
-    path('perform-topic-modeling/', topicviews.perform_topic_modelling, name='perform_topic_modeling'),
+    path('perform-topic-modelling/', topicviews.perform_topic_modelling, name='perform_topic_modeling'),
     path('email-campaigns/', campview.EmailCampaignViewSet.as_view({'get': 'list', 'post': 'create'}), name='email-campaign-list'),
     path('email-campaigns/<int:pk>/', campview.EmailCampaignViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='email-campaign-detail'),
     path('instagram-campaigns/', campview.InstagramCampaignViewSet.as_view({'get': 'list', 'post': 'create'}), name='instagram-campaign-list'),
@@ -176,24 +177,25 @@ urlpatterns = [
     path('sev/', prodview.simple_experience_view),
     path('get-flow/', wa_chat_views.get_flow),
     path('set-flow/', wa_chat_views.set_flow),
+    path('insert-data/', wa_chat_views.insert_whatsapp_tenant_data),
+    path('whatsapp_tenant/', wa_chat_views.get_whatsapp_tenant_data),
     path('save-messages/', imsg.save_messages, name='save-messages'),  # Save messages
     path('save-email-messages/', imsg.save_email_messages, name='save-email-messages'),  # Save email messages
     path('store-selected-emails/', simviews.store_selected_emails, name='store_selected_emails'),  # Store selected emails
     path('fetch-all-emails/', simviews.fetch_all_emails, name='fetch_all_emails'),  # Fetch all emails
-    path('whatsapp_tenant/', get_whatsapp_tenant_data, name='get_whatsapp_tenant_data'),
-    path('create_table/', create_whatsapp_tenant_table, name='create_whatsapp_tenant_table'),
-    path('insert_data/', insert_whatsapp_tenant_data, name='insert_whatsapp_tenant_data'),
-    path('set-status/', update_message_status, name = "update message status"),
-    path('get-status/', get_status, name="get_message_status"),
-    
-
-    path('group-messages/', commviews.GroupMessagesView.as_view(), name='group_messages'),
+    path('set-status/', wa_chat_views.update_message_status),
 
     path('conversations/', commviews.ConversationListCreateView.as_view(), name='conversation-list-create'),
     path('conversations/<int:pk>/', commviews.ConversationDetailView.as_view(), name='conversation-detail'),
 
     path('messages/', commviews.MessageListCreateView.as_view(), name='message-list-create'),
     path('messages/<int:pk>/', commviews.MessageDetailView.as_view(), name='message-detail'),
+
+    # whatsapp interaction to message
+    path('save_whatsapp_conversations/', inviews.save_whatsapp_conversations_to_messages, name='save_interaction_conversations'),
+
+    # all message to conversations
+    path('group-messages/', commviews.GroupMessagesView.as_view(), name='group_messages'),
 
      # Sentiment Analysis URLs
     path('sentiment-analyses/', commviews.SentimentAnalysisListCreateView.as_view(), name='sentiment-analysis-list-create'),
@@ -203,9 +205,12 @@ urlpatterns = [
     path('behavioral-metrics/', commviews.BehavioralMetricsListCreateView.as_view(), name='behavioral-metrics-list-create'),
     path('behavioral-metrics/<int:pk>/', commviews.BehavioralMetricsDetailView.as_view(), name='behavioral-metrics-detail'),
 
+    # sentiment-analysis on messages
     path('analyze-sentiment/', commviews.SentimentAnalysisView.as_view(), name='analyze_sentiment'),
 
+    path('generate-prompt/', commprom.GeneratePromptView.as_view(), name='generate_prompt'),
 
+    path('generate-reply/<str:conversation_id>/', commviews.GenerateReplyView.as_view(), name='generate_reply'),
 
 
 ]

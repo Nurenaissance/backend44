@@ -4,13 +4,15 @@ from .insta_msg import group_messages_into_conversations
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from transformers import pipeline
+
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.utils import timezone
-import re
+
 from simplecrm.models import CustomUser
+from .gpt_utils import generate_reply_from_conversation 
+from .sentiment_pipeline import analyze_sentiment
 
 from .serializers import (
     SentimentAnalysisSerializer,
@@ -64,105 +66,77 @@ class GroupMessagesView(generics.GenericAPIView):
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
 
-# Initialize the sentiment analysis pipeline with truncation and padding
-# classifier = pipeline(
-#     "text-classification", 
-#     model='bhadresh-savani/distilbert-base-uncased-emotion', 
-#     top_k=None, 
-#     truncation=True, 
-#     max_length=512
-# )
 
-def clean_text(text):
-    """Remove HTML tags and extra spaces from the text."""
-    # Remove HTML tags
-    text = re.sub(r'<.*?>', '', text)
-    # Remove extra spaces and normalize whitespace
-    text = ' '.join(text.split())
-    print(text)
-    return text
-
-def chunk_text(text, max_length=512):
-    """Splits text into chunks of specified max_length (in tokens)."""
-    tokens = text.split()  # Assuming space-separated tokens
-    for i in range(0, len(tokens), max_length):
-        yield ' '.join(tokens[i:i + max_length])
-
-def analyze_sentiment(text):
-    sentiment_scores = {'joy': 0, 'anger': 0, 'sadness': 0, 'fear': 0, 'love': 0, 'surprise': 0}
-    # Clean the text before processing
-    text = clean_text(text)
-    chunks = list(chunk_text(text))
-
-    # Analyze each chunk and aggregate scores
-    for chunk in chunks:
-        #results = classifier(chunk)
-        #print("Classifier results:", results)  # Debugging line
-        
-        # Handle nested list structure
-        if results and isinstance(results[0], list):
-            results = results[0]  # Unpack the nested list
-        
-        for result in results:
-            if isinstance(result, dict):  # Ensure result is a dictionary
-                label = result.get('label', '').lower()
-                if label in sentiment_scores:
-                    sentiment_scores[label] += result.get('score', 0)
-            else:
-                print("Unexpected result format:", result)  # Debugging line
-    
-    # Average the scores by the number of chunks
-    num_chunks = len(chunks)
-    if num_chunks > 1:
-        sentiment_scores = {k: v / num_chunks for k, v in sentiment_scores.items()}
-    
-    return sentiment_scores
-
-@method_decorator(csrf_exempt, name='dispatch')
 class SentimentAnalysisView(APIView):
+    @method_decorator(csrf_exempt, name='dispatch')
     def post(self, request):
         try:
-            conversation_id = request.data.get('conversation_id')
-            
-            if not conversation_id:
-                return Response({'error': 'conversation_id is required.'}, status=status.HTTP_400_BAD_REQUEST)
-            
-            # Fetch the conversation and associated user
-            conversation = Conversation.objects.get(conversation_id=conversation_id)
-            
-            if not conversation.user:
-                return Response({'error': 'Associated user not found.'}, status=status.HTTP_404_NOT_FOUND)
-            
-            messages = conversation.messages
-            user = conversation.user
-            
-            # Ensure the user exists in the database
-            if not CustomUser.objects.filter(id=user.id).exists():
-                return Response({'error': 'Associated CustomUser not found.'}, status=status.HTTP_404_NOT_FOUND)
-            
-            # Run sentiment analysis
-            sentiment_scores = analyze_sentiment(messages)
-            
-            # Save sentiment analysis results
-            sentiment_analysis = SentimentAnalysis(
-                user=user,
-                message_id=conversation.id,
-                joy_score=sentiment_scores.get('joy', 0),
-                sadness_score=sentiment_scores.get('sadness', 0),
-                anger_score=sentiment_scores.get('anger', 0),
-                trust_score=sentiment_scores.get('love', 0),
-                timestamp=timezone.now()
-            )
-            sentiment_analysis.save()
-            
-            return Response({'message': 'Sentiment analysis saved successfully.'}, status=status.HTTP_201_CREATED)
+            # Fetch all conversations
+            conversations = Conversation.objects.all()
+            results = []
+
+            for conversation in conversations:
+                result = self.analyze_and_save(conversation)
+                if result:
+                    results.append(result)
+
+            return Response(results, status=status.HTTP_200_OK)
         
-        except Conversation.DoesNotExist:
-            return Response({'error': 'Conversation not found.'}, status=status.HTTP_404_NOT_FOUND)
-        
-        except CustomUser.DoesNotExist:
-            return Response({'error': 'Associated CustomUser not found.'}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({'error': f'An unexpected error occurred: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def analyze_and_save(self, conversation):
+        # Check if sentiment analysis already exists for this conversation
+        if SentimentAnalysis.objects.filter(conversation_id=conversation.id).exists():
+            # Skip this conversation if sentiment analysis already exists
+            return None
+
+        user = conversation.user
+        contact = conversation.contact_id
+        messages = conversation.messages
+
+        if not user:
+            return {'conversation_id': conversation.conversation_id, 'error': 'No user associated with this conversation'}
+
+        if not CustomUser.objects.filter(id=user.id).exists():
+            return {'conversation_id': conversation.conversation_id, 'error': f'CustomUser not found for ID: {user.id}'}
+
+        sentiment_scores = analyze_sentiment(messages)
+
+        sentiment_analysis = SentimentAnalysis(
+            user=user,
+            conversation_id=conversation.id,
+            joy_score=sentiment_scores.get('joy', 0),
+            sadness_score=sentiment_scores.get('sadness', 0),
+            anger_score=sentiment_scores.get('anger', 0),
+            trust_score=sentiment_scores.get('love', 0),
+            timestamp=timezone.now(),
+            contact_id=contact
+        )
+        sentiment_analysis.save()
+
+        return {'conversation_id': conversation.conversation_id, 'status': 'Processed successfully'}
+    
+class GenerateReplyView(APIView):
+    def get(self, request, conversation_id):
+        try:
+            # Use the correct field 'conversation_id' to filter the conversation
+            conversation = Conversation.objects.filter(conversation_id=conversation_id).first()
+
+            # Check if the conversation exists
+            if not conversation:
+                return Response({"error": "Conversation with the given conversation_id does not exist."}, status=status.HTTP_400_BAD_REQUEST)
+
+            # Call the function to generate a reply based on the message from the conversation
+            reply = generate_reply_from_conversation(conversation_id)
+
+            # If the reply is an error message, return a bad request response
+            if "error" in reply.lower() or "does not exist" in reply.lower():
+                return Response({"error": reply}, status=status.HTTP_400_BAD_REQUEST)
+
+            # Return the generated reply
+            return Response({"reply": reply}, status=status.HTTP_200_OK)
 
         except Exception as e:
             # Handle unexpected errors
-            return Response({'error': 'An unexpected error occurred.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
