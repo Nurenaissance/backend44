@@ -2,12 +2,12 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - webappbaackend
+name: Build and deploy Python app to Azure Web App - backenreal
 
 on:
   push:
     branches:
-      - init-branch
+      - my-new-branch
   workflow_dispatch:
 
 jobs:
@@ -42,6 +42,7 @@ jobs:
           path: |
             release.zip
             !venv/
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -64,13 +65,14 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_BB848135890E4BEAB33BE4C74C4C0BB2 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_73244E9D247B48F9961DEAD1A04B6CE4 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_D80329D37DFE49A79B2C95055396E0CE }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_7BCF92DA0D2B4EE09CD1198FB75606E9 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_990CE4EE0E7B4A8CB092420E02AD6E05 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F74636F85E1B478CA1D38FFA66BD14BD }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'webappbaackend'
+          app-name: 'backenreal'
           slot-name: 'Production'
+          
