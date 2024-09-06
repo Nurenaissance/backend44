@@ -81,4 +81,5 @@ pymupdf
 requests
 celery
 scikit-learn
+nltk
 transformers
