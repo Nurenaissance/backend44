@@ -68,7 +68,7 @@ typing_extensions==4.12.2
 tzdata==2024.1
 urllib3==2.2.2
 yarl==1.9.4
-Django>=4.1
+Django==4.1
 djangorestframework
 django-cors-headers
 pandas
@@ -83,8 +83,3 @@ celery
 scikit-learn
 nltk
 transformers
-beautifulsoup4
-torch==2.4.0
-torchvision
-gunicorn
-
