@@ -206,7 +206,7 @@ urlpatterns = [
     path('behavioral-metrics/<int:pk>/', commviews.BehavioralMetricsDetailView.as_view(), name='behavioral-metrics-detail'),
 
     # sentiment-analysis on messages
-    path('analyze-sentiment/', commviews.SentimentAnalysisView.as_view(), name='analyze_sentiment'),
+    #path('analyze-sentiment/', commviews.SentimentAnalysisView.as_view(), name='iment'),
 
     path('generate-prompt/', commprom.GeneratePromptView.as_view(), name='generate_prompt'),
 

@@ -12,7 +12,7 @@ from django.utils import timezone
 
 from simplecrm.models import CustomUser
 from .gpt_utils import generate_reply_from_conversation 
-from .sentiment_pipeline import analyze_sentiment
+#from .sentiment_pipeline import analyze_sentiment
 
 from .serializers import (
     SentimentAnalysisSerializer,
@@ -67,55 +67,55 @@ class GroupMessagesView(generics.GenericAPIView):
         
 
 
-class SentimentAnalysisView(APIView):
-    @method_decorator(csrf_exempt, name='dispatch')
-    def post(self, request):
-        try:
-            # Fetch all conversations
-            conversations = Conversation.objects.all()
-            results = []
+# class SentimentAnalysisView(APIView):
+#     @method_decorator(csrf_exempt, name='dispatch')
+#     def post(self, request):
+#         try:
+#             # Fetch all conversations
+#             conversations = Conversation.objects.all()
+#             results = []
 
-            for conversation in conversations:
-                result = self.analyze_and_save(conversation)
-                if result:
-                    results.append(result)
+#             for conversation in conversations:
+#                 result = self.analyze_and_save(conversation)
+#                 if result:
+#                     results.append(result)
 
-            return Response(results, status=status.HTTP_200_OK)
+#             return Response(results, status=status.HTTP_200_OK)
         
-        except Exception as e:
-            return Response({'error': f'An unexpected error occurred: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+#         except Exception as e:
+#             return Response({'error': f'An unexpected error occurred: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    def analyze_and_save(self, conversation):
-        # Check if sentiment analysis already exists for this conversation
-        if SentimentAnalysis.objects.filter(conversation_id=conversation.id).exists():
-            # Skip this conversation if sentiment analysis already exists
-            return None
+#     def analyze_and_save(self, conversation):
+#         # Check if sentiment analysis already exists for this conversation
+#         if SentimentAnalysis.objects.filter(conversation_id=conversation.id).exists():
+#             # Skip this conversation if sentiment analysis already exists
+#             return None
 
-        user = conversation.user
-        contact = conversation.contact_id
-        messages = conversation.messages
+#         user = conversation.user
+#         contact = conversation.contact_id
+#         messages = conversation.messages
 
-        if not user:
-            return {'conversation_id': conversation.conversation_id, 'error': 'No user associated with this conversation'}
+#         if not user:
+#             return {'conversation_id': conversation.conversation_id, 'error': 'No user associated with this conversation'}
 
-        if not CustomUser.objects.filter(id=user.id).exists():
-            return {'conversation_id': conversation.conversation_id, 'error': f'CustomUser not found for ID: {user.id}'}
+#         if not CustomUser.objects.filter(id=user.id).exists():
+#             return {'conversation_id': conversation.conversation_id, 'error': f'CustomUser not found for ID: {user.id}'}
 
-        sentiment_scores = analyze_sentiment(messages)
+#         sentiment_scores = analyze_sentiment(messages)
 
-        sentiment_analysis = SentimentAnalysis(
-            user=user,
-            conversation_id=conversation.id,
-            joy_score=sentiment_scores.get('joy', 0),
-            sadness_score=sentiment_scores.get('sadness', 0),
-            anger_score=sentiment_scores.get('anger', 0),
-            trust_score=sentiment_scores.get('love', 0),
-            timestamp=timezone.now(),
-            contact_id=contact
-        )
-        sentiment_analysis.save()
+#         sentiment_analysis = SentimentAnalysis(
+#             user=user,
+#             conversation_id=conversation.id,
+#             joy_score=sentiment_scores.get('joy', 0),
+#             sadness_score=sentiment_scores.get('sadness', 0),
+#             anger_score=sentiment_scores.get('anger', 0),
+#             trust_score=sentiment_scores.get('love', 0),
+#             timestamp=timezone.now(),
+#             contact_id=contact
+#         )
+#         sentiment_analysis.save()
 
-        return {'conversation_id': conversation.conversation_id, 'status': 'Processed successfully'}
+#         return {'conversation_id': conversation.conversation_id, 'status': 'Processed successfully'}
     
 class GenerateReplyView(APIView):
     def get(self, request, conversation_id):
