@@ -183,7 +183,11 @@ urlpatterns = [
     path('save-email-messages/', imsg.save_email_messages, name='save-email-messages'),  # Save email messages
     path('store-selected-emails/', simviews.store_selected_emails, name='store_selected_emails'),  # Store selected emails
     path('fetch-all-emails/', simviews.fetch_all_emails, name='fetch_all_emails'),  # Fetch all emails
-    path('set-status/', wa_chat_views.update_message_status),
+     path('whatsapp_tenant/', wa_chat_views.get_whatsapp_tenant_data, name='get_whatsapp_tenant_data'),
+    path('create_table/', wa_chat_views.create_whatsapp_tenant_table, name='create_whatsapp_tenant_table'),
+    path('insert_data/', wa_chat_views.insert_whatsapp_tenant_data, name='insert_whatsapp_tenant_data'),
+    path('set-status/', wa_chat_views.update_message_status, name = "update message status"),
+    path('get-status/', wa_chat_views.get_status, name="get_message_status"),
 
     path('conversations/', commviews.ConversationListCreateView.as_view(), name='conversation-list-create'),
     path('conversations/<int:pk>/', commviews.ConversationDetailView.as_view(), name='conversation-detail'),
