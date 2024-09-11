@@ -9222,3 +9222,10 @@ WARNING 2024-09-06 20:40:47,042 log Bad Request: /leads/
 WARNING 2024-09-06 20:40:47,046 basehttp "GET /leads/ HTTP/1.1" 400 21
 INFO 2024-09-06 20:41:02,459 basehttp "GET /leads/ HTTP/1.1" 200 7147
 INFO 2024-09-06 21:06:22,360 autoreload Watching for file changes with StatReloader
+INFO 2024-09-10 12:54:30,926 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-10 12:55:48,495 log Bad Request: /get-status/
+WARNING 2024-09-10 12:55:48,495 basehttp "GET /get-status/ HTTP/1.1" 400 21
+WARNING 2024-09-10 12:55:55,430 log Bad Request: /get-status/
+WARNING 2024-09-10 12:55:55,430 basehttp "GET /get-status/ HTTP/1.1" 400 21
+INFO 2024-09-10 12:56:05,618 basehttp "GET /get-status/ HTTP/1.1" 200 197957
+INFO 2024-09-11 20:00:36,806 autoreload Watching for file changes with StatReloader

@@ -4,6 +4,7 @@ import requests, json, psycopg2
 from dynamic_entities.views import create_dynamic_model
 from django.db import DatabaseError
 from helpers.tables import get_db_connection
+from dynamic_entities.views import DynamicModelListView
 
 
 
@@ -27,8 +28,16 @@ def convert_flow(flow):
                 node = {
                     "oldIndex": node_block["id"],
                     "id": id,
-                    "body": data['question']
+                    "body": data['question'],
+                    "variable": data['variable'],
+                    "variableType": data['dataType']
                 }
+                if data['variable'] and data['dataType']:
+                    fields.append({
+                        'field_name': data['variable'],
+                        'field_type': data['dataType']
+                    })
+
                 if data['optionType'] == 'Buttons':
                     node["type"] = "Button"
                     nodes.append(node)
@@ -45,17 +54,9 @@ def convert_flow(flow):
                         adjList.append([])
                         adjList[list_id].append(id)
                         id += 1
-                elif data['optionType'] == 'Variables':
+                elif data['optionType'] == 'Text':
                     
-                    node["type"] = "Input"
-                    node["Input"] = []
-
-                    for option, data_type in zip(data['options'], data['dataTypes']):
-                        node["Input"].append(option)
-                        fields.append({
-                            'field_name': option,
-                            'field_type': data_type
-                        })
+                    node["type"] = "Text"
                     nodes.append(node)
                     adjList.append([])
                     id += 1
@@ -84,15 +85,32 @@ def convert_flow(flow):
                     "oldIndex": node_block["id"],
                     "id": id,
                 }
-                content = data['fields'][0]['content']
-                if data['fields'][0]['type'] == "Message":
+                content = data['fields']['content']
+                type = data["fields"]['type']
+                if type == "text":
                     node["type"] = "string"
-                    node["body"] = content
-                elif data['fields'][0]['type'] == "Image":
-                    node["body"] = {}
-                    node["body"]["caption"] = content["caption"] #"forget menu, would you like to eat this cute chameleon? its very tasty. trust me. you will forget other menu items once you taste our chamaleon delicacy." 
+                    node["body"] = content['text']
+                elif type == "Image":
+                    node["body"] = {"caption" :content["caption"], "id" : content["med_id"]} #"forget menu, would you like to eat this cute chameleon? its very tasty. trust me. you will forget other menu items once you taste our chamaleon delicacy." 
                     node["type"] = "image"
-                    node["body"]["url"] = content["url"] #"https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg" #
+                    # node["body"]["id"] content["med_id"] #"https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg" #
+                    # node["body"]["url"] = content["url"]
+                elif type == "Location":
+                    node["type"] = "location"
+                    node["body"] = {
+                        "latitude": content["latitude"],
+                        "longitude": content["longitude"],
+                        "name": content["loc_name"],
+                        "address": content["address"]
+                    }
+                elif type == "Audio":
+                    node["type"] = "audio"
+                    node["body"] = {"audioID" : content["audioID"]}
+
+                elif type == "Video":
+                    node["type"] = "video"
+                    node["body"] = {"videoID" : content["videoID"]}
+                
 
                 nodes.append(node)
                 adjList.append([])
@@ -361,7 +379,7 @@ def insert_whatsapp_tenant_data(request):
     try:
         # Parse JSON data from the request body
         data = json.loads(request.body.decode('utf-8'))
-        # print("Received data at insert data: ", data)
+        print("Received data at insert data: ", data)
         tenant_id = request.headers.get('X-Tenant-Id')
         business_phone_number_id = data.get('business_phone_number_id')
         access_token = data.get('access_token')
@@ -369,9 +387,9 @@ def insert_whatsapp_tenant_data(request):
         firstInsertFlag = data.get('firstInsert', False)  # flag to mark the insert of bpid, access token, account id
         
         node_data = data.get('node_data', None)
-        flow_name = data.get('flow_name')
-        # fallback_msg = data.get('fallback_msg'),
-        # fallback_count = data.get('fallback_count')
+        flow_name = data.get('name')
+        fallback_message = data.get('fallback_message'),
+        fallback_count = data.get('fallback_count')
 
         print("Node Data: ", node_data)
         connection = get_db_connection()
@@ -403,14 +421,14 @@ def insert_whatsapp_tenant_data(request):
             if node_data is not None:
                 try:
                     flow_data, adj_list, start, dynamicModelFields = convert_flow(node_data)
-
-
+                    
                     dynamicModelFields.append({
                                     'field_name': 'phone_no',
                                     'field_type': 'bigint'
                                 })
-                    
-                    model_name= f'{business_phone_number_id}'
+                    flow_name = DynamicModelListView.sanitize_model_name(model_name=flow_name)
+                    print("new flow name: ", flow_name)
+                    model_name= flow_name
                     fields= dynamicModelFields
                     print("model name: ", model_name, fields)
                     create_dynamic_model(model_name=model_name, fields=fields)
@@ -418,13 +436,13 @@ def insert_whatsapp_tenant_data(request):
                     #updating whatsapp_tenant_flow with flow_data and adj_list
                     query = '''
                     UPDATE whatsapp_tenant_data
-                    SET flow_data = %s, adj_list = %s, start = %s
+                    SET flow_data = %s, adj_list = %s, start = %s, fallback_message = %s, fallback_count = %s, flow_name = %s
                     WHERE business_phone_number_id = %s
                     '''
                     print("adj listt: ", adj_list, flow_data, start)
                     with connection.cursor() as cursor:
-                        print("Executing query:", query, json.dumps(flow_data), json.dumps(adj_list), start ,business_phone_number_id)
-                        cursor.execute(query, [json.dumps(flow_data), json.dumps(adj_list), start ,business_phone_number_id])
+                        print("Executing query:", query, json.dumps(flow_data), json.dumps(adj_list), start, fallback_message, fallback_count, flow_name ,business_phone_number_id)
+                        cursor.execute(query, [json.dumps(flow_data), json.dumps(adj_list), start, fallback_message, fallback_count, flow_name ,business_phone_number_id])
                         connection.commit()  # Commit the transaction
                     print("Query executed successfully")
                     return JsonResponse({'message': 'Data updated successfully'})
@@ -449,7 +467,7 @@ def get_whatsapp_tenant_data(request):
             return JsonResponse({'error': 'business_phone_id query parameter is required'}, status=400)
 
         query = '''
-        SELECT business_phone_number_id, flow_data, adj_list, access_token, account_id, start
+        SELECT business_phone_number_id, flow_data, adj_list, access_token, account_id, start, flow_name
         FROM whatsapp_tenant_data
         WHERE business_phone_number_id = %s
         '''
@@ -466,8 +484,9 @@ def get_whatsapp_tenant_data(request):
             'access_token': row[3],
             'account_id' : row[4],
             'start' : row[5],
-            'fallback_msg': "Please input again",
-            'fallback_count': 3
+            'flow_name' : row[6],
+            'fallback_msg': "sorry didnt catch that, can you please input again?",
+            'fallback_count': 5
         }
         return JsonResponse(data)
 
@@ -481,8 +500,8 @@ def get_whatsapp_tenant_data(request):
 def update_message_status(request):
     try:
         # Print the raw request body for debugging
-        print("Received request:", request)
-        print("Request body:", request.body.decode('utf-8'))
+        # print("Received request:", request)
+        # print("Request body:", request.body.decode('utf-8'))
         
         # Parse JSON data from the request body
         data = json.loads(request.body)
