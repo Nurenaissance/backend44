@@ -123,11 +123,10 @@ class CreateDynamicModelView(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    
 class DynamicModelListView(APIView):
     def sanitize_model_name(self, model_name):
         """Sanitize model name to ensure it's a valid SQL identifier."""
-        return re.sub(r'\W|^(?=\d)', '_', model_name.lower())
+        return re.sub(r'\W|^(?=\d)', '_', model_name.lower())  # Make sure 're' is imported at the top
 
     def get(self, request, *args, **kwargs):
         dynamic_models = DynamicModel.objects.all()
@@ -135,6 +134,7 @@ class DynamicModelListView(APIView):
 
         for dynamic_model in dynamic_models:
             try:
+                # This should work as you're already using 'self' correctly
                 sanitized_model_name = self.sanitize_model_name(dynamic_model.model_name)
                 table_name = f"dynamic_entities_{sanitized_model_name}"
 
@@ -164,11 +164,9 @@ class DynamicModelListView(APIView):
 
             except ValueError:
                 # Log deletion for future audit or monitoring
-                # print(f"Deleting model: {dynamic_model.model_name} due to missing table.")
                 dynamic_model.delete()
 
         return Response(response_data, status=status.HTTP_200_OK)
-
 
 from rest_framework.views import APIView
 from rest_framework.response import Response

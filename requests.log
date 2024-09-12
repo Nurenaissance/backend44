@@ -9230,3 +9230,29 @@ WARNING 2024-09-10 12:55:55,430 basehttp "GET /get-status/ HTTP/1.1" 400 21
 INFO 2024-09-10 12:56:05,618 basehttp "GET /get-status/ HTTP/1.1" 200 197957
 INFO 2024-09-11 20:00:36,806 autoreload Watching for file changes with StatReloader
 INFO 2024-09-12 13:32:41,737 autoreload Watching for file changes with StatReloader
+INFO 2024-09-12 13:42:32,215 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-12 13:45:18,751 log Not Found: /whatsapp_convo_get//
+WARNING 2024-09-12 13:45:18,752 basehttp "GET /whatsapp_convo_get//?source=whatsapp HTTP/1.1" 404 21557
+INFO 2024-09-12 13:47:11,724 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-12 13:47:13,428 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-12 13:47:13,634 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5673
+INFO 2024-09-12 13:47:16,050 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-12 13:47:16,492 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-12 13:47:16,698 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-12 13:47:17,133 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-12 13:47:17,236 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-12 13:47:17,689 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-12 13:47:17,819 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-12 13:47:18,053 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-12 13:47:18,230 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-12 13:47:18,569 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-12 13:47:18,985 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-12 13:47:19,332 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-12 13:47:33,881 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-12 13:47:34,556 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-12 13:47:35,724 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-12 13:47:38,283 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-12 13:48:02,870 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-12 13:48:06,295 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-12 19:05:24,001 autoreload C:\Users\Adarsh\MyProject\Deployed_Finals\backend44\dynamic_entities\views.py changed, reloading.
+INFO 2024-09-12 19:05:28,203 autoreload Watching for file changes with StatReloader
