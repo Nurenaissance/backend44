@@ -206,7 +206,7 @@ def view_conversation(request, contact_id):
     try:
         # Query conversations for a specific contact_id
         source = request.GET.get('source', '')
-        conversations = Conversation.objects.filter(contact_id=contact_id,source=source).values('message_text', 'sender')
+        conversations = Conversation.objects.filter(contact_id=contact_id,source=source, ).values('message_text', 'sender').order_by('date_time')
 
         # Format data as per your requirement
         formatted_conversations = []
@@ -218,7 +218,6 @@ def view_conversation(request, contact_id):
     except Exception as e:
         print("Error while fetching conversation data:", e)
         return JsonResponse({'error': str(e)}, status=500)
-    
 @csrf_exempt
 def get_unique_instagram_contact_ids(request):
     try:

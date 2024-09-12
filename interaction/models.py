@@ -10,7 +10,6 @@ class Interaction(models.Model):
         ('Email', 'Email'),
         ('Meeting', 'Meeting'),
         ('Note', 'Note'),
-       
     )
 
     entity_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
@@ -61,13 +60,17 @@ class Meetings(models.Model):
     def __str__(self):
         return self.title
 
-
+# commented by shreyas
 class Conversation(models.Model):
     contact_id = models.CharField(max_length=255)
     message_text = models.TextField()
     sender = models.CharField(max_length=50)
     tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
     source=models.CharField(max_length=255)
+    date_time = models.DateTimeField(auto_now=True)
+
+
+
     # Add any other fields you may need
 
     # Assuming you have tenant-specific tables, add a foreign key to connect them
