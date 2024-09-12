@@ -15,30 +15,48 @@ import re
 
 User =  get_user_model()
 
-
 def get_dynamic_model_class(model_name):
     """Get the dynamic model class."""
-    class Meta:
-        app_label = 'dynamic_entities'
-    attrs = {'__module__': 'dynamic_entities.models', 'Meta': Meta}
-    fields = DynamicField.objects.filter(dynamic_model__model_name=model_name)
-    for field in fields:
-        field_type = field.field_type
-        if field_type == 'string':
-            attrs[field.field_name] = models.CharField(max_length=255)
-        elif field_type == 'integer':
-            attrs[field.field_name] = models.IntegerField()
-        elif field_type == 'text':
-            attrs[field.field_name] = models.TextField()
-        elif field_type == 'boolean':
-            attrs[field.field_name] = models.BooleanField()
-        elif field_type == 'date':
-            attrs[field.field_name] = models.DateField()
-        elif field_type == 'bigint':
-            attrs[field.field_name] = models.BigIntegerField()
-        else:
-            raise ValueError(f'Unknown field type: {field_type}')
-    return type(model_name, (models.Model,), attrs)
+    try:
+        # Meta class definition
+        class Meta:
+            app_label = 'dynamic_entities'
+
+        # Create attributes dictionary for the dynamic model
+        attrs = {'__module__': 'dynamic_entities.models', 'Meta': Meta}
+
+        # Fetch dynamic fields for the given model name
+        fields = DynamicField.objects.filter(dynamic_model__model_name=model_name)
+        print("fields: ", fields)
+
+        # Loop through each field and assign the appropriate Django model field type
+        for field in fields:
+            field_type = field.field_type
+
+            if field_type == 'string':
+                attrs[field.field_name] = models.CharField(max_length=255)
+            elif field_type == 'integer':
+                attrs[field.field_name] = models.IntegerField()
+            elif field_type == 'text':
+                attrs[field.field_name] = models.TextField()
+            elif field_type == 'boolean':
+                attrs[field.field_name] = models.BooleanField()
+            elif field_type == 'date':
+                attrs[field.field_name] = models.DateField()
+            elif field_type == 'bigint':
+                attrs[field.field_name] = models.BigIntegerField()
+            else:
+                raise ValueError(f'Unknown field type: {field_type}')
+        
+        # Return the dynamically created model class
+        return type(model_name, (models.Model,), attrs)
+
+    except DynamicField.DoesNotExist:
+        print(f"No dynamic fields found for the model: {model_name}")
+    except ValueError as e:
+        print(f"Error: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
 
 def deregister_dynamic_model(model_name):
@@ -54,54 +72,98 @@ def deregister_dynamic_model(model_name):
 
 def create_dynamic_model(model_name, fields, user=None):
     try:
+        # Define model fields
         field_definitions = {
             '__module__': 'dynamic_entities.models',
             'Meta': type('Meta', (), {'app_label': 'dynamic_entities'})
         }
-        print("field definitions: ", field_definitions)
-        for field in fields:
-            field_name = field['field_name']
-            field_type = field['field_type']
-            print(field_name, field_type)
-            if field_type == 'string':
-                field_definitions[field_name] = models.CharField(max_length=255, null=True, blank=True)
-            elif field_type == 'integer':
-                field_definitions[field_name] = models.IntegerField(null=True, blank=True)
-            elif field_type == 'text':
-                field_definitions[field_name] = models.TextField(null=True, blank=True)
-            elif field_type == 'boolean':
-                field_definitions[field_name] = models.BooleanField(null=True, blank=True)
-            elif field_type == 'date':
-                field_definitions[field_name] = models.DateField(null=True, blank=True)
-            elif field_type == 'bigint':
-                field_definitions[field_name] = models.BigIntegerField(null=True, blank=True)
-            else:
-                return {'success': False, 'message': f'Unknown field type: {field_type}'}
-
-        model_class = type(model_name, (models.Model,), field_definitions)
-        with connection.schema_editor() as schema_editor:
-            schema_editor.create_model(model_class)
-
-        default_user = user if user else User.objects.first()
-        if not default_user:
-            return {'success': False, 'message': 'No default user found'}
+        print("Field definitions: ", field_definitions)
         
-        dynamic_model = DynamicModel.objects.create(model_name=model_name, created_by=default_user)
+        try:
+            for field in fields:
+                field_name = field['field_name']
+                field_type = field['field_type']
+                print(field_name, field_type)
+                if field_type == 'string':
+                    field_definitions[field_name] = models.CharField(max_length=255, null=True, blank=True)
+                elif field_type == 'integer':
+                    field_definitions[field_name] = models.IntegerField(null=True, blank=True)
+                elif field_type == 'text':
+                    field_definitions[field_name] = models.TextField(null=True, blank=True)
+                elif field_type == 'boolean':
+                    field_definitions[field_name] = models.BooleanField(null=True, blank=True)
+                elif field_type == 'date':
+                    field_definitions[field_name] = models.DateField(null=True, blank=True)
+                elif field_type == 'bigint':
+                    field_definitions[field_name] = models.BigIntegerField(null=True, blank=True)
+                else:
+                    raise ValueError(f'Unknown field type: {field_type}')
+        except KeyError as e:
+            print("keyerror: ", e)
+            return {'success': False, 'message': f'Missing field in input data: {str(e)}'}
+        except ValueError as e:
+            print("value error: ", e)
+            return {'success': False, 'message': str(e)}
+        
+        # Create model class
+        try:
+            model_class = type(model_name, (models.Model,), field_definitions)
+            print("Model class: ", model_class)
+        except Exception as e:
+            print("exceptions: ", e)
+            return {'success': False, 'message': f'Error creating model class: {str(e)}'}
 
-        for field in fields:
-            DynamicField.objects.create(dynamic_model=dynamic_model, field_name=field['field_name'], field_type=field['field_type'])
+        # Create model schema
+        try:
+            with connection.schema_editor() as schema_editor:
+                schema_editor.create_model(model_class)
+        except Exception as e:
+            print("exceptions in model schemma: ", e)
+            return {'success': False, 'message': f'Error creating model schema: {str(e)}'}
+        
+        # Get default user
+        try:
+            default_user = user if user else User.objects.first()
+            if not default_user:
+                raise ValidationError('No default user found')
+        except ValidationError as e:
+            return {'success': False, 'message': str(e)}
+        except Exception as e:
+            return {'success': False, 'message': f'Error retrieving default user: {str(e)}'}
 
-        table_name = f"dynamic_entities_{model_name.lower()}"
-        with connection.cursor() as cursor:
-            cursor.execute(f'ALTER TABLE "{table_name}" OWNER TO crm_tenant')
-            cursor.execute(f'GRANT ALL PRIVILEGES ON TABLE "{table_name}" TO crm_tenant')
-            cursor.execute(f'GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE "{table_name}" TO public')
+        # Create dynamic model record
+        try:
+            dynamic_model = DynamicModel.objects.create(model_name=model_name, created_by=default_user)
+        except Exception as e:
+            print("error creating dynmicn:", e)
+            return {'success': False, 'message': f'Error creating DynamicModel record: {str(e)}'}
+
+        # Create dynamic fields
+        try:
+            for field in fields:
+                DynamicField.objects.create(dynamic_model=dynamic_model, field_name=field['field_name'], field_type=field['field_type'])
+        except Exception as e:
+            print("erororrororor: ", e)
+            return {'success': False, 'message': f'Error creating DynamicField records: {str(e)}'}
+
+        # Set table permissions
+        try:
+            table_name = f"dynamic_entities_{model_name.lower()}"
+            with connection.cursor() as cursor:
+                cursor.execute(f'ALTER TABLE "{table_name}" OWNER TO crm_tenant')
+                cursor.execute(f'GRANT ALL PRIVILEGES ON TABLE "{table_name}" TO crm_tenant')
+                cursor.execute(f'GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE "{table_name}" TO public')
+        except Exception as e:
+            print("error: ", e)
+            return {'success': False, 'message': f'Error setting table permissions: {str(e)}'}
+
         print(f"Dynamic Field Created with model name: {model_name} and fields: {fields}")
         return {'success': True, 'message': f'Dynamic model "{model_name}" created successfully'}
+    
     except Exception as e:
-        print("ERROR OCCURED while creating dynamic field: ", str(e))
+        print("ERROR OCCURRED while creating dynamic field: ", str(e))
         return {'success': False, 'message': str(e)}
-
+    
 
 @method_decorator(csrf_exempt, name='dispatch')
 class CreateDynamicModelView(APIView):
@@ -123,6 +185,7 @@ class CreateDynamicModelView(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    
 class DynamicModelListView(APIView):
     @staticmethod
     def sanitize_model_name(model_name):
@@ -168,7 +231,8 @@ class DynamicModelListView(APIView):
                 dynamic_model.delete()
 
         return Response(response_data, status=status.HTTP_200_OK)
-    
+
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -189,7 +253,9 @@ class DynamicModelDataView(APIView):
 
     def post(self, request, model_name, *args, **kwargs):
         try:
+            print("model name and type: ", model_name, type(model_name))
             model_class = get_dynamic_model_class(model_name)
+            print()
             fields = [f.name for f in model_class._meta.get_fields()]
             print(f"Available fields in {model_name}: {fields}")  # Debugging the fields
 
