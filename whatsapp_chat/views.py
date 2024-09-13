@@ -32,7 +32,7 @@ def convert_flow(flow):
                     "variable": data['variable'],
                     "variableType": data['dataType']
                 }
-                if data['variable'] and data['dataType']:
+                if data['variable']:
                     fields.append({
                         'field_name': data['variable'],
                         'field_type': data['dataType']
@@ -151,8 +151,12 @@ def convert_flow(flow):
         startNode = None
         for edge in edges:
             if edge['source'] == "start":
-                startNode = int(edge['target'])
-                print(startNode)
+                startNodeIndex = int(edge['target'])
+                print("start node index: ", startNodeIndex)
+                for node in nodes:
+                    if 'oldIndex' in node:
+                        if int(node['oldIndex']) == startNodeIndex:
+                            startNode = int(node['id'])
             else:
                 source = int(edge['source'])
                 target = int(edge['target'])
@@ -168,15 +172,17 @@ def convert_flow(flow):
                 for node in nodes:
                     if 'oldIndex' in node:
                         if int(node['oldIndex']) == source:
+                            print("source")
                             n_source = int(node['id']) + suffix
                         if int(node['oldIndex']) == target:
+                            print("target")
                             n_target = int(node['id'])
 
                 adjList[n_source].append(n_target)
 
         for node in nodes:
             node.pop('oldIndex', None)
-        print(startNode)
+        print(f"fields: {fields}, start: {startNode}")
         return nodes, adjList, startNode, fields
 
     except Exception as e:
@@ -388,8 +394,8 @@ def insert_whatsapp_tenant_data(request):
         
         node_data = data.get('node_data', None)
         flow_name = data.get('name')
-        fallback_message = data.get('fallback_message'),
-        fallback_count = data.get('fallback_count')
+        fallback_message = node_data.get('fallback_message'),
+        fallback_count = node_data.get('fallback_count')
 
         print("Node Data: ", node_data)
         connection = get_db_connection()
