@@ -1,15 +1,17 @@
-
 from .models import Contact
 from .serializers import ContactSerializer
-# Create your views here.
+from rest_framework.exceptions import APIException
+from rest_framework.response import Response
+from rest_framework import status
 
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
 
 class ContactListCreateAPIView(ListCreateAPIView):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
     # permission_classes = (IsAdminUser,)  # Optionally, add permission classes
-    
+
+
 class ContactDetailAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
@@ -27,4 +29,58 @@ class ContactByPhoneAPIView(ListCreateAPIView):
 
     def get_queryset(self):
         phone = self.kwargs.get('phone')
-        return Contact.objects.filter(phone=phone)
+        print("phone : " ,phone)
+        
+        try:
+            phone_str = str(phone)
+            print("phone : " ,phone_str)
+            queryset = Contact.objects.filter(phone=phone_str)
+            print("queryset: " ,queryset)
+            return queryset
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            raise APIException(f"An error occurred while fetching contacts: {e}")
+
+class ContactByTenantAPIView(CreateAPIView):
+    serializer_class = ContactSerializer
+    
+    def get_queryset(self):
+        tenant_id = self.request.headers.get('X-Tenant-Id')
+        return Contact.objects.filter(tenant_id=tenant_id)
+
+    def create(self, request, *args, **kwargs):
+        tenant_id = request.headers.get('X-Tenant-Id')  # Get tenant_id from headers
+
+        if not tenant_id:
+            return Response(
+                {"detail": "Tenant-ID header is required."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        contact_data = request.data
+
+        name = contact_data.get('name')
+        phone = contact_data.get('phone')
+
+        try:
+            # Check if a contact with the same phone and tenant_id already exists
+            contact_exists = Contact.objects.filter(
+                tenant_id=tenant_id,
+                phone=phone
+            ).exists()
+
+            if contact_exists:
+                return Response(
+                    {"detail": "Contact already exists under this tenant."},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
+            # If the contact doesn't exist, create a new one
+            serializer = self.get_serializer(data=contact_data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save(tenant_id=tenant_id)  # Save with tenant_id from headers
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            raise APIException(f"An error occurred while creating the contact: {e}")

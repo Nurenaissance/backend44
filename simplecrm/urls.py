@@ -81,7 +81,7 @@ urlpatterns = [
     path('opportunities/<int:pk>/', oviews.OpportunityDetailAPIView.as_view(), name='opportunity-detail'),
     path('contacts/', cviews.ContactListCreateAPIView.as_view(), name='contact-list-create'),
     path('contacts/<int:pk>/', cviews.ContactDetailAPIView.as_view(), name='contact-detail'),
-
+    path('contacts_by_tenant/', cviews.ContactByTenantAPIView.as_view(), name='contact-by-tenant'),
     path('meetings/', inviews.MeetingListCreateAPIView.as_view(), name='meeting-list-create'),
     path('meetings/<int:pk>/', inviews.MeetingDetailAPIView.as_view(), name='meeting-detail'),
     path('calls/', inviews.callsListAPIView.as_view(), name='calls'), 
@@ -183,12 +183,8 @@ urlpatterns = [
     path('save-email-messages/', imsg.save_email_messages, name='save-email-messages'),  # Save email messages
     path('store-selected-emails/', simviews.store_selected_emails, name='store_selected_emails'),  # Store selected emails
     path('fetch-all-emails/', simviews.fetch_all_emails, name='fetch_all_emails'),  # Fetch all emails
-     path('whatsapp_tenant/', wa_chat_views.get_whatsapp_tenant_data, name='get_whatsapp_tenant_data'),
-    path('create_table/', wa_chat_views.create_whatsapp_tenant_table, name='create_whatsapp_tenant_table'),
-    path('insert_data/', wa_chat_views.insert_whatsapp_tenant_data, name='insert_whatsapp_tenant_data'),
-    path('set-status/', wa_chat_views.update_message_status, name = "update message status"),
-    path('get-status/', wa_chat_views.get_status, name="get_message_status"),
-
+    path('set-status/', wa_chat_views.update_message_status),
+    path('get-status/', wa_chat_views.get_status),
     path('conversations/', commviews.ConversationListCreateView.as_view(), name='conversation-list-create'),
     path('conversations/<int:pk>/', commviews.ConversationDetailView.as_view(), name='conversation-detail'),
 
@@ -210,11 +206,16 @@ urlpatterns = [
     path('behavioral-metrics/<int:pk>/', commviews.BehavioralMetricsDetailView.as_view(), name='behavioral-metrics-detail'),
 
     # sentiment-analysis on messages
-    #path('analyze-sentiment/', commviews.SentimentAnalysisView.as_view(), name='iment'),
+    
+    
+    #path('analyze-sentiment/', commviews.SentimentAnalysis(), name='analyze_sentiment'),
 
     path('generate-prompt/', commprom.GeneratePromptView.as_view(), name='generate_prompt'),
 
     path('generate-reply/<str:conversation_id>/', commviews.GenerateReplyView.as_view(), name='generate_reply'),
+
+    path('get-bpid/', wa_chat_views.get_bpid),
+    path('get-tenant/', wa_chat_views.get_tenant),
 
 
 ]

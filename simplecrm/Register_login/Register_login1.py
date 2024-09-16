@@ -6,11 +6,11 @@ from rest_framework.response import Response
 from rest_framework import status
 import json
 from django.contrib.auth import authenticate
-from .models import CustomUser
+from ..models import CustomUser
 from tenant.models import Tenant 
 from django.contrib.auth import logout
 from django.db import connections
-from django.db import connection, IntegrityError
+from django.db import connection
 import logging
 logger = logging.getLogger(__name__)
 
@@ -41,18 +41,9 @@ def register(request):
         user = CustomUser.objects.create_user(username=username, email=email, password=password, role=role, organization=organization, tenant=tenant)
 
         # Create a corresponding PostgreSQL role for the userx``
-        try:
-            with connection.cursor() as cursor:
-                
-                sql_role_name = f"crm_tenant_{role}"
-                
-                cursor.execute(f"CREATE ROLE {username} WITH LOGIN PASSWORD %s IN ROLE {sql_role_name};", [password])
-                cursor.execute(f"GRANT {sql_role_name} TO {username};")
-                
-        except IntegrityError as e:
-            return JsonResponse({'msg': f'Error creating role: {str(e)}'}, status=500)
-        except Exception as e:
-            return JsonResponse({'msg': f'Unexpected error: {str(e)}'}, status=500)
+        with connection.cursor() as cursor:
+            cursor.execute(f"CREATE ROLE {username} WITH LOGIN PASSWORD %s IN ROLE crm_tenant_{role};", [password])
+            cursor.execute(f"GRANT crm_tenant_{role} TO {username};")
 
         return JsonResponse({'msg': 'User registered successfully'})
     else:
@@ -77,25 +68,17 @@ class LoginView(APIView):
             tenant_id = user.tenant.id  # Get the tenant ID associated with the user
             user_id = user.id  # Get the user ID of the logged-in user
 
-            response_data = {
-                'tenant_id': tenant_id,
-                'user_id': user_id,
-                'role': role
-            }
+            # Construct the response based on the user's role
             if role == CustomUser.ADMIN:
                 # Show admin views
-                response_data['msg'] = 'Login successful as admin'
+                return Response({'msg': 'Login successful as admin', 'tenant_id': tenant_id, 'user_id': user_id,'role':user.role}, status=status.HTTP_200_OK)
             elif role == CustomUser.MANAGER:
                 # Show manager views
-                response_data['msg'] = 'Login successful as manager'
+                return Response({'msg': 'Login successful as manager', 'tenant_id': tenant_id, 'user_id': user_id,'role':user.role}, status=status.HTTP_200_OK)
             else:
                 # Show employee views
-                response_data['msg'] = 'Login successful as employee'
-            
-            return Response(response_data, status=status.HTTP_200_OK)
+                return Response({'msg': 'Login successful as employee', 'tenant_id': tenant_id, 'user_id': user_id,'role':user.role}, status=status.HTTP_200_OK)
         else:
-            logger.error(f"Authentication failed for username: {username}")
-            print(f"auth failed for username{username}")
             return Response({'msg': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
