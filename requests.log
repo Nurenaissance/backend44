@@ -10389,3 +10389,298 @@ INFO 2024-09-18 15:49:47,297 basehttp - Broken pipe from ('127.0.0.1', 49492)
 INFO 2024-09-18 15:49:47,297 basehttp - Broken pipe from ('127.0.0.1', 49521)
 INFO 2024-09-18 15:49:52,165 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
 INFO 2024-09-18 15:49:53,061 basehttp "GET /get-status/ HTTP/1.1" 200 880976
+INFO 2024-09-18 15:54:03,605 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 15:54:35,193 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 15:54:37,129 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+INFO 2024-09-18 15:54:37,161 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:54:38,529 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:54:40,491 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:54:41,195 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:54:41,204 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:54:41,311 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:54:42,250 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:54:43,150 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:54:44,781 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:54:44,997 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:54:45,224 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:54:45,401 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:54:45,487 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:54:45,862 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:54:46,684 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:54:46,834 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:54:47,348 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:54:50,809 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:54:51,013 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:54:51,272 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:54:52,651 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:55:08,997 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:55:09,216 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:55:09,219 basehttp "GET /contacts-by-phone/919643393874 HTTP/1.1" 301 0
+INFO 2024-09-18 15:55:09,231 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:55:09,455 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:55:10,859 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:55:11,067 basehttp "GET /contacts-by-phone/919643393874/ HTTP/1.1" 200 1240
+INFO 2024-09-18 15:55:13,328 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:55:13,868 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:55:14,945 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:55:15,175 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:55:31,305 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:55:31,501 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:55:31,842 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:55:31,960 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:55:32,278 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:55:33,122 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:55:33,483 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:55:33,782 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:55:48,743 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:55:48,971 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:55:49,154 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:55:49,170 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:55:49,372 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:55:49,617 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:55:50,611 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:55:50,695 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:55:51,212 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:55:56,090 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:55:56,289 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:55:56,529 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:55:56,681 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:55:56,790 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:55:57,125 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:55:57,900 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:55:58,149 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:55:58,607 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:56:11,271 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:56:11,494 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:56:11,750 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:56:11,970 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:56:12,013 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:56:12,470 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:56:13,131 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:56:13,544 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:56:13,881 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:56:14,255 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:56:14,727 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:56:15,753 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:56:16,015 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:56:18,721 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:56:18,912 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:56:19,197 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:56:19,273 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:56:19,427 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:56:19,711 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:56:20,565 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:56:20,940 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:56:21,172 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 16:13:12,785 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:13:12,795 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:13:16,875 basehttp "GET /contacts/ HTTP/1.1" 200 95007
+INFO 2024-09-18 16:13:16,880 basehttp "GET /contacts/ HTTP/1.1" 200 95007
+INFO 2024-09-18 16:13:19,367 basehttp "OPTIONS /upload/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:17:07,609 basehttp "POST /upload/ HTTP/1.1" 200 97
+INFO 2024-09-18 16:17:07,625 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:17:09,638 basehttp "GET /contacts/ HTTP/1.1" 200 95007
+INFO 2024-09-18 16:21:21,825 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 16:21:48,397 basehttp "OPTIONS /upload/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:30:35,123 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 16:31:01,437 basehttp "OPTIONS /upload/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:40:01,217 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 16:41:00,785 basehttp "OPTIONS /upload/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:41:22,917 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 16:43:26,892 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:43:26,929 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:43:32,702 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 16:43:32,724 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 16:43:39,364 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:43:39,690 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:43:41,715 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 16:43:41,792 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 16:43:42,621 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:43:45,592 basehttp "GET /get-status/ HTTP/1.1" 200 883498
+INFO 2024-09-18 16:43:49,749 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:43:49,749 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:43:52,567 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:43:52,583 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:43:54,653 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 16:43:54,660 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 16:43:54,695 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 16:43:54,697 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 16:45:26,982 autoreload D:\Nuren AI\backend44\helpers\upload_csv.py changed, reloading.
+INFO 2024-09-18 16:45:28,912 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 16:47:52,396 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:47:58,054 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 16:50:11,901 autoreload D:\Nuren AI\backend44\helpers\upload_csv.py changed, reloading.
+INFO 2024-09-18 16:50:14,894 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 16:51:14,308 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 16:51:16,746 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 16:52:20,069 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 16:52:22,961 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 16:52:26,181 basehttp "GET /get-status/ HTTP/1.1" 200 883498
+INFO 2024-09-18 16:53:42,997 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:53:43,036 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:53:45,284 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 16:53:45,327 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 16:53:50,360 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:53:53,454 basehttp "GET /get-status/ HTTP/1.1" 200 883498
+INFO 2024-09-18 16:58:07,804 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 16:58:09,864 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+INFO 2024-09-18 16:58:13,635 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 16:58:13,642 basehttp "GET /contacts-by-phone/919643393874 HTTP/1.1" 301 0
+INFO 2024-09-18 16:58:15,557 basehttp "GET /contacts-by-phone/919643393874/ HTTP/1.1" 200 1240
+WARNING 2024-09-18 16:58:17,835 log Not Found: /whatsapp_convo_post/919643393874/
+WARNING 2024-09-18 16:58:17,835 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 16:58:18,037 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:58:18,080 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 16:58:18,234 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 16:58:20,555 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 16:58:20,567 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 16:58:20,570 basehttp "GET /contacts-by-phone/919548265904 HTTP/1.1" 301 0
+INFO 2024-09-18 16:58:20,581 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 16:58:22,407 basehttp "GET /contacts-by-phone/919548265904/ HTTP/1.1" 200 256
+INFO 2024-09-18 16:58:23,115 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+WARNING 2024-09-18 16:58:24,515 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-09-18 16:58:24,515 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 16:58:24,973 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 16:58:26,172 basehttp "GET /get-status/ HTTP/1.1" 200 883498
+INFO 2024-09-18 16:58:27,486 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 16:58:27,490 basehttp "GET /contacts-by-phone/919536330961 HTTP/1.1" 301 0
+INFO 2024-09-18 16:58:29,446 basehttp "GET /contacts-by-phone/919536330961/ HTTP/1.1" 200 252
+WARNING 2024-09-18 16:58:31,471 log Not Found: /whatsapp_convo_post/919536330961/
+WARNING 2024-09-18 16:58:31,471 basehttp "POST /whatsapp_convo_post/919536330961/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 16:58:31,888 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 16:58:55,713 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 16:58:57,720 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+INFO 2024-09-18 16:59:02,041 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 16:59:02,044 basehttp "GET /contacts-by-phone/919643393874 HTTP/1.1" 301 0
+INFO 2024-09-18 16:59:03,923 basehttp "GET /contacts-by-phone/919643393874/ HTTP/1.1" 200 1240
+WARNING 2024-09-18 16:59:05,933 log Not Found: /whatsapp_convo_post/919643393874/
+WARNING 2024-09-18 16:59:05,933 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 16:59:06,433 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 16:59:08,770 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 16:59:08,772 basehttp "GET /contacts-by-phone/919548265904 HTTP/1.1" 301 0
+INFO 2024-09-18 16:59:10,603 basehttp "GET /contacts-by-phone/919548265904/ HTTP/1.1" 200 256
+WARNING 2024-09-18 16:59:12,627 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-09-18 16:59:12,628 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 16:59:13,060 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 16:59:15,537 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 16:59:15,539 basehttp "GET /contacts-by-phone/919536330961 HTTP/1.1" 301 0
+INFO 2024-09-18 16:59:17,402 basehttp "GET /contacts-by-phone/919536330961/ HTTP/1.1" 200 252
+WARNING 2024-09-18 16:59:19,429 log Not Found: /whatsapp_convo_post/919536330961/
+WARNING 2024-09-18 16:59:19,429 basehttp "POST /whatsapp_convo_post/919536330961/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 16:59:19,999 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:04:29,673 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 17:04:31,688 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+WARNING 2024-09-18 17:04:34,587 log Not Found: /whatsapp_convo_post/919643393874/
+WARNING 2024-09-18 17:04:34,587 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:04:34,617 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 17:04:35,039 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:04:35,088 basehttp "POST /set-status/ HTTP/1.1" 200 41
+WARNING 2024-09-18 17:04:37,466 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-09-18 17:04:37,466 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:04:37,496 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 17:04:37,921 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:04:37,923 basehttp "POST /set-status/ HTTP/1.1" 200 41
+WARNING 2024-09-18 17:04:39,458 log Not Found: /whatsapp_convo_post/919536330961/
+WARNING 2024-09-18 17:04:39,459 basehttp "POST /whatsapp_convo_post/919536330961/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:04:39,500 basehttp "POST /whatsapp_convo_post/919536330961/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 17:04:39,968 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:04:39,989 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:06:44,316 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 17:06:46,287 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+WARNING 2024-09-18 17:06:50,271 log Not Found: /whatsapp_convo_post/919643393874/
+WARNING 2024-09-18 17:06:50,272 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:06:50,292 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 17:06:50,743 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:06:50,757 basehttp "POST /set-status/ HTTP/1.1" 200 41
+WARNING 2024-09-18 17:06:53,469 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-09-18 17:06:53,470 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:06:53,537 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 17:06:53,922 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:06:53,924 basehttp "POST /set-status/ HTTP/1.1" 200 41
+WARNING 2024-09-18 17:06:56,416 log Not Found: /whatsapp_convo_post/919536330961/
+WARNING 2024-09-18 17:06:56,417 basehttp "POST /whatsapp_convo_post/919536330961/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:06:56,444 basehttp "POST /whatsapp_convo_post/919536330961/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 17:06:56,936 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:06:57,003 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:07:39,633 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 17:07:41,694 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+INFO 2024-09-18 17:07:45,369 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+WARNING 2024-09-18 17:07:45,381 log Not Found: /whatsapp_convo_post/919643393874/
+WARNING 2024-09-18 17:07:45,383 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:07:45,802 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:07:45,843 basehttp "POST /set-status/ HTTP/1.1" 200 41
+WARNING 2024-09-18 17:07:48,510 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-09-18 17:07:48,510 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:07:48,512 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 17:07:48,894 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:07:48,915 basehttp "POST /set-status/ HTTP/1.1" 200 41
+WARNING 2024-09-18 17:07:52,540 log Not Found: /whatsapp_convo_post/919536330961/
+WARNING 2024-09-18 17:07:52,541 basehttp "POST /whatsapp_convo_post/919536330961/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:07:52,544 basehttp "POST /whatsapp_convo_post/919536330961/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 17:07:52,995 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:07:53,124 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:08:35,391 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 17:08:37,417 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+INFO 2024-09-18 17:08:40,172 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+WARNING 2024-09-18 17:08:40,267 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-09-18 17:08:40,267 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:08:40,562 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:08:42,349 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+WARNING 2024-09-18 17:08:42,387 log Not Found: /whatsapp_convo_post/919643393874/
+WARNING 2024-09-18 17:08:42,387 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:08:42,854 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:09:52,601 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 17:09:54,574 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+INFO 2024-09-18 17:09:57,220 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+WARNING 2024-09-18 17:09:57,225 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-09-18 17:09:57,225 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:09:57,751 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:09:59,284 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+WARNING 2024-09-18 17:09:59,292 log Not Found: /whatsapp_convo_post/919643393874/
+WARNING 2024-09-18 17:09:59,293 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:09:59,709 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:11:30,416 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 17:11:32,474 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+INFO 2024-09-18 17:11:34,956 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+WARNING 2024-09-18 17:11:35,046 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-09-18 17:11:35,046 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:11:35,431 basehttp "POST /set-status/ HTTP/1.1" 200 41
+WARNING 2024-09-18 17:11:37,038 log Not Found: /whatsapp_convo_post/919643393874/
+WARNING 2024-09-18 17:11:37,038 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:11:37,057 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 17:11:37,494 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:12:16,912 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 17:12:18,961 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+INFO 2024-09-18 17:12:21,405 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+WARNING 2024-09-18 17:12:21,417 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-09-18 17:12:21,418 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:12:21,912 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:12:23,466 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+WARNING 2024-09-18 17:12:23,534 log Not Found: /whatsapp_convo_post/919643393874/
+WARNING 2024-09-18 17:12:23,535 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:12:23,906 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:22:51,617 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 17:22:55,309 basehttp "GET /get-status/ HTTP/1.1" 200 888343
+INFO 2024-09-18 17:26:49,970 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 17:26:53,544 basehttp "GET /get-status/ HTTP/1.1" 200 888343
+INFO 2024-09-18 17:28:08,865 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 17:30:13,563 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 17:30:18,356 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 17:30:23,522 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+INFO 2024-09-18 17:30:23,523 basehttp "GET /get-status/ HTTP/1.1" 200 888343
+WARNING 2024-09-18 17:30:27,557 log Not Found: /whatsapp_convo_post/919643393874/
+WARNING 2024-09-18 17:30:27,557 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:30:27,561 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 17:30:27,972 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:30:27,996 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:30:30,661 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+WARNING 2024-09-18 17:30:30,691 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-09-18 17:30:30,692 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:30:31,119 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:30:31,121 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:30:33,700 basehttp "POST /whatsapp_convo_post/919536330961/?source=whatsapp HTTP/1.1" 200 52
+WARNING 2024-09-18 17:30:33,712 log Not Found: /whatsapp_convo_post/919536330961/
+WARNING 2024-09-18 17:30:33,713 basehttp "POST /whatsapp_convo_post/919536330961/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-09-18 17:30:34,151 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:30:34,230 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 17:32:31,164 autoreload Watching for file changes with StatReloader

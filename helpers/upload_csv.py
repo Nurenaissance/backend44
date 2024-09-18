@@ -146,6 +146,11 @@ def upload_file(request, df):
                     df_new[col] = df_new[col].replace({np.nan: False})  # First replace NaN values
                     df_new[col] = df_new[col].replace({1.0: True, 0.0: False})  # Then replace boolean values
 
+            bigInt_columns = ['account_id', 'createdBy_id', 'name'] #Add columns  here to change value from nan to null (None)
+            for col in bigInt_columns:
+                if col in df_new.columns:
+                    df_new[col] = df_new[col].replace({np.nan: None})
+
             if 'stage' in df_new.columns:
                 try:
                     unique_stages = df_new['stage'].unique()
