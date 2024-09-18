@@ -1,3 +1,4 @@
+
 from .models import Contact
 from .serializers import ContactSerializer
 from rest_framework.exceptions import APIException
@@ -72,7 +73,7 @@ class ContactByTenantAPIView(CreateAPIView):
             if contact_exists:
                 return Response(
                     {"detail": "Contact already exists under this tenant."},
-                    status=status.HTTP_400_BAD_REQUEST
+                    status=status.HTTP_200_OK
                 )
 
             # If the contact doesn't exist, create a new one

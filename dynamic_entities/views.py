@@ -331,4 +331,3 @@ class DeleteDynamicModelView(APIView):
             return Response({'success': True, 'message': f'Model {model_name} deleted successfully'}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({'success': False, 'message': str(e)}, status=status.HTTP_400_BAD_REQUEST)
-
