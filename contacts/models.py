@@ -17,4 +17,4 @@ class Contact(models.Model):
     tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True, blank=True)
     
     def __str__(self):
-        return self.first_name or ''
+        return self.name or ''

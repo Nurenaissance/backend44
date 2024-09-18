@@ -389,7 +389,7 @@ def insert_whatsapp_tenant_data(request):
         tenant_id = request.headers.get('X-Tenant-Id')
         if not tenant_id:
             return JsonResponse({'status': 'error', 'mesage': 'no tenant id found in headers'}, status = 400)
-        business_phone_number_id = data.get('business_phone_number_id')
+        business_phone_number_id = '241683569037594'
         access_token = data.get('access_token')
         account_id = data.get('accountID')
         firstInsertFlag = data.get('firstInsert', False)  # flag to mark the insert of bpid, access token, account id
@@ -517,6 +517,7 @@ def update_message_status(request):
         
         # Extract data from the JSON object
         business_phone_number_id = data.get('business_phone_number_id')
+        isFailed = data.get('is_failed')
         isReplied = data.get('is_replied')
         isRead = data.get('is_read')
         isDelivered = data.get('is_delivered')
@@ -534,16 +535,21 @@ def update_message_status(request):
             connection.commit()
         else:
             query = """
-                INSERT INTO whatsapp_message_id (message_id, business_phone_number_id, sent, delivered, read, replied, user_phone_number, broadcast_group)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                INSERT INTO whatsapp_message_id (message_id, business_phone_number_id, sent, delivered, read, replied, failed, user_phone_number, broadcast_group)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
                 ON CONFLICT (message_id)
                 DO UPDATE SET
+                    sent = EXCLUDED.sent,
                     delivered = EXCLUDED.delivered,
-                    read = EXCLUDED.read;
+                    read = EXCLUDED.read,
+                    failed = EXCLUDED.failed,
+                    replied = EXCLUDED.replied;
             """
 
-            cursor.execute(query, [messageID, business_phone_number_id, isSent, isDelivered, isRead, isReplied, phone_number, broadcastGroup_id])
+            cursor.execute(query, [messageID, business_phone_number_id, isSent, isDelivered, isRead, isReplied, isFailed, phone_number, broadcastGroup_id])
             connection.commit()
+            print("updated status for message id: ", messageID)
+            print(f"isSent: {isSent}, isDeli: {isDelivered}, isRead: {isRead}, isReplied: {isReplied} ", )
 
         return JsonResponse({'message': 'Data inserted successfully'})
     except psycopg2.Error as e:
@@ -580,7 +586,9 @@ def get_status(request):
                     "is_read": row[3],
                     "user_phone_number": row[4],
                     "message_id": row[5],
-                    "broadcast_group": row[6]
+                    "broadcast_group": row[6],
+                    "is_replied": row[7],
+                    "is_failed": row[8]
                 }
                 for row in rows
             ]
@@ -628,8 +636,13 @@ def get_bpid(request):
 
 @csrf_exempt
 def get_tenant(request):
+    print("rcvd req: ", request.body)
     try:
+        if not request.body:
+            return JsonResponse({"error": "Empty request body"}, status=400)
+
         body = json.loads(request.body)
+
         bpid = body.get('bpid')
 
         if not bpid:
@@ -658,4 +671,3 @@ def get_tenant(request):
             connection.close()
         except Exception as e:
             print("Error closing connection: ", e)
-
