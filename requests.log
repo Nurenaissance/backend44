@@ -9861,3 +9861,531 @@ INFO 2024-09-18 13:53:31,007 basehttp "PUT /node-templates/244/ HTTP/1.1" 200 91
 INFO 2024-09-18 13:53:32,652 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
 INFO 2024-09-18 13:53:35,358 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
 INFO 2024-09-18 13:53:56,930 basehttp "PUT /node-templates/244/ HTTP/1.1" 200 938
+INFO 2024-09-18 14:51:43,794 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 14:52:12,021 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 14:52:12,059 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 14:52:17,418 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 14:52:20,744 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 15:08:57,930 autoreload D:\Nuren AI\backend44\node_temps\serializers.py changed, reloading.
+INFO 2024-09-18 15:16:31,398 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 15:17:12,285 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 15:17:14,323 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+INFO 2024-09-18 15:17:15,735 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:17:17,310 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:17:18,377 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:17:18,417 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:17:18,453 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:17:18,939 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:17:19,145 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:17:19,854 basehttp "POST /set-status/ HTTP/1.1" 200 41
+WARNING 2024-09-18 15:17:20,148 log Bad Request: /get-tenant/
+WARNING 2024-09-18 15:17:20,149 basehttp "POST /get-tenant/ HTTP/1.1" 400 21
+INFO 2024-09-18 15:17:20,253 basehttp - Broken pipe from ('127.0.0.1', 61601)
+INFO 2024-09-18 15:17:20,254 basehttp - Broken pipe from ('127.0.0.1', 61588)
+INFO 2024-09-18 15:17:20,254 basehttp - Broken pipe from ('127.0.0.1', 61610)
+INFO 2024-09-18 15:17:20,290 basehttp - Broken pipe from ('127.0.0.1', 61600)
+INFO 2024-09-18 15:17:21,771 basehttp - Broken pipe from ('127.0.0.1', 61586)
+INFO 2024-09-18 15:17:22,031 basehttp - Broken pipe from ('127.0.0.1', 61621)
+INFO 2024-09-18 15:17:22,221 basehttp - Broken pipe from ('127.0.0.1', 61615)
+INFO 2024-09-18 15:17:22,558 basehttp - Broken pipe from ('127.0.0.1', 61584)
+INFO 2024-09-18 15:18:38,634 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+ERROR 2024-09-18 15:18:41,919 log Internal Server Error: /whatsapp_tenant/
+ERROR 2024-09-18 15:18:41,919 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 500 272
+ERROR 2024-09-18 15:18:41,936 log Internal Server Error: /get-tenant/
+ERROR 2024-09-18 15:18:41,936 basehttp "POST /get-tenant/ HTTP/1.1" 500 285
+ERROR 2024-09-18 15:18:41,951 log Internal Server Error: /whatsapp_convo_post/919548265904/
+ERROR 2024-09-18 15:18:41,951 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 500 229
+INFO 2024-09-18 15:18:42,994 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+ERROR 2024-09-18 15:18:46,219 log Internal Server Error: /get-tenant/
+ERROR 2024-09-18 15:18:46,220 log Internal Server Error: /whatsapp_convo_post/919548265904/
+ERROR 2024-09-18 15:18:46,220 basehttp "POST /get-tenant/ HTTP/1.1" 500 285
+ERROR 2024-09-18 15:18:46,220 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 500 229
+ERROR 2024-09-18 15:18:46,234 log Internal Server Error: /whatsapp_tenant/
+ERROR 2024-09-18 15:18:46,235 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 500 272
+INFO 2024-09-18 15:18:47,314 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+ERROR 2024-09-18 15:18:53,771 log Internal Server Error: /whatsapp_tenant/
+ERROR 2024-09-18 15:18:53,772 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 500 272
+ERROR 2024-09-18 15:18:53,795 log Internal Server Error: /whatsapp_convo_post/919548265904/
+ERROR 2024-09-18 15:18:53,796 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 500 229
+ERROR 2024-09-18 15:18:53,808 log Internal Server Error: /get-tenant/
+ERROR 2024-09-18 15:18:53,809 basehttp "POST /get-tenant/ HTTP/1.1" 500 285
+INFO 2024-09-18 15:18:56,351 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+ERROR 2024-09-18 15:19:20,600 log Internal Server Error: /whatsapp_tenant/
+ERROR 2024-09-18 15:19:20,601 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 500 340
+ERROR 2024-09-18 15:19:22,589 log Internal Server Error: /whatsapp_convo_post/919548265904/
+ERROR 2024-09-18 15:19:22,589 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 500 297
+ERROR 2024-09-18 15:19:23,126 log Internal Server Error: /get-tenant/
+ERROR 2024-09-18 15:19:23,126 basehttp "POST /get-tenant/ HTTP/1.1" 500 353
+INFO 2024-09-18 15:19:50,754 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 15:21:14,369 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 15:21:16,435 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+INFO 2024-09-18 15:21:17,807 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:21:19,496 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:21:20,198 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:21:20,405 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:21:20,532 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:21:20,948 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 15:21:21,145 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:21:21,687 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:21:22,258 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:21:22,563 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:21:22,803 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+INFO 2024-09-18 15:21:22,831 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:21:24,482 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:21:25,177 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:21:25,206 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:21:25,658 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:21:26,683 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:21:27,259 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:21:27,568 basehttp "POST /set-status/ HTTP/1.1" 200 41
+WARNING 2024-09-18 15:21:28,678 log Bad Request: /get-tenant/
+WARNING 2024-09-18 15:21:28,682 basehttp "POST /get-tenant/ HTTP/1.1" 400 21
+INFO 2024-09-18 15:21:28,775 basehttp - Broken pipe from ('127.0.0.1', 61935)
+INFO 2024-09-18 15:21:30,273 basehttp - Broken pipe from ('127.0.0.1', 61921)
+INFO 2024-09-18 15:21:30,514 basehttp - Broken pipe from ('127.0.0.1', 61956)
+INFO 2024-09-18 15:21:30,733 basehttp - Broken pipe from ('127.0.0.1', 61950)
+INFO 2024-09-18 15:21:30,979 basehttp - Broken pipe from ('127.0.0.1', 61923)
+INFO 2024-09-18 15:24:17,784 autoreload D:\Nuren AI\backend44\simplecrm\middleware.py changed, reloading.
+INFO 2024-09-18 15:24:19,581 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 15:36:04,719 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 15:36:06,752 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:36:06,755 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+INFO 2024-09-18 15:36:08,066 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:36:10,091 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+WARNING 2024-09-18 15:36:10,764 log Bad Request: /get-tenant/
+WARNING 2024-09-18 15:36:10,764 basehttp "POST /get-tenant/ HTTP/1.1" 400 37
+INFO 2024-09-18 15:36:10,880 basehttp - Broken pipe from ('127.0.0.1', 63816)
+INFO 2024-09-18 15:36:10,886 basehttp - Broken pipe from ('127.0.0.1', 63771)
+INFO 2024-09-18 15:36:10,915 basehttp - Broken pipe from ('127.0.0.1', 63788)
+INFO 2024-09-18 15:36:11,304 basehttp - Broken pipe from ('127.0.0.1', 63795)
+INFO 2024-09-18 15:36:11,538 basehttp - Broken pipe from ('127.0.0.1', 63802)
+INFO 2024-09-18 15:36:11,808 basehttp - Broken pipe from ('127.0.0.1', 63805)
+INFO 2024-09-18 15:36:12,394 basehttp - Broken pipe from ('127.0.0.1', 63769)
+INFO 2024-09-18 15:36:12,614 basehttp - Broken pipe from ('127.0.0.1', 63767)
+INFO 2024-09-18 15:36:12,749 basehttp - Broken pipe from ('127.0.0.1', 63787)
+INFO 2024-09-18 15:36:12,973 basehttp - Broken pipe from ('127.0.0.1', 63814)
+INFO 2024-09-18 15:36:13,058 basehttp - Broken pipe from ('127.0.0.1', 63815)
+INFO 2024-09-18 15:38:55,236 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 15:38:56,263 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 15:38:57,630 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 15:38:59,722 basehttp "GET /get-status/ HTTP/1.1" 200 869113
+INFO 2024-09-18 15:40:45,344 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 15:40:46,230 basehttp "GET /get-status/ HTTP/1.1" 200 869113
+INFO 2024-09-18 15:41:27,285 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 15:41:27,987 basehttp "GET /get-status/ HTTP/1.1" 200 869113
+INFO 2024-09-18 15:42:51,209 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 15:42:53,023 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:42:53,230 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+INFO 2024-09-18 15:42:53,266 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:42:54,982 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:42:55,671 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:42:55,685 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:42:56,097 basehttp "POST /set-status/ HTTP/1.1" 200 41
+WARNING 2024-09-18 15:42:57,261 log Bad Request: /get-tenant/
+WARNING 2024-09-18 15:42:57,262 basehttp "POST /get-tenant/ HTTP/1.1" 400 37
+INFO 2024-09-18 15:42:57,371 basehttp - Broken pipe from ('127.0.0.1', 64707)
+INFO 2024-09-18 15:42:57,607 basehttp - Broken pipe from ('127.0.0.1', 64667)
+INFO 2024-09-18 15:42:57,845 basehttp - Broken pipe from ('127.0.0.1', 64692)
+INFO 2024-09-18 15:42:58,506 basehttp - Broken pipe from ('127.0.0.1', 64682)
+INFO 2024-09-18 15:42:58,875 basehttp - Broken pipe from ('127.0.0.1', 64669)
+INFO 2024-09-18 15:42:59,114 basehttp - Broken pipe from ('127.0.0.1', 64671)
+INFO 2024-09-18 15:42:59,334 basehttp - Broken pipe from ('127.0.0.1', 64704)
+INFO 2024-09-18 15:42:59,568 basehttp - Broken pipe from ('127.0.0.1', 64706)
+INFO 2024-09-18 15:43:22,923 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 15:43:24,678 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:43:24,900 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:43:24,934 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+INFO 2024-09-18 15:43:26,546 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:43:27,248 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:43:27,312 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:43:27,678 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:43:28,742 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:43:29,002 basehttp "POST /set-status/ HTTP/1.1" 200 41
+WARNING 2024-09-18 15:43:31,300 log Bad Request: /get-tenant/
+WARNING 2024-09-18 15:43:31,302 basehttp "POST /get-tenant/ HTTP/1.1" 400 37
+INFO 2024-09-18 15:43:31,390 basehttp - Broken pipe from ('127.0.0.1', 64774)
+INFO 2024-09-18 15:43:32,331 basehttp - Broken pipe from ('127.0.0.1', 64766)
+INFO 2024-09-18 15:43:32,915 basehttp - Broken pipe from ('127.0.0.1', 64746)
+INFO 2024-09-18 15:43:33,195 basehttp - Broken pipe from ('127.0.0.1', 64744)
+INFO 2024-09-18 15:43:33,362 basehttp - Broken pipe from ('127.0.0.1', 64758)
+INFO 2024-09-18 15:43:33,586 basehttp - Broken pipe from ('127.0.0.1', 64748)
+INFO 2024-09-18 15:46:06,091 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-09-18 15:46:07,893 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:46:08,139 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 5728
+INFO 2024-09-18 15:46:08,145 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:46:09,830 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:46:10,519 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:46:10,619 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:46:11,122 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:12,225 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:18,191 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:18,429 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:18,662 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:18,735 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:46:18,836 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:46:18,855 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 15:46:18,920 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:46:18,923 basehttp "GET /contacts-by-phone/919548265904 HTTP/1.1" 301 0
+INFO 2024-09-18 15:46:19,097 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:19,406 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:46:19,863 basehttp "GET /get-status/ HTTP/1.1" 200 869960
+INFO 2024-09-18 15:46:20,475 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:46:20,795 basehttp "GET /contacts-by-phone/919548265904/ HTTP/1.1" 200 256
+INFO 2024-09-18 15:46:23,028 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:46:23,511 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:24,556 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:28,152 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:28,471 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:34,510 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:46:34,720 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:46:35,078 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:46:35,154 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:46:35,498 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:36,344 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:46:36,508 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:45,517 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:45,748 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:45,982 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:47,235 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:46:47,469 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:46:47,709 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:47,971 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:46:47,971 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:46:48,440 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:49,110 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:46:49,584 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:56,291 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:56,685 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:57,592 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:46:57,834 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:46:58,075 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:58,230 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:46:58,698 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:46:59,440 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:46:59,765 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:00,412 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:00,654 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:04,776 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:04,983 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:47:05,197 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:05,370 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:05,462 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:47:05,818 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:06,598 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:47:06,931 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:07,549 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:07,781 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:09,777 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:10,022 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:47:10,208 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:10,391 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:10,491 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:47:10,849 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:11,668 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:47:11,934 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:12,669 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:12,902 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:15,435 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:15,659 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:47:15,985 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:16,139 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:16,660 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:16,729 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:17,202 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:17,288 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:47:17,632 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:18,259 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:18,266 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:18,501 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:18,775 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:19,007 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:21,611 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:21,875 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:47:22,059 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:22,159 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:22,291 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:47:22,573 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:23,514 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:47:23,673 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:24,309 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:24,545 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:25,520 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:25,786 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:47:26,014 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:26,213 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:47:26,473 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:26,898 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:27,397 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:47:27,915 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:28,593 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:28,825 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:31,442 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:31,674 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:47:31,913 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:32,019 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:32,463 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:32,483 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:32,913 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:33,336 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:47:33,431 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:34,137 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:34,366 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:34,625 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:34,858 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:35,093 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:35,433 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:35,654 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:47:35,907 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:35,944 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:36,114 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:47:36,415 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:37,302 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:47:37,398 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:38,082 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:38,306 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:38,494 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:38,768 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:47:38,959 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:39,055 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:39,264 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:47:39,515 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:40,401 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:47:40,561 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:41,224 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:41,455 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:43,967 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:44,165 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:47:44,458 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:47:45,820 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:47:59,589 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:47:59,796 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:48:00,035 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:00,262 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:48:00,516 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:01,404 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:48:01,470 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:02,132 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:02,441 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:04,287 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:04,484 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:48:04,715 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:04,924 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:48:04,946 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:05,368 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:06,164 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:48:06,420 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:07,211 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:07,444 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:11,307 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:11,526 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:48:11,769 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:11,868 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:12,328 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:12,762 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:13,159 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:48:13,212 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:13,404 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:13,870 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:14,101 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:14,318 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:15,724 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:15,970 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:48:16,116 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:16,261 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:16,351 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:48:16,674 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:16,785 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:17,330 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:17,622 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:48:17,874 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:18,356 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:18,578 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:19,042 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:19,261 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:48:19,551 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:19,694 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:19,783 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:48:20,191 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:20,902 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:48:21,183 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:21,920 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:22,142 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:26,913 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:27,145 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:48:27,402 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:27,527 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:27,665 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:48:27,970 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:28,766 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:48:29,113 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:29,648 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:29,882 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:34,145 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:34,374 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:48:34,561 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:34,858 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:48:34,863 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:35,246 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:35,325 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:35,776 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:35,995 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:48:36,307 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:37,015 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:37,177 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:37,251 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:37,411 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:37,644 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:38,221 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:38,449 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:48:38,704 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:38,872 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:38,919 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:48:39,339 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:40,067 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:48:40,349 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:41,138 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:41,774 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:42,091 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:42,295 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:48:42,548 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:42,621 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:42,785 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:48:43,073 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:43,937 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:48:44,277 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:45,016 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:45,256 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:52,027 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:52,300 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:48:52,468 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:52,531 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:52,698 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:48:52,979 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:53,963 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:48:54,093 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:54,700 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:54,941 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:56,855 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:57,076 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:48:57,325 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:57,485 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:48:57,582 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:58,051 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:58,165 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:48:58,670 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:58,728 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:48:58,982 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:59,658 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:59,693 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:48:59,924 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:00,145 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:00,392 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:01,039 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:01,244 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:49:01,519 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:01,702 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:01,792 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:49:02,088 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:02,855 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:49:03,049 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:03,766 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:03,997 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:05,599 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:05,843 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:49:05,997 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:06,060 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:06,291 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:49:06,427 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:07,465 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:49:07,482 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:08,332 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:08,592 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:12,504 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:12,732 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:49:12,987 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:13,079 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:13,185 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:49:13,583 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:14,340 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:49:14,601 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:15,318 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:15,556 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:23,705 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:23,960 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:49:24,172 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:24,195 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:24,382 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:49:24,400 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:49:24,681 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:25,564 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:49:25,597 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:26,603 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:26,832 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:27,881 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:28,114 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:49:28,350 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:28,432 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:28,592 basehttp "POST /dynamic-model-data/_123456/ HTTP/1.1" 200 63
+INFO 2024-09-18 15:49:28,864 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:29,737 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:49:29,825 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:30,629 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:30,855 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:33,154 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 15:49:33,445 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:33,640 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:49:33,881 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:34,005 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:34,071 basehttp "GET /get-status/ HTTP/1.1" 200 879279
+INFO 2024-09-18 15:49:34,437 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:34,558 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:35,035 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:35,231 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:49:35,483 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 15:49:35,550 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:36,193 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:36,424 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:36,619 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:36,852 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:37,256 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:37,375 basehttp "GET /get-status/ HTTP/1.1" 200 879845
+INFO 2024-09-18 15:49:37,504 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:49:37,544 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:37,779 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:37,870 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:38,326 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:38,382 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:38,892 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:39,131 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:49:39,446 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:39,890 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:39,961 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:40,122 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:40,514 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:40,749 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:42,232 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:42,451 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-09-18 15:49:42,731 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:42,814 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:43,255 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:43,350 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-09-18 15:49:43,859 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:44,093 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 54
+INFO 2024-09-18 15:49:44,495 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:45,272 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:45,359 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:45,730 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:46,018 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:46,058 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 15:49:46,124 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 15:49:47,193 basehttp "GET /get-status/ HTTP/1.1" 200 880976
+INFO 2024-09-18 15:49:47,295 basehttp - Broken pipe from ('127.0.0.1', 49434)
+INFO 2024-09-18 15:49:47,295 basehttp - Broken pipe from ('127.0.0.1', 49424)
+INFO 2024-09-18 15:49:47,296 basehttp - Broken pipe from ('127.0.0.1', 49422)
+INFO 2024-09-18 15:49:47,296 basehttp - Broken pipe from ('127.0.0.1', 49475)
+INFO 2024-09-18 15:49:47,296 basehttp - Broken pipe from ('127.0.0.1', 49500)
+INFO 2024-09-18 15:49:47,296 basehttp - Broken pipe from ('127.0.0.1', 49439)
+INFO 2024-09-18 15:49:47,297 basehttp - Broken pipe from ('127.0.0.1', 49492)
+INFO 2024-09-18 15:49:47,297 basehttp - Broken pipe from ('127.0.0.1', 49521)
+INFO 2024-09-18 15:49:52,165 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 15:49:53,061 basehttp "GET /get-status/ HTTP/1.1" 200 880976
