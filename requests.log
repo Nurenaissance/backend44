@@ -9696,3 +9696,168 @@ INFO 2024-09-18 10:55:43,202 basehttp "POST /contacts_by_tenant/ HTTP/1.1" 200 5
 INFO 2024-09-18 10:55:43,470 basehttp "POST /set-status/ HTTP/1.1" 200 41
 INFO 2024-09-18 10:55:43,735 basehttp "POST /set-status/ HTTP/1.1" 200 41
 INFO 2024-09-18 10:55:46,615 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-09-18 11:20:25,030 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 11:20:53,459 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 11:20:53,499 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 11:20:53,521 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 11:20:53,529 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 11:20:58,589 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 11:20:59,043 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 11:20:59,529 basehttp "GET /get-status/ HTTP/1.1" 200 860694
+INFO 2024-09-18 11:20:59,638 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 11:21:00,047 basehttp "GET /get-status/ HTTP/1.1" 200 860694
+INFO 2024-09-18 11:21:03,607 basehttp "GET /get-status/ HTTP/1.1" 200 860694
+INFO 2024-09-18 12:19:03,455 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:19:03,460 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:19:05,795 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:19:06,201 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:19:06,865 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:19:10,042 basehttp "GET /get-status/ HTTP/1.1" 200 860957
+INFO 2024-09-18 12:24:16,000 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:24:16,041 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:24:18,320 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:24:18,685 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:24:19,422 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:24:22,501 basehttp "GET /get-status/ HTTP/1.1" 200 860957
+INFO 2024-09-18 12:25:56,448 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:25:56,979 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:25:59,779 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:26:00,136 basehttp "GET /get-status/ HTTP/1.1" 200 860957
+INFO 2024-09-18 12:26:04,879 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:26:05,425 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:26:08,090 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:26:09,116 basehttp "GET /get-status/ HTTP/1.1" 200 860957
+INFO 2024-09-18 12:26:34,200 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:26:34,205 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:26:36,482 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:26:37,414 basehttp "GET /get-status/ HTTP/1.1" 200 860957
+INFO 2024-09-18 12:26:40,893 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:26:41,173 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:26:43,247 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:26:43,966 basehttp "GET /get-status/ HTTP/1.1" 200 860957
+INFO 2024-09-18 12:27:06,517 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:27:10,029 basehttp "GET /get-status/ HTTP/1.1" 200 860957
+INFO 2024-09-18 12:36:13,565 basehttp "GET /get-status/ HTTP/1.1" 200 860957
+INFO 2024-09-18 12:39:48,952 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:39:48,986 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:39:51,302 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:39:51,408 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:39:52,592 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:39:56,052 basehttp "GET /get-status/ HTTP/1.1" 200 860957
+INFO 2024-09-18 12:41:31,792 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-09-18 12:41:38,524 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 12:42:24,944 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:42:31,452 basehttp "GET /get-status/ HTTP/1.1" 200 860957
+INFO 2024-09-18 12:42:40,522 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:42:40,988 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:42:43,223 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:42:43,702 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:43:01,758 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-09-18 12:43:05,754 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 12:44:31,482 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-09-18 12:44:35,824 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 12:45:04,522 autoreload D:\Nuren AI\backend44\node_temps\views.py changed, reloading.
+INFO 2024-09-18 12:45:08,405 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 12:52:29,104 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:52:32,912 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:52:34,932 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:52:35,148 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:52:36,244 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:52:37,202 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:52:37,242 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:52:39,473 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:52:39,732 basehttp "GET /get-status/ HTTP/1.1" 200 860957
+INFO 2024-09-18 12:52:40,412 basehttp "GET /get-status/ HTTP/1.1" 200 860957
+INFO 2024-09-18 12:53:59,324 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:53:59,432 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:54:01,724 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:54:02,690 basehttp "GET /get-status/ HTTP/1.1" 200 860957
+INFO 2024-09-18 12:54:45,083 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:54:45,195 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:54:45,819 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:54:45,824 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 12:54:47,552 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:54:48,586 basehttp "GET /get-status/ HTTP/1.1" 200 860957
+INFO 2024-09-18 12:54:48,592 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 12:54:52,725 basehttp "GET /get-status/ HTTP/1.1" 200 860957
+INFO 2024-09-18 13:00:00,434 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:00:04,744 basehttp "GET /get-status/ HTTP/1.1" 200 860957
+INFO 2024-09-18 13:05:45,986 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:05:46,083 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:05:49,871 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:05:49,871 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:11:39,986 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:11:41,520 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:11:42,028 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:11:43,517 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:11:45,409 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:11:45,917 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:12:35,688 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:12:40,500 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:12:59,931 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:13:03,638 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:13:25,348 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:13:28,015 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:13:28,839 autoreload D:\Nuren AI\backend44\node_temps\serializers.py changed, reloading.
+INFO 2024-09-18 13:13:33,173 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 13:14:15,880 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:14:22,492 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:17:20,931 autoreload D:\Nuren AI\backend44\node_temps\serializers.py changed, reloading.
+INFO 2024-09-18 13:17:24,414 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 13:17:49,596 autoreload D:\Nuren AI\backend44\node_temps\serializers.py changed, reloading.
+INFO 2024-09-18 13:17:52,410 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 13:19:04,474 autoreload D:\Nuren AI\backend44\node_temps\serializers.py changed, reloading.
+INFO 2024-09-18 13:19:06,853 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 13:19:34,325 autoreload D:\Nuren AI\backend44\node_temps\serializers.py changed, reloading.
+INFO 2024-09-18 13:19:36,808 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 13:28:33,652 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 13:34:21,776 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:34:23,232 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+WARNING 2024-09-18 13:34:27,223 log Bad Request: /
+WARNING 2024-09-18 13:34:27,223 basehttp "GET / HTTP/1.1" 400 21
+INFO 2024-09-18 13:34:27,918 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:34:29,270 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:34:31,939 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:34:34,629 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:35:21,967 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:35:23,759 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:35:24,752 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:35:26,209 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:35:26,379 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:35:28,815 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:36:12,700 basehttp "OPTIONS /node-templates/244/ HTTP/1.1" 200 0
+WARNING 2024-09-18 13:36:13,660 log Bad Request: /node-templates/244/
+WARNING 2024-09-18 13:36:13,660 basehttp "PUT /node-templates/244/ HTTP/1.1" 400 21
+INFO 2024-09-18 13:38:31,571 basehttp "OPTIONS /node-templates/244/ HTTP/1.1" 200 0
+WARNING 2024-09-18 13:38:33,634 log Not Found: /node-templates/244/
+WARNING 2024-09-18 13:38:33,634 basehttp "PUT /node-templates/244/ HTTP/1.1" 404 21
+INFO 2024-09-18 13:38:59,100 basehttp "OPTIONS /node-templates/244/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:39:01,267 basehttp "PUT /node-templates/244/ HTTP/1.1" 200 1050
+INFO 2024-09-18 13:41:07,949 autoreload D:\Nuren AI\backend44\node_temps\serializers.py changed, reloading.
+INFO 2024-09-18 13:41:11,889 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 13:41:39,230 autoreload D:\Nuren AI\backend44\node_temps\serializers.py changed, reloading.
+INFO 2024-09-18 13:41:41,800 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 13:42:09,098 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:42:14,868 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:42:14,919 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:42:15,470 basehttp - Broken pipe from ('127.0.0.1', 58965)
+INFO 2024-09-18 13:42:17,218 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:42:17,690 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:42:30,882 autoreload D:\Nuren AI\backend44\node_temps\serializers.py changed, reloading.
+INFO 2024-09-18 13:42:34,459 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 13:43:36,409 basehttp "OPTIONS /node-templates/244/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:43:40,348 basehttp "PUT /node-templates/244/ HTTP/1.1" 200 894
+INFO 2024-09-18 13:43:40,592 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:50:00,764 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:50:04,088 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:51:48,950 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:51:52,327 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:51:55,401 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:52:37,933 autoreload Watching for file changes with StatReloader
+INFO 2024-09-18 13:53:20,321 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:53:26,397 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:53:28,702 basehttp "OPTIONS /node-templates/244/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:53:31,007 basehttp "PUT /node-templates/244/ HTTP/1.1" 200 915
+INFO 2024-09-18 13:53:32,652 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-09-18 13:53:35,358 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-09-18 13:53:56,930 basehttp "PUT /node-templates/244/ HTTP/1.1" 200 938

@@ -10,4 +10,4 @@ class NodeTemplateListCreateAPIView(generics.ListCreateAPIView):
 class NodeTemplateDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = NodeTemplate.objects.all()
     serializer_class = NodeTemplateSerializer
-  
+    

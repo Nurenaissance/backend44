@@ -201,6 +201,7 @@ def saveFlow(request):
 
             if flow_data is None:
                 return HttpResponseBadRequest('Flow data is missing')
+            
 
             # Optional: Uncomment this block to fetch the contact directly via Django ORM
             # try:
@@ -212,6 +213,7 @@ def saveFlow(request):
             #     return JsonResponse({'error': error_message}, status=404)
 
             # Convert the flow data into nodes and adjacency list
+
             nodes, adjList, start, dynamicModelFields = convert_flow(flow_data)
             currNode = 0
             ai_mode = False
