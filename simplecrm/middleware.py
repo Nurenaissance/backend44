@@ -24,6 +24,7 @@ class TenantMiddleware(MiddlewareMixin):
              '/create_table/',
               '/insert_data/',
                '/whatsapp_tenant/',
+               '/get-tenant/',
         ]
         
         # Check if the request path starts with any of the paths to skip

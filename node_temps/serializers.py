@@ -6,7 +6,7 @@ class NodeTemplateSerializer(serializers.ModelSerializer):
         model = NodeTemplate
         fields = "__all__"
 
-    def cleanup(node_data):
+    def cleanup(self, node_data):
         nodes = node_data.get('nodes', [])
         edges = node_data.get('edges', [])
 
