@@ -12,7 +12,7 @@ from rest_framework.test import APIRequestFactory
 def convert_flow(flow):
     fields = []
     try:
-        # print("Received flow: ", flow)
+        print("Received flow: ", flow)
         node_blocks = flow['nodes']
         edges = flow['edges']
 
@@ -478,7 +478,7 @@ def get_whatsapp_tenant_data(request):
             return JsonResponse({'error': 'business_phone_id query parameter is required'}, status=400)
 
         query = '''
-        SELECT business_phone_number_id, flow_data, adj_list, access_token, account_id, start, flow_name
+        SELECT business_phone_number_id, flow_data, adj_list, access_token, account_id, start, flow_name, fallback_message, fallback_count
         FROM whatsapp_tenant_data
         WHERE business_phone_number_id = %s
         '''
@@ -496,8 +496,8 @@ def get_whatsapp_tenant_data(request):
             'account_id' : row[4],
             'start' : row[5],
             'flow_name' : row[6],
-            'fallback_msg': "sorry didnt catch that, can you please input again?",
-            'fallback_count': 5
+            'fallback_msg': row[7],
+            'fallback_count': row[8]
         }
         return JsonResponse(data)
 
