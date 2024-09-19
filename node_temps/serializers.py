@@ -7,36 +7,31 @@ class NodeTemplateSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     def cleanup(self, node_data):
-        nodes = node_data.get('nodes', [])
-        edges = node_data.get('edges', [])
+            nodes = node_data.get('nodes', [])
+            edges = node_data.get('edges', [])
+            start_nodes = []
+            start_edges = []
 
-        temp = True
-        to_remove = []
-        for node in nodes:
-            if node['id'] == 'start':
-                if temp == True:
-                    temp = False
-                else:
-                    to_remove.append(node)
-        for node in to_remove:
-            nodes.remove(node)
-        
-        to_remove = []
-        temp = True
-        for edge in edges:
-            if edge['id'] == 'start-edge':
-                if temp == True:
-                    temp = False
-                else:
-                    to_remove.append(edge)
-        for edge in to_remove:
-            edges.remove(edge)
-        
-        node_data['nodes'] = nodes
-        node_data['edges'] = edges
+            for node in nodes:
+                if(node['id'] == 'start'):
+                    start_nodes.append(node)
 
-        return node_data
+            for edge in edges:
+                if(edge['source'] == 'start'):
+                    start_edges.append(edge)
+            
+            print("nodes: \n", start_nodes)
+            print("edges: \n", start_edges)
+            for node in start_nodes[1:]:
+                nodes.remove(node)
+            for edge in start_edges[1:]:
+                edges.remove(edge)
+            
+            node_data['nodes'] = nodes
+            node_data['edges'] = edges
 
+            return node_data
+    
     def create(self, validated_data):
         node_data = validated_data.get('node_data', {})
         validated_data['node_data'] = self.cleanup(node_data)

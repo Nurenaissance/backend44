@@ -29,15 +29,15 @@ def convert_flow(flow):
                 node = {
                     "oldIndex": node_block["id"],
                     "id": id,
-                    "body": data['question'],
-                    "variable": data['variable'],
-                    "variableType": data['dataType']
+                    "body": data['question']
                 }
-                if data['variable']:
+                if data['variable'] and data['dataType']: 
                     fields.append({
                         'field_name': data['variable'],
                         'field_type': data['dataType']
                     })
+                    node['variable'] = data['variable']
+                    node['variableType'] = data['variable']
 
                 if data['optionType'] == 'Buttons':
                     node["type"] = "Button"
@@ -391,7 +391,7 @@ def insert_whatsapp_tenant_data(request):
         tenant_id = request.headers.get('X-Tenant-Id')
         if not tenant_id:
             return JsonResponse({'status': 'error', 'mesage': 'no tenant id found in headers'}, status = 400)
-        business_phone_number_id = '241683569037594'
+        business_phone_number_id = data.get('business_phone_number_id')
         access_token = data.get('access_token')
         account_id = data.get('accountID')
         firstInsertFlag = data.get('firstInsert', False)  # flag to mark the insert of bpid, access token, account id
