@@ -9259,3 +9259,54 @@ INFO 2024-09-12 19:05:28,203 autoreload Watching for file changes with StatReloa
 INFO 2024-09-12 19:36:08,214 autoreload Watching for file changes with StatReloader
 INFO 2024-09-13 13:28:09,728 autoreload Watching for file changes with StatReloader
 INFO 2024-09-17 03:05:08,661 autoreload Watching for file changes with StatReloader
+INFO 2024-09-17 13:27:28,214 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-17 13:28:27,473 log Bad Request: /
+WARNING 2024-09-17 13:28:27,474 basehttp "GET / HTTP/1.1" 400 21
+INFO 2024-09-17 13:31:40,698 basehttp "OPTIONS /node-templates/249/ HTTP/1.1" 200 0
+INFO 2024-09-17 13:31:45,581 basehttp "PUT /node-templates/249/ HTTP/1.1" 200 949
+INFO 2024-09-17 13:42:51,146 basehttp "OPTIONS /node-templates/249/ HTTP/1.1" 200 0
+INFO 2024-09-17 13:42:56,216 basehttp "PUT /node-templates/249/ HTTP/1.1" 200 977
+INFO 2024-09-17 14:56:33,011 autoreload C:\Users\Adarsh\MyProject\Deployed_Finals\backend44\node_temps\serializers.py changed, reloading.
+INFO 2024-09-17 14:56:38,138 autoreload Watching for file changes with StatReloader
+INFO 2024-09-17 14:58:53,962 basehttp "OPTIONS /node-templates/249/ HTTP/1.1" 200 0
+INFO 2024-09-17 14:58:59,963 basehttp "PUT /node-templates/249/ HTTP/1.1" 200 977
+INFO 2024-09-17 15:00:58,758 basehttp "OPTIONS /node-templates/249/ HTTP/1.1" 200 0
+INFO 2024-09-17 15:01:03,156 basehttp "PUT /node-templates/249/ HTTP/1.1" 200 977
+INFO 2024-09-17 15:07:56,317 basehttp "OPTIONS /node-templates/ HTTP/1.1" 200 0
+INFO 2024-09-17 15:07:59,063 basehttp "POST /node-templates/ HTTP/1.1" 200 10
+INFO 2024-09-17 15:47:40,448 basehttp "POST /node-templates/ HTTP/1.1" 200 10
+INFO 2024-09-17 17:00:31,972 basehttp "POST /node-templates/ HTTP/1.1" 200 10
+INFO 2024-09-17 17:42:33,176 basehttp "OPTIONS /node-templates/ HTTP/1.1" 200 0
+INFO 2024-09-17 17:42:35,480 basehttp "POST /node-templates/ HTTP/1.1" 200 10
+INFO 2024-09-17 17:43:18,179 basehttp "OPTIONS /node-templates/ HTTP/1.1" 200 0
+INFO 2024-09-17 17:43:20,467 basehttp "POST /node-templates/ HTTP/1.1" 200 10
+INFO 2024-09-25 12:44:28,108 autoreload Watching for file changes with StatReloader
+INFO 2024-09-25 12:46:16,709 basehttp "OPTIONS /register/ HTTP/1.1" 200 0
+WARNING 2024-09-25 12:46:17,285 log Bad Request: /register/
+WARNING 2024-09-25 12:46:17,285 basehttp "POST /register/ HTTP/1.1" 400 34
+INFO 2024-09-25 12:59:15,371 autoreload C:\Users\Adarsh\MyProject\Deployed_Finals\backend44\simplecrm\Register_login.py changed, reloading.
+INFO 2024-09-25 12:59:22,058 autoreload Watching for file changes with StatReloader
+INFO 2024-09-25 13:00:00,742 autoreload Watching for file changes with StatReloader
+INFO 2024-09-25 13:00:50,617 basehttp "OPTIONS /register/ HTTP/1.1" 200 0
+WARNING 2024-09-25 13:00:51,716 log Bad Request: /register/
+WARNING 2024-09-25 13:00:51,716 basehttp "POST /register/ HTTP/1.1" 400 34
+INFO 2024-09-25 13:01:23,667 autoreload C:\Users\Adarsh\MyProject\Deployed_Finals\backend44\simplecrm\Register_login.py changed, reloading.
+INFO 2024-09-25 13:01:25,662 autoreload Watching for file changes with StatReloader
+INFO 2024-09-25 13:01:29,773 autoreload Watching for file changes with StatReloader
+INFO 2024-09-25 13:03:11,793 basehttp "OPTIONS /register/ HTTP/1.1" 200 0
+INFO 2024-09-25 13:03:15,295 basehttp "POST /register/ HTTP/1.1" 200 39
+INFO 2024-09-25 13:26:44,245 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+WARNING 2024-09-25 13:26:46,816 log Unauthorized: /login/
+WARNING 2024-09-25 13:26:46,816 basehttp "POST /login/ HTTP/1.1" 401 29
+INFO 2024-09-25 13:30:29,158 autoreload C:\Users\Adarsh\MyProject\Deployed_Finals\backend44\simplecrm\Register_login.py changed, reloading.
+INFO 2024-09-25 13:30:33,716 autoreload Watching for file changes with StatReloader
+INFO 2024-09-25 13:31:18,287 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+WARNING 2024-09-25 13:31:20,635 log Unauthorized: /login/
+WARNING 2024-09-25 13:31:20,635 basehttp "POST /login/ HTTP/1.1" 401 29
+INFO 2024-09-25 13:31:51,488 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+INFO 2024-09-25 13:31:54,664 basehttp "POST /login/ HTTP/1.1" 200 82
+INFO 2024-09-25 13:36:07,591 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+INFO 2024-09-25 13:36:10,324 basehttp "POST /login/ HTTP/1.1" 200 88
+INFO 2024-09-25 13:36:31,343 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+INFO 2024-09-25 13:36:33,861 basehttp "POST /login/ HTTP/1.1" 200 88
+INFO 2024-09-25 14:22:34,593 basehttp "POST /login/ HTTP/1.1" 200 88
