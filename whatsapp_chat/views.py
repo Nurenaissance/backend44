@@ -12,7 +12,7 @@ from rest_framework.test import APIRequestFactory
 def convert_flow(flow):
     fields = []
     try:
-        # print("Received flow: ", flow)
+        print("Received flow: ", flow)
         node_blocks = flow['nodes']
         edges = flow['edges']
 
@@ -29,15 +29,15 @@ def convert_flow(flow):
                 node = {
                     "oldIndex": node_block["id"],
                     "id": id,
-                    "body": data['question'],
-                    "variable": data['variable'],
-                    "variableType": data['dataType']
+                    "body": data['question']
                 }
-                if data['variable']:
+                if data['variable'] and data['dataType']: 
                     fields.append({
                         'field_name': data['variable'],
                         'field_type': data['dataType']
                     })
+                    node['variable'] = data['variable']
+                    node['variableType'] = data['variable']
 
                 if data['optionType'] == 'Buttons':
                     node["type"] = "Button"
@@ -201,6 +201,7 @@ def saveFlow(request):
 
             if flow_data is None:
                 return HttpResponseBadRequest('Flow data is missing')
+            
 
             # Optional: Uncomment this block to fetch the contact directly via Django ORM
             # try:
@@ -212,6 +213,7 @@ def saveFlow(request):
             #     return JsonResponse({'error': error_message}, status=404)
 
             # Convert the flow data into nodes and adjacency list
+
             nodes, adjList, start, dynamicModelFields = convert_flow(flow_data)
             currNode = 0
             ai_mode = False
@@ -476,7 +478,7 @@ def get_whatsapp_tenant_data(request):
             return JsonResponse({'error': 'business_phone_id query parameter is required'}, status=400)
 
         query = '''
-        SELECT business_phone_number_id, flow_data, adj_list, access_token, account_id, start, flow_name
+        SELECT business_phone_number_id, flow_data, adj_list, access_token, account_id, start, flow_name, fallback_message, fallback_count
         FROM whatsapp_tenant_data
         WHERE business_phone_number_id = %s
         '''
@@ -494,8 +496,8 @@ def get_whatsapp_tenant_data(request):
             'account_id' : row[4],
             'start' : row[5],
             'flow_name' : row[6],
-            'fallback_msg': "sorry didnt catch that, can you please input again?",
-            'fallback_count': 5
+            'fallback_msg': row[7],
+            'fallback_count': row[8]
         }
         return JsonResponse(data)
 
@@ -517,6 +519,7 @@ def update_message_status(request):
         
         # Extract data from the JSON object
         business_phone_number_id = data.get('business_phone_number_id')
+        isFailed = data.get('is_failed')
         isReplied = data.get('is_replied')
         isRead = data.get('is_read')
         isDelivered = data.get('is_delivered')
@@ -534,16 +537,21 @@ def update_message_status(request):
             connection.commit()
         else:
             query = """
-                INSERT INTO whatsapp_message_id (message_id, business_phone_number_id, sent, delivered, read, replied, user_phone_number, broadcast_group)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                INSERT INTO whatsapp_message_id (message_id, business_phone_number_id, sent, delivered, read, replied, failed, user_phone_number, broadcast_group)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
                 ON CONFLICT (message_id)
                 DO UPDATE SET
+                    sent = EXCLUDED.sent,
                     delivered = EXCLUDED.delivered,
-                    read = EXCLUDED.read;
+                    read = EXCLUDED.read,
+                    failed = EXCLUDED.failed,
+                    replied = EXCLUDED.replied;
             """
 
-            cursor.execute(query, [messageID, business_phone_number_id, isSent, isDelivered, isRead, isReplied, phone_number, broadcastGroup_id])
+            cursor.execute(query, [messageID, business_phone_number_id, isSent, isDelivered, isRead, isReplied, isFailed, phone_number, broadcastGroup_id])
             connection.commit()
+            print("updated status for message id: ", messageID)
+            print(f"isSent: {isSent}, isDeli: {isDelivered}, isRead: {isRead}, isReplied: {isReplied} ", )
 
         return JsonResponse({'message': 'Data inserted successfully'})
     except psycopg2.Error as e:
@@ -580,7 +588,9 @@ def get_status(request):
                     "is_read": row[3],
                     "user_phone_number": row[4],
                     "message_id": row[5],
-                    "broadcast_group": row[6]
+                    "broadcast_group": row[6],
+                    "is_replied": row[7],
+                    "is_failed": row[8]
                 }
                 for row in rows
             ]
@@ -628,8 +638,13 @@ def get_bpid(request):
 
 @csrf_exempt
 def get_tenant(request):
+    print("rcvd req: ", request.body)
     try:
+        if not request.body:
+            return JsonResponse({"error": "Empty request body"}, status=400)
+
         body = json.loads(request.body)
+
         bpid = body.get('bpid')
 
         if not bpid:
@@ -658,4 +673,3 @@ def get_tenant(request):
             connection.close()
         except Exception as e:
             print("Error closing connection: ", e)
-

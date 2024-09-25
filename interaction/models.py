@@ -37,7 +37,7 @@ class Calls(models.Model):
     voice_recording = models.CharField(max_length=255, blank=True, null=True, verbose_name='Voice Recording')
     to_time = models.DateTimeField(verbose_name='To', blank=True, null=True)
     createdBy = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='created_calls', on_delete=models.CASCADE, blank=True, null=True)
-    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
+    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
         return self.title
 
@@ -60,7 +60,6 @@ class Meetings(models.Model):
     def __str__(self):
         return self.title
 
-# commented by shreyas
 class Conversation(models.Model):
     contact_id = models.CharField(max_length=255)
     message_text = models.TextField()
@@ -68,10 +67,12 @@ class Conversation(models.Model):
     tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
     source=models.CharField(max_length=255)
     date_time = models.DateTimeField(auto_now=True)
+    business_phone_number_id = models.CharField(max_length = 255, null=True, blank=True)
 
 
 
-    # Add any other fields you may need
+    # Add any other fie1
+    # lds you may need
 
     # Assuming you have tenant-specific tables, add a foreign key to connect them
     # tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE) 

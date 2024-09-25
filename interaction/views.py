@@ -182,6 +182,7 @@ def save_conversations(request, contact_id):
             body = json.loads(request.body)
             conversations = body.get('conversations', [])
             tenant = body.get('tenant')
+            bpid = body.get('business_phone_number_id')
             
 
             for message in conversations:
@@ -189,7 +190,7 @@ def save_conversations(request, contact_id):
                 sender = message.get('sender', '')
 
                 # Create and save Conversation object
-                Conversation.objects.create(contact_id=contact_id, message_text=text, sender=sender,tenant_id=tenant,source=source)
+                Conversation.objects.create(contact_id=contact_id, message_text=text, sender=sender,tenant_id=tenant,source=source, business_phone_number_id = bpid)
 
             print("Conversation data saved successfully!")
             return JsonResponse({"message": "Conversation data saved successfully!"}, status=200)
@@ -206,7 +207,8 @@ def view_conversation(request, contact_id):
     try:
         # Query conversations for a specific contact_id
         source = request.GET.get('source', '')
-        conversations = Conversation.objects.filter(contact_id=contact_id,source=source, ).values('message_text', 'sender').order_by('date_time')
+        bpid = request.GET.get('bpid')
+        conversations = Conversation.objects.filter(contact_id=contact_id,business_phone_number_id=bpid,source=source).values('message_text', 'sender').order_by('date_time')
 
         # Format data as per your requirement
         formatted_conversations = []
@@ -218,6 +220,7 @@ def view_conversation(request, contact_id):
     except Exception as e:
         print("Error while fetching conversation data:", e)
         return JsonResponse({'error': str(e)}, status=500)
+
 @csrf_exempt
 def get_unique_instagram_contact_ids(request):
     try:
