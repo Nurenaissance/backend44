@@ -6,6 +6,8 @@ class NodeTemplateSerializer(serializers.ModelSerializer):
         model = NodeTemplate
         fields = "__all__"
 
+
+    #cleanup funciton to include only one start node in the flow
     def cleanup(self, node_data):
             nodes = node_data.get('nodes', [])
             edges = node_data.get('edges', [])
@@ -41,4 +43,6 @@ class NodeTemplateSerializer(serializers.ModelSerializer):
         node_data = validated_data.get('node_data', instance.node_data)
         validated_data['node_data'] = self.cleanup(node_data)
         return super().update(instance, validated_data)
+    
+    
 
