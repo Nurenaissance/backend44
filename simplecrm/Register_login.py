@@ -23,10 +23,23 @@ def register(request):
         email = data.get('email')
         password = data.get('password')
         role = data.get('role', CustomUser.EMPLOYEE)  # Default role to employee if not provided
-        organization = data.get('organization')
+        organization = data.get('tenant')
         tenant_name = data.get('tenant')
         
+        if not username:
+            print("Missing field: username")
+        if not email:
+            print("Missing field: email")
+        if not password:
+            print("Missing field: password")
+        if not organization:
+            print("Missing field: organization")
+        if not tenant_name:
+            print("Missing field: tenant_name")
+    
+    # If any required fields are missing, return the error response
         if not (username and email and password and organization and tenant_name):
+            print("One or more required fields are missing")
             return JsonResponse({'msg': 'Missing required fields'}, status=400)
         
         if CustomUser.objects.filter(username=username).exists() or CustomUser.objects.filter(email=email).exists():
@@ -71,6 +84,7 @@ class LoginView(APIView):
         
         # Authenticate user
         user = authenticate(username=username, password=password)
+        print(user,"user logged in is")
         if user:
             # Check user's role and tenant
             role = user.role
