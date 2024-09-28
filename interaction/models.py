@@ -12,14 +12,14 @@ class Interaction(models.Model):
         ('Note', 'Note'),
     )
 
-    entity_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    entity_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, null=True, blank=True)
     entity_id = models.PositiveIntegerField()
     entity = GenericForeignKey('entity_type', 'entity_id')
     
     interaction_type = models.CharField(max_length=50, choices=INTERACTION_TYPES)
     interaction_datetime = models.DateTimeField()
     notes = models.TextField(blank=True, null=True)
-    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
+    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
         return f'{self.interaction_type} with {self.entity}'
 
@@ -51,12 +51,12 @@ class Meetings(models.Model):
     related_to = models.CharField(max_length=255, blank=True, null=True, verbose_name='Related To')
     contact_name = models.ForeignKey(Contact, related_name='meeting_contacts', blank=True, null=True, verbose_name='Contact Name', on_delete=models.CASCADE )
     host = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, related_name='meeting_hosts', blank=True, null=True, verbose_name='Host')
-    participants = models.ForeignKey(Contact, related_name='meeting_participants', blank=True, on_delete=models.CASCADE)
+    participants = models.ForeignKey(Contact, related_name='meeting_participants', blank=True, on_delete=models.CASCADE, null=True)
     description = models.TextField(blank=True, null=True, verbose_name='Description')
     account = models.ForeignKey('accounts.Account', related_name='meetings', on_delete=models.CASCADE, blank=True, null=True)
     assigned_to = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, related_name='meeting_assigned_users',blank=True, null=True)
     createdBy = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='meeting_created_by', on_delete=models.CASCADE,blank=True, null=True)
-    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
+    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
         return self.title
 
@@ -64,7 +64,7 @@ class Conversation(models.Model):
     contact_id = models.CharField(max_length=255)
     message_text = models.TextField()
     sender = models.CharField(max_length=50)
-    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
+    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True, blank=True)
     source=models.CharField(max_length=255)
     date_time = models.DateTimeField(auto_now=True)
     business_phone_number_id = models.CharField(max_length = 255, null=True, blank=True)
@@ -134,7 +134,7 @@ class Group(models.Model):
     name = models.CharField(max_length=255)
     members = models.ManyToManyField(Contact, related_name='groups')
     date_created = models.DateTimeField(auto_now_add=True)
-    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
+    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True, blank=True)
     
     def __str__(self):
         return f"Group ID: {self.id}, Name: {self.name}, Members: {self.members.count()}"

@@ -51,10 +51,11 @@ from analytics import views as analyticsviews
 from drafts import views as draftview
 from wallet import views as wallview
 from stage import views as stageview
-from helpers import upload_dispatch as u_dispatch, query_dispatch as q_dispatch
+from helpers import upload_dispatch as u_dispatch, query_dispatch as q_dispatch, vectorize
 from .etl2  import add_nodes
 from .new_database import process_nodes
 from custom_fields.views import export_data_for_custom_field as edfc
+from test import test
 from topicmodelling import views as topicviews
 from whatsapp_chat import views as wa_chat_views
 from rest_framework.routers import DefaultRouter
@@ -161,7 +162,7 @@ urlpatterns = [
     path('upload/', u_dispatch.dispatcher, name='upload_dispatch'),
     path('addrows/' , add_nodes, name="add nodes"),
     path('processrows/' ,process_nodes, name="process nodes"),
-    path('test/', edfc, name="export_custom_field"),
+    path('test/', test, name="test"),
     path('perform-topic-modelling/', topicviews.perform_topic_modelling, name='perform_topic_modeling'),
     path('email-campaigns/', campview.EmailCampaignViewSet.as_view({'get': 'list', 'post': 'create'}), name='email-campaign-list'),
     path('email-campaigns/<int:pk>/', campview.EmailCampaignViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='email-campaign-detail'),
@@ -214,7 +215,7 @@ urlpatterns = [
 
     path('get-bpid/', wa_chat_views.get_bpid),
     path('get-tenant/', wa_chat_views.get_tenant),
-
-
+    path('user-data/', analyticsviews.userCreateListView.as_view(), name='add-user-data'),
+    path('query-faiss/', vectorize.query , name='query-into-faiss-data'),
 ]
 urlpatterns += router.urls

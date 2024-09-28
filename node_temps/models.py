@@ -16,7 +16,7 @@ class NodeTemplate(models.Model):
     tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null = True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.name 
 
 class Flow(models.Model):
     nodes = models.JSONField(default=list)
