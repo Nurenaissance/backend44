@@ -16,6 +16,7 @@ class CLTV(models.Model):
 class FAISSIndex(models.Model):
     name = models.CharField(max_length=100)
     index_data = models.BinaryField()
+    json_data = models.JSONField(null=True, blank=True)
     tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True, blank=True)
 
 class userData(models.Model):

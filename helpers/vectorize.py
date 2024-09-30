@@ -1,15 +1,15 @@
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-import os, psycopg2, pymupdf, json
+import os, psycopg2, pymupdf, json, io, pdfplumber
 from openai import OpenAI
 import numpy as np
 from .tables import get_db_connection
+from .prompts import whatsapp_prompts
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from analytics.models import userData
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
-# Load and split file into chunks
 def split_file(pdf_file): 
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=100,
@@ -112,7 +112,6 @@ def process_chunks(chunks):
         if conn:
             conn.close()
 
-# Function to get embedding for a query string using OpenAI
 def get_query_embedding(query):
     response = client.embeddings.create(
         input=query,
@@ -122,7 +121,6 @@ def get_query_embedding(query):
     print(type(embedding))
     return embedding
 
-# Function to store chunk and its embedding into PostgreSQL
 def store_chunk_embedding(chunk, embedding):
     try:
         # Database connection details
@@ -206,6 +204,7 @@ def query(request):
     try:
         tenant_id = request.headers.get('X-Tenant-Id')
         req_body = json.loads(request.body)
+
     except json.JSONDecodeError:
         return JsonResponse({"data": {"status": 400, "message": "Invalid JSON body."}}, status=400)
 
@@ -219,11 +218,9 @@ def query(request):
     userJSON_list = list(userJSON.values())  
     userJSON_serialized = json.dumps(userJSON_list) 
     print("user json: ", userJSON_serialized)
-    
-    # Fetch similar chunks
+
     similar_chunks = get_similar_chunks_using_faiss(query_string, userJSON_serialized)
     combined_query = ""
-
 
     if similar_chunks:
         combined_query = " ".join([doc.page_content for doc in similar_chunks])
@@ -233,10 +230,10 @@ def query(request):
             return HttpResponse(openai_response, status = 200)
         except Exception as e:
             return JsonResponse({"status": 500, "message": f"Error processing query: {str(e)}"})
-    
+
     else:
         return JsonResponse({"status": 404, "answer": "No relevant answers found."})
-    
+
 def get_docs():
 
     query = "SELECT chunk from text_embeddings"
@@ -248,9 +245,8 @@ def get_docs():
     result = cursor.fetchall()
 
     chunks = [row[0] for row in result]
-    
-    return chunks
 
+    return chunks
 
 from langchain_community.vectorstores import FAISS
 from langchain.schema import Document
@@ -258,7 +254,6 @@ from langchain_community.embeddings import OpenAIEmbeddings
 from analytics.models import FAISSIndex
 
 def get_similar_chunks_using_faiss(query, userJSON):
-
     name = "hotels in india.pdf"
 
     index_data = FAISSIndex.objects.get(name = name)
@@ -275,7 +270,7 @@ def get_similar_chunks_using_faiss(query, userJSON):
     return answer
 
 @csrf_exempt
-def vectorize_FAISS(pdf_file, file_name):
+def vectorize_FAISS(pdf_file, file_name, json_data, tenant_id):
     
     name = file_name
     print("name : ", name)
@@ -307,8 +302,108 @@ def vectorize_FAISS(pdf_file, file_name):
         
         serialized_index = library.serialize_to_bytes()
         
-        faiss_index = FAISSIndex(name=name, index_data=serialized_index)
+        faiss_index = FAISSIndex(name=name, index_data=serialized_index, json_data = json_data, tenant_id = tenant_id)
         faiss_index.save()
         print("New FAISS index saved.")
 
     return JsonResponse({"status": 200, "message": "Text vectorized successfully"})
+
+
+@csrf_exempt
+def handle_media_uploads(request):
+    if request.method == 'POST':
+        try:
+
+            print("rcvd reeq: " , request)
+
+            tenant_id = request.headers.get('X-Tenant-Id')
+            user_data = request.headers.get('user-data')
+            print("user data: ", user_data)
+            user_data = json.loads(user_data)
+            user_data['tenant_id'] = tenant_id
+            
+            existing_faiss_index = FAISSIndex.objects.get(tenant_id = tenant_id)
+
+            required_fields = list(json.loads(existing_faiss_index.json_data).values())
+            print("Req fields: ", required_fields)
+            files = request.FILES
+
+            if not files:
+                prompt = whatsapp_prompts(required_fields=required_fields, type="image")
+                data = json.loads(request.body)
+                image_buffer = data.get('image_buffer')
+
+                content = [
+                    {
+                        'type': "text",
+                        'text': prompt
+                    },
+                    {
+                        'type': 'image_url',
+                        'image_url': {
+                            'url': f"data:image/webp;base64,{image_buffer}"
+                        }
+                    }
+                ]
+
+            else:
+                prompt = whatsapp_prompts(required_fields=required_fields, type="doc")
+                pdf_file = request.FILES.get('pdf')
+
+                if not pdf_file:
+                    return JsonResponse({"error": "No PDF file received."}, status=400)
+
+                pdf_stream = io.BytesIO(pdf_file.read())
+
+                extracted_text = ''
+                with pdfplumber.open(pdf_stream) as pdf:
+                    for page in pdf.pages:
+                        extracted_text += page.extract_text()
+                
+                content = [
+                    {
+                        'type': "text",
+                        'text': prompt
+                    },
+                    {
+                        'type': 'text',
+                        'text': extracted_text
+                    }
+                ]
+            print("CONTENT: ", content)
+            payload = {
+                'model': "gpt-4o-mini",
+                'messages': [
+                    {
+                        'role': "user",
+                        'content': content
+                    }
+                ]
+            }
+            response = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages= payload['messages']
+            )
+
+            if response.choices:
+                answer = response.choices[0].message.content
+                start_index = answer.find('{')
+                end_index = answer.rfind('}') + 1
+                answer = answer[start_index:end_index].strip()
+                answer = json.loads(answer)
+            else:
+                return JsonResponse({"error": "No response from the model."}, status=500)
+            
+            user_data['data'] = answer
+
+            print("json response: ", user_data)
+
+
+            return JsonResponse({"success": answer})
+
+
+        except Exception as e:
+            print(e)
+            return JsonResponse({"error": "Error processing the PDF file."}, status=500)
+
+    return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)

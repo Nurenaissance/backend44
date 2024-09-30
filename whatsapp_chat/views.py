@@ -31,6 +31,9 @@ def convert_flow(flow):
                     "id": id,
                     "body": data['question']
                 }
+                delay = data.get('delay')
+                if delay:
+                    node['delay'] = delay
                 if data['variable'] and data['dataType']: 
                     fields.append({
                         'field_name': data['variable'],
@@ -41,8 +44,8 @@ def convert_flow(flow):
 
                 if data['optionType'] == 'Buttons':
                     node["type"] = "Button"
-                    if data['mediaID']:
-                        node["mediaID"] = data['mediaID']
+                    if data.get('med_id'):
+                        node["mediaID"] = data['med_id']
                     nodes.append(node)
                     list_id = id
                     id += 1
@@ -88,6 +91,9 @@ def convert_flow(flow):
                     "oldIndex": node_block["id"],
                     "id": id,
                 }
+                delay = data.get('delay')
+                if delay:
+                    node['delay'] = delay
                 content = data['fields']['content']
                 type = data["fields"]['type']
                 if type == "text":
@@ -127,6 +133,9 @@ def convert_flow(flow):
                     "body": data['condition'],
                     "type": "Button"
                 }
+                delay = data.get('delay')
+                if delay:
+                    node['delay'] = delay
                 nodes.append(node)
                 adjList.append([])
                 list_id = id
@@ -159,6 +168,9 @@ def convert_flow(flow):
                     "type": "AI",
                     "body": data['label']
                 }
+                delay = data.get('delay')
+                if delay:
+                    node['delay'] = delay
                 nodes.append(node)
                 adjList.append([])
                 id += 1
@@ -186,6 +198,7 @@ def convert_flow(flow):
                         suffix += 2
                     else:
                         suffix += int(sourcehandle[-1]) + 1
+                
                 for node in nodes:
                     if 'oldIndex' in node:
                         if int(node['oldIndex']) == source:
@@ -196,6 +209,7 @@ def convert_flow(flow):
                             n_target = int(node['id'])
                 print(f"source: {n_source}, target: {n_target}")
                 adjList[n_source].append(n_target)
+                
 
         for node in nodes:
             node.pop('oldIndex', None)

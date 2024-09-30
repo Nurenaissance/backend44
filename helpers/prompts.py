@@ -70,3 +70,25 @@ KEEP YOUR RESPONSE SHORT, CONCISE AND TO THE POINT.
 DONT WRITE ANYTHING ELSE IN THE RESPONSE.
 AVOID NESTING
 """
+def whatsapp_prompts(required_fields, type):
+
+    PROMPT_FOR_IMAGE = f"""
+    identiy the fields: {required_fields} from the following image.
+    return the answer in json format. if any of the field is missing, return null in its place
+
+    if you dont know the answer, return an empty json object. dont include any apologies or any other statements in your response
+
+    """
+
+    PROMPT_FOR_DOC = f"""
+    identiy the fields: {required_fields} from the following text.
+    return the answer in json format. if any of the field is missing, return null in its place
+
+    if you dont know the answer, return an empty json object. dont include any apologies or any other statements in your response
+
+    """
+
+    if type is "image":
+        return PROMPT_FOR_IMAGE
+    elif type is "doc":
+        return PROMPT_FOR_DOC
