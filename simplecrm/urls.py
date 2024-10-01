@@ -216,6 +216,7 @@ urlpatterns = [
     path('get-bpid/', wa_chat_views.get_bpid),
     path('get-tenant/', wa_chat_views.get_tenant),
     path('user-data/', analyticsviews.userCreateListView.as_view(), name='add-user-data'),
-    path('query-faiss/', vectorize.query , name='query-into-faiss-data'),
+    path('query-faiss/', vectorize.query , name='query-into-faiss-data'),\
+    path('whatsapp-media-uploads/', vectorize.handle_media_uploads , name="return_json_object")
 ]
 urlpatterns += router.urls

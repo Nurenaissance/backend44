@@ -25,6 +25,7 @@ class TenantMiddleware(MiddlewareMixin):
               '/insert_data/',
                '/whatsapp_tenant/',
                '/get-tenant/',
+               '/whatsapp-media-uploads/',
         ]
         
         # Check if the request path starts with any of the paths to skip
