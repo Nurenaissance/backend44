@@ -1,7 +1,7 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseBadRequest,JsonResponse
-import os, pandas as pd,json
-from .vectorize import vectorize
+import os, pandas as pd,json, requests
+from .vectorize import vectorize_FAISS
 from .table_from_img import data_from_image
 from .upload_csv import upload_file
 
@@ -82,46 +82,77 @@ def create_subfile(df, columns_text, merge_columns):
     print("Final DataFrame created")
     return df_new
 
+
 @csrf_exempt
 def dispatcher(request):
-    print("rqst rcvsd")
-    if request.method == 'POST' and 'file' in request.FILES:
-        uploaded_file = request.FILES.get('file')
-        columns_text = request.POST.get('columns')
-        merge_columns = request.POST.get('merge_columns')
-        print("files rcvd")
-        file_extension = os.path.splitext(uploaded_file.name)[1].lower()
-        
-        if file_extension == '.pdf':
-            return vectorize(request)
-            
-        elif file_extension in ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.webp']:
-            return data_from_image(request)
-        elif file_extension == '.csv':
-            if not uploaded_file:
-                return JsonResponse({'error': 'Input file must be provided'}, status=400)
+    try:
+        if request.method == 'POST':
+            tenant_id = request.headers.get('X-Tenant-Id') or 'three_little_birds'
+            uploaded_file = request.FILES.get('file')
+            columns_text = request.POST.get('columns')
+            merge_columns = request.POST.get('merge_columns')
+            json_data = request.POST.get('jsonData')
+            print("json daata: ", json_data)
 
-            try:
-                df = pd.read_csv(uploaded_file)
-            except Exception as e:
-                return JsonResponse({'error': str(e)}, status=400)
-            print("file rcvd")
-            new_df = create_subfile(df, columns_text, merge_columns)
+            if uploaded_file:
+                file_name = uploaded_file.name
+                file_extension = os.path.splitext(uploaded_file.name)[1].lower()
 
-            return upload_file(request, new_df)
-        elif file_extension in ['.xls', '.xlsx']:
-            if not uploaded_file:
-                return JsonResponse({'error': 'Input file must be provided'}, status=400)
+            if file_extension == '.pdf' or 'application/pdf':
+                try:
+                    print("Processing PDF File")
+                    if file_extension == '.pdf':
+                        pdf_file = uploaded_file.read()
+                    else:
+                        pdf_file = uploaded_file
+                    return vectorize_FAISS(pdf_file, file_name, json_data, tenant_id)
+                except Exception as e:
+                    return JsonResponse({'error': f"Failed to process PDF: {str(e)}"}, status=500)
 
-            try:
-                df = pd.read_excel(uploaded_file)
-            except Exception as e:
-                return JsonResponse({'error': str(e)}, status=400)
-            print("file rcvd")
-            new_df = create_subfile(df, columns_text=columns_text, merge_columns=merge_columns)
+            elif file_extension in ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.webp']:
+                try:
+                    return data_from_image(request)
+                except Exception as e:
+                    return JsonResponse({'error': f"Failed to process image: {str(e)}"}, status=500)
 
-            return upload_file(request, new_df)
+            elif file_extension == '.csv':
+                if not uploaded_file:
+                    return JsonResponse({'error': 'Input file must be provided'}, status=400)
+
+                try:
+                    df = pd.read_csv(uploaded_file)
+                except pd.errors.EmptyDataError:
+                    return JsonResponse({'error': 'The CSV file is empty'}, status=400)
+                except pd.errors.ParserError:
+                    return JsonResponse({'error': 'Error parsing CSV file'}, status=400)
+                except Exception as e:
+                    return JsonResponse({'error': f"Error reading CSV file: {str(e)}"}, status=400)
+
+                try:
+                    new_df = create_subfile(df, columns_text, merge_columns)
+                    return upload_file(request, new_df)
+                except Exception as e:
+                    return JsonResponse({'error': f"Error processing CSV file: {str(e)}"}, status=500)
+
+            elif file_extension in ['.xls', '.xlsx']:
+                if not uploaded_file:
+                    return JsonResponse({'error': 'Input file must be provided'}, status=400)
+
+                try:
+                    df = pd.read_excel(uploaded_file)
+                except Exception as e:
+                    return JsonResponse({'error': f"Error reading Excel file: {str(e)}"}, status=400)
+
+                try:
+                    new_df = create_subfile(df, columns_text=columns_text, merge_columns=merge_columns)
+                    return upload_file(request, new_df)
+                except Exception as e:
+                    return JsonResponse({'error': f"Error processing Excel file: {str(e)}"}, status=500)
+
+            else:
+                return HttpResponseBadRequest('Unsupported file type.')
         else:
-            return HttpResponseBadRequest('Unsupported file type.')
-    else:
-        return HttpResponseBadRequest('No file uploaded.')
+            return HttpResponseBadRequest('No file uploaded.')
+    
+    except Exception as e:
+        return JsonResponse({'error': f"Unexpected error occurred: {str(e)}"}, status=500)

@@ -15,21 +15,7 @@ class AccountDetailAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = AccountSerializer
     permission_classes = (AllowAny,)  # Allowing any user to access this view
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     # def get_queryset(self):
+    # def get_queryset(self):
     #     # Filter queryset based on user's tenant
     #     user_tenant = self.request.user.tenant
     #     return Account.objects.filter(tenant=user_tenant)
