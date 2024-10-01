@@ -193,14 +193,11 @@ class DynamicModelListView(APIView):
         return re.sub(r'\W|^(?=\d)', '_', model_name.lower())
 
     def get(self, request, *args, **kwargs):
-        tenant = request.headers.get('X-Tenant-Id')
-
-        dynamic_models = DynamicModel.objects.filter(tenant_id = tenant)
+        dynamic_models = DynamicModel.objects.all()
         response_data = []
 
         for dynamic_model in dynamic_models:
             try:
-
                 sanitized_model_name = self.sanitize_model_name(dynamic_model.model_name)
                 table_name = f"dynamic_entities_{sanitized_model_name}"
 
