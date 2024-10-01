@@ -12,6 +12,7 @@ from django.contrib.auth import get_user_model
 import sys
 from django.core.exceptions import ObjectDoesNotExist
 import re
+from tenant.models import Tenant
 
 User =  get_user_model()
 
@@ -70,7 +71,7 @@ def deregister_dynamic_model(model_name):
         if hasattr(model_module, capitalized_model_name):
             delattr(model_module, capitalized_model_name)
 
-def create_dynamic_model(model_name, fields, user=None):
+def create_dynamic_model(model_name, fields,tenant_id ,user=None):
     try:
         # Define model fields
         field_definitions = {
@@ -121,6 +122,10 @@ def create_dynamic_model(model_name, fields, user=None):
             print("exceptions in model schemma: ", e)
             return {'success': False, 'message': f'Error creating model schema: {str(e)}'}
         
+        try: 
+            tenant = Tenant.objects.filter(id = tenant_id)
+        except Exception as e:
+            return {'success': False, 'message': f'Error retrieving tenant from tenant_id : {str(e)}'}
         # Get default user
         try:
             default_user = user if user else User.objects.first()
@@ -174,9 +179,10 @@ class CreateDynamicModelView(APIView):
             validated_data = serializer.validated_data
             model_name = validated_data.get('model_name')
             fields = validated_data.get('fields')
+            tenant_id = request.headers.get('X-Tenant-Id')
 
             user = request.user if request.user.is_authenticated else None
-            result = create_dynamic_model(model_name, fields, user)
+            result = create_dynamic_model(model_name, fields, user, tenant_id)
 
             if result['success']:
                 return Response(result, status=status.HTTP_201_CREATED)
