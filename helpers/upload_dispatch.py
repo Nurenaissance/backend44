@@ -87,16 +87,15 @@ def create_subfile(df, columns_text, merge_columns):
 def dispatcher(request):
     try:
         if request.method == 'POST':
-            tenant_id = request.headers.get('X-Tenant-Id') or 'three_little_birds'
             uploaded_file = request.FILES.get('file')
             columns_text = request.POST.get('columns')
             merge_columns = request.POST.get('merge_columns')
-            json_data = request.POST.get('jsonData')
-            print("json daata: ", json_data)
 
             if uploaded_file:
                 file_name = uploaded_file.name
                 file_extension = os.path.splitext(uploaded_file.name)[1].lower()
+
+            
 
             if file_extension == '.pdf' or 'application/pdf':
                 try:
@@ -105,7 +104,7 @@ def dispatcher(request):
                         pdf_file = uploaded_file.read()
                     else:
                         pdf_file = uploaded_file
-                    return vectorize_FAISS(pdf_file, file_name, json_data, tenant_id)
+                    return vectorize_FAISS(pdf_file, file_name)
                 except Exception as e:
                     return JsonResponse({'error': f"Failed to process PDF: {str(e)}"}, status=500)
 
