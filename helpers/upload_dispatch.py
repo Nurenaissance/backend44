@@ -97,8 +97,9 @@ def dispatcher(request):
             if uploaded_file:
                 file_name = uploaded_file.name
                 file_extension = os.path.splitext(uploaded_file.name)[1].lower()
+                print(f"extn: {file_extension} name: {file_name}")
 
-            if file_extension == '.pdf' or 'application/pdf':
+            if file_extension == '.pdf':
                 try:
                     print("Processing PDF File")
                     if file_extension == '.pdf':
@@ -135,6 +136,7 @@ def dispatcher(request):
                     return JsonResponse({'error': f"Error processing CSV file: {str(e)}"}, status=500)
 
             elif file_extension in ['.xls', '.xlsx']:
+                print("we are on correct path")
                 if not uploaded_file:
                     return JsonResponse({'error': 'Input file must be provided'}, status=400)
 
