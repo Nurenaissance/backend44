@@ -1,0 +1,3 @@
+INFO 2024-09-25 14:32:13,838 autoreload Watching for file changes with StatReloader
+INFO 2024-09-25 15:02:17,109 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+INFO 2024-09-25 15:02:21,267 basehttp "POST /login/ HTTP/1.1" 200 82

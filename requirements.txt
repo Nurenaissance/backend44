@@ -83,3 +83,4 @@ celery
 scikit-learn
 nltk
 transformers
+pdfplumber
