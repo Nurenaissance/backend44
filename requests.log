@@ -9910,3 +9910,46 @@ INFO 2024-10-07 20:12:58,780 basehttp "GET /whatsapp_tenant/?business_phone_id=3
 INFO 2024-10-07 20:12:59,547 basehttp "GET /contacts/ HTTP/1.1" 200 593
 INFO 2024-10-07 20:13:00,695 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 4659
 >>>>>>> 80a9a8ceda1d57d4b12f2c9241d5d9f56e5cca71
+INFO 2024-10-07 22:03:04,672 autoreload Watching for file changes with StatReloader
+WARNING 2024-10-07 22:04:08,415 log Not Found: /api/sentiment-analysis/conversation/3789012_whatsapp_1725539507.724368/
+WARNING 2024-10-07 22:04:08,415 basehttp "POST /api/sentiment-analysis/conversation/3789012_whatsapp_1725539507.724368/ HTTP/1.1" 404 22448
+INFO 2024-10-07 22:04:14,502 autoreload D:\new_nurenai\04\backend44\simplecrm\urls.py changed, reloading.
+INFO 2024-10-07 22:04:15,524 autoreload Watching for file changes with StatReloader
+ERROR 2024-10-07 22:05:09,249 log Internal Server Error: /api/sentiment-analysis/conversation/3789012_whatsapp_1725539507.724368/
+ERROR 2024-10-07 22:05:09,249 basehttp "POST /api/sentiment-analysis/conversation/3789012_whatsapp_1725539507.724368/ HTTP/1.1" 500 57
+INFO 2024-10-07 22:06:38,468 autoreload D:\new_nurenai\04\backend44\communication\views.py changed, reloading.
+INFO 2024-10-07 22:06:39,446 autoreload Watching for file changes with StatReloader
+ERROR 2024-10-07 22:07:54,660 log Internal Server Error: /api/sentiment-analysis/conversation/3789012_whatsapp_1725539507.724368/
+ERROR 2024-10-07 22:07:54,661 basehttp "POST /api/sentiment-analysis/conversation/3789012_whatsapp_1725539507.724368/ HTTP/1.1" 500 57
+INFO 2024-10-07 22:08:28,470 autoreload D:\new_nurenai\04\backend44\communication\views.py changed, reloading.
+INFO 2024-10-07 22:08:29,445 autoreload Watching for file changes with StatReloader
+ERROR 2024-10-07 22:10:22,935 log Internal Server Error: /api/sentiment-analysis/conversation/3789012_whatsapp_1725539507.724368/
+ERROR 2024-10-07 22:10:22,936 basehttp "POST /api/sentiment-analysis/conversation/3789012_whatsapp_1725539507.724368/ HTTP/1.1" 500 57
+INFO 2024-10-07 22:11:02,459 autoreload D:\new_nurenai\04\backend44\communication\views.py changed, reloading.
+INFO 2024-10-07 22:11:03,409 autoreload Watching for file changes with StatReloader
+ERROR 2024-10-07 22:13:45,678 log Internal Server Error: /api/sentiment-analysis/conversation/3789012_whatsapp_1725539507.724368/
+ERROR 2024-10-07 22:13:45,678 basehttp "POST /api/sentiment-analysis/conversation/3789012_whatsapp_1725539507.724368/ HTTP/1.1" 500 57
+INFO 2024-10-07 22:14:43,753 autoreload D:\new_nurenai\04\backend44\communication\views.py changed, reloading.
+INFO 2024-10-07 22:14:44,807 autoreload Watching for file changes with StatReloader
+ERROR 2024-10-07 22:16:33,094 log Internal Server Error: /api/sentiment-analysis/conversation/3789012_whatsapp_1725539507.724368/
+ERROR 2024-10-07 22:16:33,095 basehttp "POST /api/sentiment-analysis/conversation/3789012_whatsapp_1725539507.724368/ HTTP/1.1" 500 57
+INFO 2024-10-07 22:18:05,097 autoreload D:\new_nurenai\04\backend44\communication\views.py changed, reloading.
+INFO 2024-10-07 22:18:06,052 autoreload Watching for file changes with StatReloader
+ERROR 2024-10-07 22:19:42,854 log Internal Server Error: /api/sentiment-analysis/conversation/3789012_whatsapp_1725539507.724368/
+ERROR 2024-10-07 22:19:42,854 basehttp "POST /api/sentiment-analysis/conversation/3789012_whatsapp_1725539507.724368/ HTTP/1.1" 500 57
+INFO 2024-10-07 22:20:06,786 autoreload D:\new_nurenai\04\backend44\communication\models.py changed, reloading.
+INFO 2024-10-07 22:20:07,763 autoreload Watching for file changes with StatReloader
+INFO 2024-10-07 22:20:29,138 autoreload D:\new_nurenai\04\backend44\communication\views.py changed, reloading.
+INFO 2024-10-07 22:20:30,085 autoreload Watching for file changes with StatReloader
+INFO 2024-10-07 22:21:02,726 basehttp "POST /api/sentiment-analysis/conversation/3789012_whatsapp_1725539507.724368/ HTTP/1.1" 200 298
+WARNING 2024-10-07 22:21:39,139 log Bad Request: /api/sentiment-analysis/conversation/919643393874_whatsapp_1728244402.894888/
+WARNING 2024-10-07 22:21:39,140 basehttp "POST /api/sentiment-analysis/conversation/919643393874_whatsapp_1728244402.894888/ HTTP/1.1" 400 56
+INFO 2024-10-07 22:24:31,882 autoreload D:\new_nurenai\04\backend44\communication\views.py changed, reloading.
+INFO 2024-10-07 22:24:32,965 autoreload Watching for file changes with StatReloader
+WARNING 2024-10-07 22:25:04,105 log Bad Request: /api/sentiment-analysis/conversation/919643393874_whatsapp_1728244402.894888/
+WARNING 2024-10-07 22:25:04,105 basehttp "POST /api/sentiment-analysis/conversation/919643393874_whatsapp_1728244402.894888/ HTTP/1.1" 400 56
+INFO 2024-10-07 22:32:37,934 basehttp "POST /api/sentiment-analysis/conversation/919868789610_whatsapp_1728246026.811353/ HTTP/1.1" 200 288
+INFO 2024-10-07 22:33:34,833 basehttp "POST /api/sentiment-analysis/conversation/919568356378_whatsapp_1728246052.175339/ HTTP/1.1" 200 292
+INFO 2024-10-07 22:41:21,392 autoreload D:\new_nurenai\04\backend44\communication\views.py changed, reloading.
+INFO 2024-10-07 22:41:22,833 autoreload Watching for file changes with StatReloader
+INFO 2024-10-07 22:43:32,148 basehttp "POST /api/sentiment-analysis/conversation/919868789610_whatsapp_1728246314.165662/ HTTP/1.1" 200 288

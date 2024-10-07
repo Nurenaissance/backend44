@@ -81,123 +81,230 @@ from .models import Conversation, SentimentAnalysis
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=OPENAI_API_KEY)
 
+# def analyze_sentiment(text):
+#     """Analyze sentiment of the provided text using OpenAI API."""
+#     try:
+#         # Prepare the prompt for OpenAI
+#         prompt = f"Analyze the following text and provide sentiment scores for joy, sadness, anger, and trust:\n\n{text}"
+
+#         response = client.chat.completions.create(
+#             model="gpt-4",
+#             messages=[{"role": "user", "content": prompt}]
+#         )
+
+#         # Extract sentiment scores from the response
+#         raw_response_content = response.choices[0].message.content.strip()
+
+#         # Assuming the response format is something like:
+#         # "Joy: 0.9, Sadness: 0.1, Anger: 0.0, Trust: 0.8"
+#         scores = {}
+#         for line in raw_response_content.split(","):
+#             key, value = line.split(":")
+#             scores[key.strip().lower()] = float(value.strip())
+
+#         return scores
+
+#     except Exception as e:
+#         print(f"Error in analyze_sentiment: {str(e)}")
+#         return None
+
+# def sentiment_analysis_view(request, conversation_id):
+#     if request.method == 'POST':
+#         # Fetch the conversation using the conversation_id
+#         conversation = get_object_or_404(Conversation, id=conversation_id)
+
+#         # Extract the contact_id from the conversation
+#         contact_id = conversation.contact_id.id  # Adjust based on your actual model relationships
+
+#         # Get the text from the conversation messages
+#         text = conversation.messages  # Assuming 'messages' contains the text you want to analyze
+#         if not text:
+#             return JsonResponse({'error': 'No text found in the conversation for sentiment analysis.'}, status=400)
+
+#         # Perform sentiment analysis using the function defined for OpenAI
+#         sentiment = analyze_sentiment(text)
+#         if sentiment is None:
+#             return JsonResponse({'error': 'Failed to fetch sentiment from OpenAI'}, status=500)
+
+#         # Save the sentiment analysis result to the database
+#         try:
+#             SentimentAnalysis.objects.create(
+#                 user=request.user,  # Assuming the user is authenticated
+#                 message_id=conversation.id,  # Assuming message_id is part of the conversation model
+#                 joy_score=sentiment.get('joy_score', 0.0),
+#                 sadness_score=sentiment.get('sadness_score', 0.0),
+#                 anger_score=sentiment.get('anger_score', 0.0),
+#                 trust_score=sentiment.get('trust_score', 0.0),
+#                 contact_id=contact_id  # Use the contact_id from the conversation
+#             )
+#         except Exception as e:
+#             print(f"Error saving sentiment analysis: {str(e)}")
+#             return JsonResponse({'error': 'Failed to save sentiment analysis.'}, status=500)
+
+#         return JsonResponse({
+#             'message': 'Sentiment analysis completed successfully',
+#             'sentiment': sentiment
+#         })
+
+#     return JsonResponse({'error': 'Invalid request method.'}, status=400)
+from django.http import JsonResponse, HttpResponseBadRequest
+from rest_framework.decorators import api_view
+from django.shortcuts import get_object_or_404
+from communication.models import Conversation
+from communication.models import SentimentAnalysis
+# Define the OpenAI sentiment analysis function
 def analyze_sentiment(text):
-    """Analyze sentiment of the provided text using OpenAI API."""
+    """Analyze sentiment of the given text using OpenAI GPT."""
     try:
-        # Prepare the prompt for OpenAI
-        prompt = f"Analyze the following text and provide sentiment scores for joy, sadness, anger, and trust:\n\n{text}"
+        # Define the chunk size (max 4000 characters)
+        chunk_size = 4000
+        sentiment_results = []
 
-        response = client.chat.completions.create(
-            model="gpt-4",
-            messages=[{"role": "user", "content": prompt}]
-        )
+        # Split the text into chunks if it's longer than chunk_size
+        text_chunks = [text[i:i + chunk_size] for i in range(0, len(text), chunk_size)]
 
-        # Extract sentiment scores from the response
-        raw_response_content = response.choices[0].message.content.strip()
+        for chunk in text_chunks:
+            # Define the prompt for sentiment analysis
+            sentiment_prompt = f"""
+            Please analyze the following text and provide a sentiment score for each emotion on a scale from 1 to 10. The emotions to score are:
+            - Happiness
+            - Sadness
+            - Anger
+            - Trust
 
-        # Assuming the response format is something like:
-        # "Joy: 0.9, Sadness: 0.1, Anger: 0.0, Trust: 0.8"
-        scores = {}
-        for line in raw_response_content.split(","):
-            key, value = line.split(":")
-            scores[key.strip().lower()] = float(value.strip())
+            If the text does not contain any significant emotion, return the response as "No sentiment detected."
 
-        return scores
+            Additionally, identify the dominant emotion based on the scores and provide it in a field named "dominant_emotion." Use the highest score to determine this.
+
+            Here is the text:
+            "{chunk}"
+
+            Please respond with a JSON object containing the sentiment scores, like this:
+            {{
+                "happiness": score,
+                "sadness": score,
+                "anger": score,
+                "trust": score,
+                "dominant_emotion": "emotion"
+            }}
+            """
+
+            # Call the OpenAI API for sentiment analysis
+            response = client.chat.completions.create(
+                model="gpt-4",
+                messages=[{"role": "user", "content": sentiment_prompt}]
+            )
+
+            # Parse the response
+            raw_response_content = response.choices[0].message.content.strip()
+            print("Raw Response from OpenAI:", raw_response_content)
+
+            # Check for "No sentiment detected" response
+            if "No sentiment detected" in raw_response_content:
+                continue  # Skip this chunk if no sentiment detected
+
+            # Convert the response string into a dictionary
+            sentiment_scores = eval(raw_response_content)  # Convert string to dictionary
+            sentiment_results.append(sentiment_scores)
+
+        # Combine results from all chunks (for example, you could average the scores)
+        final_sentiment = {}
+        for result in sentiment_results:
+            for emotion in ['happiness', 'sadness', 'anger', 'trust']:
+                if emotion in final_sentiment:
+                    final_sentiment[emotion] += result[emotion]
+                else:
+                    final_sentiment[emotion] = result[emotion]
+
+        # Average the scores
+        num_chunks = len(sentiment_results)
+        for emotion in final_sentiment:
+            final_sentiment[emotion] /= num_chunks
+
+        return final_sentiment
 
     except Exception as e:
         print(f"Error in analyze_sentiment: {str(e)}")
         return None
 
-def sentiment_analysis_view(request, conversation_id):
-    if request.method == 'POST':
-        # Fetch the conversation using the conversation_id
-        conversation = get_object_or_404(Conversation, id=conversation_id)
+# Define the get_gradient function
+def get_gradient(score):
+    """Map a score to a gradient of emotion intensity."""
+    if score <= 3:
+        return "Low"
+    elif 4 <= score <= 6:
+        return "Moderate"
+    elif score >= 7:
+        return "High"
+    return "Unknown"
 
-        # Extract the contact_id from the conversation
-        contact_id = conversation.contact_id.id  # Adjust based on your actual model relationships
+@api_view(['POST'])  # Ensures the view only accepts POST requests
+def analyze_sentiment_for_conversation(request, conversation_id):
+    """Perform sentiment analysis for a specific conversation and store the result."""
+    try:
+        # Fetch the conversation using the provided ID
+        conversation = get_object_or_404(Conversation, conversation_id=conversation_id)
 
-        # Get the text from the conversation messages
-        text = conversation.messages  # Assuming 'messages' contains the text you want to analyze
-        if not text:
-            return JsonResponse({'error': 'No text found in the conversation for sentiment analysis.'}, status=400)
+        # Get the text from the conversation
+        text = conversation.messages  # Assuming 'message' field contains the conversation text
+    
+        # Perform sentiment analysis
+        sentiment_scores = analyze_sentiment(text)
+        if not sentiment_scores or "error" in sentiment_scores:
+            return JsonResponse({'error': 'No sentiment detected or failed to analyze.'}, status=400)
 
-        # Perform sentiment analysis using the function defined for OpenAI
-        sentiment = analyze_sentiment(text)
-        if sentiment is None:
-            return JsonResponse({'error': 'Failed to fetch sentiment from OpenAI'}, status=500)
+        # Extract sentiment scores
+        joy_score = sentiment_scores.get("happiness", 0)
+        sadness_score = sentiment_scores.get("sadness", 0)
+        anger_score = sentiment_scores.get("anger", 0)
+        trust_score = sentiment_scores.get("trust", 0)
+        dominant_emotion = max(sentiment_scores, key=sentiment_scores.get)  # Find dominant emotion based on highest score
 
-        # Save the sentiment analysis result to the database
-        try:
-            SentimentAnalysis.objects.create(
-                user=request.user,  # Assuming the user is authenticated
-                message_id=conversation.id,  # Assuming message_id is part of the conversation model
-                joy_score=sentiment.get('joy_score', 0.0),
-                sadness_score=sentiment.get('sadness_score', 0.0),
-                anger_score=sentiment.get('anger_score', 0.0),
-                trust_score=sentiment.get('trust_score', 0.0),
-                contact_id=contact_id  # Use the contact_id from the conversation
-            )
-        except Exception as e:
-            print(f"Error saving sentiment analysis: {str(e)}")
-            return JsonResponse({'error': 'Failed to save sentiment analysis.'}, status=500)
+        # Map scores to intensity levels
+        joy_gradient = get_gradient(joy_score)
+        sadness_gradient = get_gradient(sadness_score)
+        anger_gradient = get_gradient(anger_score)
+        trust_gradient = get_gradient(trust_score)
 
+        # Store the sentiment scores in the SentimentAnalysis model
+        SentimentAnalysis.objects.create(
+            user=conversation.user,  # Assuming the Conversation model has a 'user' field
+            conversation_id=conversation.id,
+            joy_score=joy_score,
+            sadness_score=sadness_score,
+            anger_score=anger_score,
+            trust_score=trust_score,
+            dominant_emotion=dominant_emotion,
+            contact_id=conversation.contact_id  # Assuming 'contact_id' field in Conversation model
+        )
+
+        # Return the response including the sentiment scores and their gradients
         return JsonResponse({
             'message': 'Sentiment analysis completed successfully',
-            'sentiment': sentiment
+            'sentiment': {
+                'happiness': {
+                    'score': joy_score,
+                    'intensity': joy_gradient
+                },
+                'sadness': {
+                    'score': sadness_score,
+                    'intensity': sadness_gradient
+                },
+                'anger': {
+                    'score': anger_score,
+                    'intensity': anger_gradient
+                },
+                'trust': {
+                    'score': trust_score,
+                    'intensity': trust_gradient
+                },
+                'dominant_emotion': dominant_emotion
+            }
         })
 
-    return JsonResponse({'error': 'Invalid request method.'}, status=400)
-
-
-# class SentimentAnalysisView(APIView):
-#     @method_decorator(csrf_exempt, name='dispatch')
-#     def post(self, request):
-#         try:
-#             # Fetch all conversations
-#             conversations = Conversation.objects.all()
-#             results = []
-
-#             for conversation in conversations:
-#                 result = self.analyze_and_save(conversation)
-#                 if result:
-#                     results.append(result)
-
-#             return Response(results, status=status.HTTP_200_OK)
-        
-#         except Exception as e:
-#             return Response({'error': f'An unexpected error occurred: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-#     def analyze_and_save(self, conversation):
-#         # Check if sentiment analysis already exists for this conversation
-#         if SentimentAnalysis.objects.filter(conversation_id=conversation.id).exists():
-#             # Skip this conversation if sentiment analysis already exists
-#             return None
-
-#         user = conversation.user
-#         contact = conversation.contact_id
-#         messages = conversation.messages
-
-#         if not user:
-#             return {'conversation_id': conversation.conversation_id, 'error': 'No user associated with this conversation'}
-
-#         if not CustomUser.objects.filter(id=user.id).exists():
-#             return {'conversation_id': conversation.conversation_id, 'error': f'CustomUser not found for ID: {user.id}'}
-
-#         sentiment_scores = analyze_sentiment(messages)
-
-#         sentiment_analysis = SentimentAnalysis(
-#             user=user,
-#             conversation_id=conversation.id,
-#             joy_score=sentiment_scores.get('joy', 0),
-#             sadness_score=sentiment_scores.get('sadness', 0),
-#             anger_score=sentiment_scores.get('anger', 0),
-#             trust_score=sentiment_scores.get('love', 0),
-#             timestamp=timezone.now(),
-#             contact_id=contact
-#         )
-#         sentiment_analysis.save()
-
-#         return {'conversation_id': conversation.conversation_id, 'status': 'Processed successfully'}
+    except Exception as e:
+        print(f"Error analyzing sentiment for conversation: {str(e)}")
+        return JsonResponse({'error': 'An error occurred during sentiment analysis.'}, status=500)
     
 class GenerateReplyView(APIView):
     def get(self, request, conversation_id):

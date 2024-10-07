@@ -1,5 +1,8 @@
 import os
 from openai import OpenAI
+from interaction.models import Conversation
+from communication.models import SentimentAnalysis
+from django.db import models
 
 # Set up your OpenAI API key
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -25,8 +28,6 @@ def analyze_sentiment(text):
         - Sadness
         - Anger
         - Trust
-        - Fear
-        - Surprise
 
         If the text does not contain any significant emotion, return the response as "No sentiment detected."
 
@@ -41,8 +42,6 @@ def analyze_sentiment(text):
             "sadness": score,
             "anger": score,
             "trust": score,
-            "fear": score,
-            "surprise": score,
             "dominant_emotion": "emotion"
         }}
         """
@@ -64,21 +63,43 @@ def analyze_sentiment(text):
         # Convert the response string into a dictionary
         sentiment_scores = eval(raw_response_content)  # Convert string to dictionary
 
-        # Add gradient mappings for each emotion
-        for emotion, score in sentiment_scores.items():
-            if isinstance(score, (int, float)):  # Ensure it's a number before applying the gradient
-                sentiment_scores[emotion] = {
-                    "score": score,
-                    "gradient": get_gradient(score)
-                }
-
         return sentiment_scores
 
     except Exception as e:
         print(f"Error in analyze_sentiment: {str(e)}")
         return None
 
-# Example usage
-text = "I'm feeling great today! The sun is shining and everything seems perfect."
-sentiment_scores = analyze_sentiment(text)
-print("Sentiment Scores:", sentiment_scores)
+# Analyze sentiment for all conversations and store in SentimentAnalysis model
+def analyze_conversations():
+    conversations = Conversation.objects.all()  # Fetch all conversation records
+    for conversation in conversations:
+        text = conversation.message  # Assuming the conversation model has a 'message' field
+        print(f"Analyzing sentiment for conversation ID: {conversation.id}")
+        sentiment_scores = analyze_sentiment(text)
+
+        if sentiment_scores and "error" not in sentiment_scores:
+            # Extract scores
+            joy_score = sentiment_scores["happiness"]
+            sadness_score = sentiment_scores["sadness"]
+            anger_score = sentiment_scores["anger"]
+            trust_score = sentiment_scores["trust"]
+            dominant_emotion = sentiment_scores["dominant_emotion"]
+
+            # Store the sentiment scores in the SentimentAnalysis model
+            sentiment_analysis = SentimentAnalysis(
+                user=conversation.user,  # Assuming conversation has a user field
+                message_id=conversation.id,
+                joy_score=joy_score,
+                sadness_score=sadness_score,
+                anger_score=anger_score,
+                trust_score=trust_score,
+                dominant_emotion=dominant_emotion,  # Store the dominant emotion
+                contact_id=conversation.contact_id  # Assuming conversation has a contact_id field
+            )
+            sentiment_analysis.save()  # Save to the database
+            print(f"Sentiment data saved for conversation ID: {conversation.id}")
+        else:
+            print(f"Skipping conversation ID: {conversation.id}, no sentiment detected.")
+
+# Call the function to analyze all conversations and store the results
+analyze_conversations()
