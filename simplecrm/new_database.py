@@ -30,7 +30,7 @@ def create(graph_entities, entity):
         print(f"RuntimeError: {e}")
         # Optional: Log or handle connection issues as needed
     except Exception as e:
-        print(f"An unexpected error occurred: {e}")
+        print(f"An unexpected error occurred at create: {e}")
         # Optional: Log or handle unexpected errors
 
     finally:
