@@ -303,12 +303,17 @@ class GroupViewSet(viewsets.ModelViewSet):
 @api_view(['POST'])
 def save_whatsapp_conversations_to_messages(request):
     # Fetch all interaction conversations (or apply any filter if needed)
-    conversations = Conversation.objects.all()
+    conversations = Conversation.objects.filter(mapped=False)
+
 
     if not conversations:
         return Response({"message": "No WhatsApp conversations found."}, status=status.HTTP_404_NOT_FOUND)
 
     for conversation in conversations:
+        # Check if the content is empty
+        if not conversation.message_text:
+            print(f"Conversation {conversation.id} is empty and skipped.")
+            continue  # Skip to the next conversation if the content is empty
         # Prepare the message data
         message_data = {
             'sender': 3,
@@ -322,6 +327,10 @@ def save_whatsapp_conversations_to_messages(request):
         serializer = MessageSerializer(data=message_data)
         if serializer.is_valid():
             serializer.save()
+            conversation.mapped = True
+            conversation.save()
+             # Print confirmation message to the console
+            print(f"Conversation {conversation.id} saved to messages.") 
         else:
             # Return an error if serialization fails
             return Response({"error": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)

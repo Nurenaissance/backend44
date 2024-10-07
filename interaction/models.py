@@ -68,6 +68,7 @@ class Conversation(models.Model):
     source=models.CharField(max_length=255)
     date_time = models.DateTimeField(auto_now=True)
     business_phone_number_id = models.CharField(max_length = 255, null=True, blank=True)
+    mapped = models.BooleanField(default=False) 
 
 
 

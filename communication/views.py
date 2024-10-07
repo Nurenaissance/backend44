@@ -13,6 +13,7 @@ from django.utils import timezone
 from simplecrm.models import CustomUser
 from .gpt_utils import generate_reply_from_conversation 
 #from .sentiment_pipeline import analyze_sentiment
+from django.views.decorators.csrf import csrf_exempt
 
 from .serializers import (
     SentimentAnalysisSerializer,
@@ -60,11 +61,92 @@ class MessageDetailView(generics.RetrieveUpdateDestroyAPIView):
 class GroupMessagesView(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
         try:
-            group_messages_into_conversations()  # Call the function to group messages
+            tenant_id = request.headers.get('X-Tenant-ID')  # Extract tenant ID from headers
+            if not tenant_id:
+                return Response({"error": "Missing X-Tenant-ID header."}, status=status.HTTP_400_BAD_REQUEST)
+            
+            group_messages_into_conversations(tenant_id)  # Call the function to group messages
             return Response({"message": "Messages grouped into conversations successfully."}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
+
+import os
+import json
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+from openai import OpenAI
+from .models import Conversation, SentimentAnalysis
+
+# Set up your OpenAI API key
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=OPENAI_API_KEY)
+
+def analyze_sentiment(text):
+    """Analyze sentiment of the provided text using OpenAI API."""
+    try:
+        # Prepare the prompt for OpenAI
+        prompt = f"Analyze the following text and provide sentiment scores for joy, sadness, anger, and trust:\n\n{text}"
+
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": prompt}]
+        )
+
+        # Extract sentiment scores from the response
+        raw_response_content = response.choices[0].message.content.strip()
+
+        # Assuming the response format is something like:
+        # "Joy: 0.9, Sadness: 0.1, Anger: 0.0, Trust: 0.8"
+        scores = {}
+        for line in raw_response_content.split(","):
+            key, value = line.split(":")
+            scores[key.strip().lower()] = float(value.strip())
+
+        return scores
+
+    except Exception as e:
+        print(f"Error in analyze_sentiment: {str(e)}")
+        return None
+
+def sentiment_analysis_view(request, conversation_id):
+    if request.method == 'POST':
+        # Fetch the conversation using the conversation_id
+        conversation = get_object_or_404(Conversation, id=conversation_id)
+
+        # Extract the contact_id from the conversation
+        contact_id = conversation.contact_id.id  # Adjust based on your actual model relationships
+
+        # Get the text from the conversation messages
+        text = conversation.messages  # Assuming 'messages' contains the text you want to analyze
+        if not text:
+            return JsonResponse({'error': 'No text found in the conversation for sentiment analysis.'}, status=400)
+
+        # Perform sentiment analysis using the function defined for OpenAI
+        sentiment = analyze_sentiment(text)
+        if sentiment is None:
+            return JsonResponse({'error': 'Failed to fetch sentiment from OpenAI'}, status=500)
+
+        # Save the sentiment analysis result to the database
+        try:
+            SentimentAnalysis.objects.create(
+                user=request.user,  # Assuming the user is authenticated
+                message_id=conversation.id,  # Assuming message_id is part of the conversation model
+                joy_score=sentiment.get('joy_score', 0.0),
+                sadness_score=sentiment.get('sadness_score', 0.0),
+                anger_score=sentiment.get('anger_score', 0.0),
+                trust_score=sentiment.get('trust_score', 0.0),
+                contact_id=contact_id  # Use the contact_id from the conversation
+            )
+        except Exception as e:
+            print(f"Error saving sentiment analysis: {str(e)}")
+            return JsonResponse({'error': 'Failed to save sentiment analysis.'}, status=500)
+
+        return JsonResponse({
+            'message': 'Sentiment analysis completed successfully',
+            'sentiment': sentiment
+        })
+
+    return JsonResponse({'error': 'Invalid request method.'}, status=400)
 
 
 # class SentimentAnalysisView(APIView):

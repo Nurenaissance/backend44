@@ -1,92 +1,142 @@
-import pandas as pd
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.decomposition import LatentDirichletAllocation
+import os
+import re
+import json
 import nltk
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-import re
-from django.shortcuts import HttpResponse
-from topicmodelling.models import TopicModelling, Conversation 
-from simplecrm.models import CustomUser
-from django.db import transaction
+from topicmodelling.models import TopicModelling
+from communication.models import Conversation
+from openai import OpenAI
+from django.views.decorators.csrf import csrf_exempt
+from django.db import IntegrityError
 
+# Set up your OpenAI API key
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=OPENAI_API_KEY)
+
+# Download necessary NLTK data
 nltk.download('stopwords')
 nltk.download('punkt')
 stop_words = set(stopwords.words('english'))
 
 def preprocess_text(text):
-   # Remove other unwanted characters and punctuation
-    text = re.sub(r'[^\w\s]', '', text)
-    text = text.lower()  # Convert to lowercase
-    # Remove HTML and CSS tags
-    text = re.sub(r'<[^>]+>', '', text)  # Remove HTML tags
-    text = re.sub(r'@media[^{]*\{[^}]*\}', '', text)  # Remove CSS media queries
-    # Remove date and time patterns (e.g., 2024-08-07 06:36:58.672213+00:00)
-    text = re.sub(r'\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+\+\d{2}:\d{2}', '', text)
+    """Preprocess the text using NLTK for tokenization and stopword removal."""
+    # Remove unwanted characters and punctuation
     text = re.sub(r'[^\w\s]', '', text)  # Remove punctuation
-    tokens = word_tokenize(text)  # Tokenize
-    tokens = [word for word in tokens if word not in stop_words]  # Remove stop words
-    print(tokens)
+    text = text.lower()  # Convert to lowercase
+    # Tokenize and remove stop words
+    tokens = word_tokenize(text)
+    tokens = [word for word in tokens if word not in stop_words]
     return ' '.join(tokens)
 
-def perform_topic_modelling(request):
+def perform_topic_modeling(preprocessed_text):
+    """Use OpenAI to extract distinct topics from WhatsApp messages in chunks."""
     try:
-        # Fetch data from the Conversation table
-        conversations = Conversation.objects.all().values('id', 'user_id', 'messages')
-        if not conversations:
-            return HttpResponse("No conversations available for topic modeling.")
+        # Define the chunk size (max 4000 characters)
+        chunk_size = 4000
+        topics_set = set()  # Using a set to store unique topics
 
-        df = pd.DataFrame(conversations)
+        # Split the text into chunks if it's longer than chunk_size
+        text_chunks = [preprocessed_text[i:i + chunk_size] for i in range(0, len(preprocessed_text), chunk_size)]
+        
+        for chunk in text_chunks:
+            # Construct the prompt for each chunk
+            topic_prompt = f"""Analyze the following WhatsApp messages and extract distinct topics.
 
-        # Preprocess the text data
-        df['processed_message'] = df['messages'].apply(preprocess_text)
+            Here are the messages:
+            {chunk}
 
-        # Check if there are any empty processed messages
-        if df['processed_message'].str.strip().eq('').any():
-            return HttpResponse("One or more conversations have no valid text after preprocessing.")
+            Please list the distinct topics as "Topic 1: [topic name]", "Topic 2: [topic name]", and so on. Do not provide any explanations or details, just list the topics in that format.
+            If the messages do not contain distinct topics, respond with 'No topics'."""
+            
+            # Call OpenAI API
+            response = client.chat.completions.create(
+                model="gpt-4",
+                messages=[{"role": "user", "content": topic_prompt}],
+                max_tokens=100 
+            )
 
-        # Vectorize text
-        vectorizer = TfidfVectorizer()
-        X = vectorizer.fit_transform(df['processed_message'])
+            # Log the raw response for debugging
+            raw_response_content = response.choices[0].message.content.strip()
+            print(f"Raw Response from OpenAI for chunk: {raw_response_content}")
 
-        # Apply LDA
-        lda = LatentDirichletAllocation(n_components=9, random_state=42)
-        lda.fit(X)
+            # Split response by lines and clean up the topics
+            topics_list = raw_response_content.split("\n")  # Split by newlines
+            topics = [topic.strip() for topic in topics_list if topic.strip()]  # Clean up and filter empty lines
 
-        # Extract topics
-        topics = []
-        for index, topic in enumerate(lda.components_):
-            top_words = [vectorizer.get_feature_names_out()[i] for i in topic.argsort()[-10:]]
-            topics.append(top_words)  # Top 10 words
+            # Add topics to the set (to ensure distinct topics)
+            topics_set.update(topics)
 
-        # Debugging output
-        if len(topics) < df.shape[0]:
-            return HttpResponse(f"Number of topics generated ({len(topics)}) is less than the number of conversations ({df.shape[0]}).")
+         # Convert the set back to a sorted list
+        distinct_topics = sorted(list(topics_set))
+        
+        # Step 2: Get categories from distinct topics
+        categorization_prompt = f"""Given the following list of distinct topics, please identify the broader categories they belong to.
 
-        # Save the results to TopicModelling table within a transaction
-        with transaction.atomic():
-            for idx, row in df.iterrows():
-                try:
-                    # Check if the conversation exists in the Conversation table
-                    conversation = Conversation.objects.get(id=row['id'])
-                    
-                    # Check if the conversation already has a topic modeling entry
-                    if not TopicModelling.objects.filter(conversation=conversation).exists():
-                        topic_modelling = TopicModelling(
-                            conversation=conversation,
-                            user=conversation.user,  # Set user from Conversation
-                            topics=topics[idx] if idx < len(topics) else ["No topics generated"]
-                        )
-                        topic_modelling.save()
-                    else:
-                        return HttpResponse(f"Topic modeling entry already exists for conversation ID {row['id']}.")
+        Here are the topics:
+        {', '.join(distinct_topics)}
 
-                except Conversation.DoesNotExist:
-                    return HttpResponse(f"Conversation ID {row['id']} does not exist.")
-                except IndexError:
-                    return HttpResponse(f"IndexError for conversation ID {row['id']}: list index out of range.")
+        Please provide a list of unique categories without including any specific topics or explanations. Format your response as a simple list, one category per line."""
+        
+        # Call OpenAI API for categorization
+        categorization_response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": categorization_prompt}],
+            max_tokens=100
+        )
 
-        return HttpResponse("Successfully performed topic modeling and saved to TopicModelling table.")
+        # Log the raw response for categorization
+        categorized_response = categorization_response.choices[0].message.content.strip()
+        print("Categorized Topics Response:", categorized_response)
 
+        # Split the response into categories
+        categories = [category.strip() for category in categorized_response.split("\n") if category.strip()]
+        
+        return categories
     except Exception as e:
-        return HttpResponse(f"An error occurred: {str(e)}", status=500)
+        print(f"Error in perform_topic_modeling: {str(e)}")
+        return None
+
+
+@csrf_exempt
+def topic_modelling_view(request, conversation_id):
+    if request.method == 'POST':
+        try:
+            # Fetch the conversation from the database
+            conversation = get_object_or_404(Conversation, conversation_id=conversation_id)
+
+            # Preprocess the conversation text
+            conversation_text = conversation.messages
+            preprocessed_text = preprocess_text(conversation_text)
+
+            # Perform topic modeling
+            topics = perform_topic_modeling(preprocessed_text)
+            if topics is None:
+                return JsonResponse({'error': 'Failed to fetch topics from OpenAI'}, status=500)
+
+            # Save topics in the TopicModelling model
+            topicmodelling_topicmodelling_entry, created = TopicModelling.objects.update_or_create(
+                conversation=conversation,
+                user=conversation.user,
+                contact_id=conversation.contact_id,
+                defaults={'topics': topics}
+            )
+
+            return JsonResponse({
+                'message': 'Topic modeling completed successfully',
+                'topics': topics
+            })
+        
+        except IntegrityError as e:
+            # Catch and log the IntegrityError, returning an appropriate message
+            print(f"IntegrityError: {str(e)}")
+            return JsonResponse({'error': f'Integrity error: {str(e)}'}, status=400)
+
+        except Exception as e:
+            # Catch other unexpected errors and log them
+            print(f"Unexpected error: {str(e)}")
+            return JsonResponse({'error': f'Unexpected error: {str(e)}'}, status=500)
+
+    return JsonResponse({'error': 'Invalid request method.'}, status=400)

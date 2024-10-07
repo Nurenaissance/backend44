@@ -1,5 +1,6 @@
 from django.db import models
 from simplecrm.models import CustomUser
+from contacts.models import Contact
 
 class SentimentAnalysis(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
@@ -9,6 +10,7 @@ class SentimentAnalysis(models.Model):
     anger_score = models.FloatField()
     trust_score = models.FloatField()
     timestamp = models.DateTimeField(auto_now_add=True)
+    contact_id = models.ForeignKey(Contact, on_delete=models.CASCADE)
 
 class BehavioralMetrics(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
@@ -31,6 +33,7 @@ class Conversation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     platform = models.CharField(max_length=50, choices=PLATFORM_CHOICES)
+    contact_id = models.ForeignKey(Contact, on_delete=models.CASCADE)
 
 class Message(models.Model):
     PLATFORM_CHOICES = [
