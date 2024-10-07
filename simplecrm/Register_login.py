@@ -15,16 +15,16 @@ import logging
 logger = logging.getLogger(__name__)
 
 @csrf_exempt
-@csrf_exempt
 def register(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         username = data.get('username')
         email = data.get('email')
         password = data.get('password')
-        role = data.get('role', CustomUser.EMPLOYEE)  # Default role to employee if not provided
-        organization = data.get('tenant')
+        # role = data.get('role', CustomUser.EMPLOYEE)  # Default role to employee if not provided
+        organization = data.get('organisation')
         tenant_name = data.get('tenant')
+        role = CustomUser.ADMIN
         
         if not username:
             print("Missing field: username")
@@ -37,13 +37,12 @@ def register(request):
         if not tenant_name:
             print("Missing field: tenant_name")
     
-    # If any required fields are missing, return the error response
         if not (username and email and password and organization and tenant_name):
             print("One or more required fields are missing")
             return JsonResponse({'msg': 'Missing required fields'}, status=400)
         
-        if CustomUser.objects.filter(username=username).exists() or CustomUser.objects.filter(email=email).exists():
-            return JsonResponse({'msg': 'Username or email already exists'}, status=400)
+        if CustomUser.objects.filter(username=username).exists():
+            return JsonResponse({'msg': 'Username already exists'}, status=400)
         
         try:
             tenant = Tenant.objects.get(id=tenant_name)
@@ -109,7 +108,6 @@ class LoginView(APIView):
             return Response(response_data, status=status.HTTP_200_OK)
         else:
             logger.error(f"Authentication failed for username: {username}")
-            print(f"auth failed for username{username}")
             return Response({'msg': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
@@ -117,7 +115,8 @@ class LogoutView(APIView):
     def post(self, request):
         # Log out the user
         logout(request)
-        
+        tenant_id = request.headers.get('X-Tenant-Id')
+        print("logging out tenant ", tenant_id)
         # Reset the database connection to default superuser
         connection = connections['default']
         connection.settings_dict.update({

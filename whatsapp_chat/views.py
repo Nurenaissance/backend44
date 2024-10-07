@@ -390,7 +390,7 @@ def set_flow(request):
         return JsonResponse({"error": "Invalid JSON data"}, status=400)
 
     except Exception as e:
-        return JsonResponse({"error": f"An unexpected error occurred: {str(e)}"}, status=500)
+        return JsonResponse({"error": f"An unexpected error occurred at set flow: {str(e)}"}, status=500)
 
     finally:
         if connection:
@@ -497,7 +497,7 @@ def insert_whatsapp_tenant_data(request):
     except json.JSONDecodeError:
         return JsonResponse({'status': 'error', 'message': 'Invalid JSON'}, status=400)
     except Exception as e:
-        print(f"An unexpected error occurred: {e}")
+        print(f"An unexpected error occurred at insert whatsapptenant data: {e}")
         return JsonResponse({'status': 'error', 'message': str(e)}, status=500)    
 
 @csrf_exempt

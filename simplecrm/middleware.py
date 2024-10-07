@@ -26,6 +26,7 @@ class TenantMiddleware(MiddlewareMixin):
                '/whatsapp_tenant/',
                '/get-tenant/',
                '/whatsapp-media-uploads/',
+               '/verifyTenant/'
         ]
         
         # Check if the request path starts with any of the paths to skip
@@ -34,7 +35,6 @@ class TenantMiddleware(MiddlewareMixin):
             return
 
         tenant_id = request.headers.get('X-Tenant-Id')
-        logger.debug(f"Received Tenant ID: {tenant_id}")
         
         print(f"Received Tenant ID: {tenant_id}")
 
@@ -77,7 +77,7 @@ class TenantMiddleware(MiddlewareMixin):
             logger.error(f"Database error occurred: {e}")
             # Handle database-related errors here
         except Exception as e:
-            logger.error(f"An unexpected error occurred: {e}")
+            logger.error(f"An unexpected error occurred at tenant iddleware: {e}")
             # Handle any other unexpected errors here
 
         # Update the current tenant ID

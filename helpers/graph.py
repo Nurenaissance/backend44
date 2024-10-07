@@ -25,7 +25,7 @@ def get_graphConnection(graph):
         print(f"ValueError: {e}")
         return None
     except Exception as e:
-        print(f"An unexpected error occurred: {e}")
+        print(f"An unexpected error occurred at get graph connection: {e}")
         return None
 
 def get_graph_schema(graph):
