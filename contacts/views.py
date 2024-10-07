@@ -3,7 +3,7 @@ from .models import Contact
 from .serializers import ContactSerializer
 from rest_framework.exceptions import APIException
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, views
 
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
 
@@ -12,11 +12,15 @@ class ContactListCreateAPIView(ListCreateAPIView):
     serializer_class = ContactSerializer
     # permission_classes = (IsAdminUser,)  # Optionally, add permission classes
 
+    
+
 
 class ContactDetailAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
     # permission_classes = (IsAdminUser,)  # Optionally, add permission classes
+
+    
 
 class ContactByAccountAPIView(ListCreateAPIView):
     serializer_class = ContactSerializer
@@ -85,3 +89,29 @@ class ContactByTenantAPIView(CreateAPIView):
         except Exception as e:
             print(f"An error occurred: {e}")
             raise APIException(f"An error occurred while creating the contact: {e}")
+        
+class UpdateContactAPIView(views.APIView):
+    def patch(self, request, *args, **kwargs):
+        data = request.data
+        contact_id = data.get('contact_id', [])
+        bgID = data.get('bgid')
+        bg_name = data.get('name')
+
+        errors = []
+        for phone in contact_id:
+            try:
+                contact = Contact.objects.get(id=phone)
+                contact.bg_id = bgID
+                print(bg_name)
+                contact.bg_name = bg_name
+                contact.save()
+            except Contact.DoesNotExist:
+                errors.append(f"Contact with id {phone} does not exist.")
+            except Exception as e:
+                errors.append(str(e))
+
+        if errors:
+            return Response({"errors": errors}, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response({"message": "Contacts updated successfully"}, status=status.HTTP_200_OK)
+    

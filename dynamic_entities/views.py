@@ -57,7 +57,7 @@ def get_dynamic_model_class(model_name):
     except ValueError as e:
         print(f"Error: {e}")
     except Exception as e:
-        print(f"An unexpected error occurred: {e}")
+        print(f"An unexpected error occurred at get dynamic model class: {e}")
 
 
 def deregister_dynamic_model(model_name):

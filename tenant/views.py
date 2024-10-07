@@ -9,6 +9,8 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.db import IntegrityError
 from simplecrm import database_settings
+from django.contrib.auth.hashers import check_password
+
 @csrf_exempt
 def create_tenant_role(tenant_id, password):
     try:
@@ -43,13 +45,13 @@ def tenant_list(request):
         organization=data.get('organization')
         db_user_password = data.get('password')
         
-        try:
-            # Start a database transaction
+        try: 
             with connection.cursor() as cursor:
                 cursor.execute("BEGIN")
                 print("begin")
                 # Create the tenant in the database
                 tenant = Tenant.objects.create(id=tenant_id,organization=organization, db_user=f"crm_tenant_{tenant_id}", db_user_password=db_user_password)
+                print(tenant)
                 print("middle")
                 # Create role for the tenant
                 cursor.execute(f"CREATE ROLE crm_tenant_{tenant_id} INHERIT LOGIN PASSWORD '{db_user_password}' IN ROLE crm_tenant")
@@ -84,3 +86,27 @@ def tenant_detail(request, tenant_id):
             return JsonResponse({'msg': 'Tenant not found'}, status=404)
     else:
         return JsonResponse({'msg': 'Method not allowed'}, status=405)
+
+
+@csrf_exempt
+def verify_tenant(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body) 
+            org = data.get('organisation')
+            password = data.get('password')
+            
+            tenant = Tenant.objects.get(organization=org)
+            
+            if password == tenant.db_user_password:
+                return JsonResponse({'success': True}, status=200)
+            else:
+                return JsonResponse({'success': False, 'message': 'Incorrect password'}, status=401)
+        
+        except Tenant.DoesNotExist:
+            return JsonResponse({'success': False, 'message': 'Organization not found'}, status=404)
+        
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': str(e)}, status=500)
+    else:
+        return JsonResponse({'success': False, 'message': 'Invalid request method'}, status=405)
