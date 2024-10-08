@@ -289,7 +289,7 @@ def saveFlow(request):
                 'fields': dynamicModelFields
             }
             #get flow name from frontend, set model name to tenantID_flowName
-            url = 'http://localhost:8000/create-dynamic-model/'
+            url = 'backenreal-hgg2d7a0d9fzctgj.eastus-01.azurewebsites.net/create-dynamic-model/'
             headers = {
                 'Content-Type': 'application/json',
                 'X-Tenant-Id': 'll'
