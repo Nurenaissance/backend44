@@ -473,7 +473,7 @@ def insert_whatsapp_tenant_data(request):
                     model_name= flow_name
                     fields= dynamicModelFields
                     print("model name: ", model_name, fields)
-                    create_dynamic_model(model_name=model_name, fields=fields)
+                    create_dynamic_model(model_name=model_name, fields=fields,tenant_id=tenant_id)
 
                     #updating whatsapp_tenant_flow with flow_data and adj_list
                     query = '''
