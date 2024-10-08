@@ -88,6 +88,7 @@ from .models import Message, Conversation
 from interaction.models import Conversation as interconv
 from contacts.models import Contact
 from django.utils import timezone
+
 def group_messages_into_conversations(tenant_id):
     try:
         # Fetch only messages that haven't been mapped, ordered by sent_at
@@ -120,8 +121,8 @@ def group_messages_into_conversations(tenant_id):
                     current_conversation.append(message)
                 else:
                     last_message_time = current_conversation[-1].sent_at
-                    # Set a time threshold (e.g., 20 minutes)
-                    if message.sent_at - last_message_time <= timedelta(minutes=20):
+                    # Set a time threshold (e.g., 30 minutes)
+                    if message.sent_at - last_message_time <= timedelta(minutes=30):
                         current_conversation.append(message)
                     else:
                         # Save the current conversation to the database
@@ -141,15 +142,58 @@ def group_messages_into_conversations(tenant_id):
         print(f"Error occurred: {str(e)}")
 
 
+# def save_conversation(message_group, userid, platform, tenant_id):
+#     try:
+#         # Create a conversation from the grouped messages
+#         contact_id = message_group[0].userid  # Assuming contact_id is the same as userid for grouping
+
+#         contact = Contact.objects.get(phone=userid, tenant_id=tenant_id)
+
+#         sender = interconv
+#         # Combine messages into a single string
+#         combined_messages = "\n".join([f"{message.sent_at}: {message.content}" for message in message_group])
+
+#         # Create a unique conversation_id
+#         conversation_id = f"{userid}_{platform}_{timezone.now().timestamp()}"
+
+#         # Create a new Conversation object
+#         new_conversation = Conversation.objects.create(
+#             user=message_group[0].sender,  # Set the user (or change as necessary)
+#             conversation_id=conversation_id,
+#             messages=combined_messages,  # Store the combined messages
+#             platform=platform,
+#             contact_id=contact
+#         )
+        
+#         print(f"Conversation saved: ID={new_conversation.id}, UserID={userid}, Platform={platform}")
+    
+#     except Contact.DoesNotExist:
+#         print(f"Contact not found for UserID={userid}, TenantID={tenant_id}")
+    
+#     except Exception as e:
+#         print(f"Error while saving conversation: {str(e)}")
+
 def save_conversation(message_group, userid, platform, tenant_id):
     try:
         # Create a conversation from the grouped messages
         contact_id = message_group[0].userid  # Assuming contact_id is the same as userid for grouping
-
         contact = Contact.objects.get(phone=userid, tenant_id=tenant_id)
 
-        # Combine messages into a single string
-        combined_messages = "\n".join([f"{message.sent_at}: {message.content}" for message in message_group])
+        # Combine messages into a single string and get the sender from interconv based on message_text
+        combined_messages = []
+        for message in message_group:
+            # Try to find the sender from interconv.Conversation based on message_text
+            try:
+                interconv_entry = interconv.objects.get(message_text=message.content)
+                sender = interconv_entry.sender  # Get sender (user or bot)
+            except interconv.DoesNotExist:
+                sender = "unknown"  # Fallback if no matching conversation is found
+
+            # Add the message and sender to the combined message string
+            combined_messages.append(f"{message.sent_at}: {sender} - {message.content}")
+
+        # Join all the messages into a single string
+        combined_messages_str = "\n".join(combined_messages)
 
         # Create a unique conversation_id
         conversation_id = f"{userid}_{platform}_{timezone.now().timestamp()}"
@@ -158,11 +202,11 @@ def save_conversation(message_group, userid, platform, tenant_id):
         new_conversation = Conversation.objects.create(
             user=message_group[0].sender,  # Set the user (or change as necessary)
             conversation_id=conversation_id,
-            messages=combined_messages,  # Store the combined messages
+            messages=combined_messages_str,  # Store the combined messages
             platform=platform,
             contact_id=contact
         )
-        
+
         print(f"Conversation saved: ID={new_conversation.id}, UserID={userid}, Platform={platform}")
     
     except Contact.DoesNotExist:

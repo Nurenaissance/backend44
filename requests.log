@@ -9953,3 +9953,9 @@ INFO 2024-10-07 22:33:34,833 basehttp "POST /api/sentiment-analysis/conversation
 INFO 2024-10-07 22:41:21,392 autoreload D:\new_nurenai\04\backend44\communication\views.py changed, reloading.
 INFO 2024-10-07 22:41:22,833 autoreload Watching for file changes with StatReloader
 INFO 2024-10-07 22:43:32,148 basehttp "POST /api/sentiment-analysis/conversation/919868789610_whatsapp_1728246314.165662/ HTTP/1.1" 200 288
+INFO 2024-10-08 07:39:10,400 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 08:07:28,492 basehttp "POST /group-messages/ HTTP/1.1" 200 63
+INFO 2024-10-08 12:15:50,462 autoreload D:\new_nurenai\04\backend44\communication\views.py changed, reloading.
+INFO 2024-10-08 12:15:52,504 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 12:21:43,287 autoreload D:\new_nurenai\04\backend44\communication\insta_msg.py changed, reloading.
+INFO 2024-10-08 12:21:44,418 autoreload Watching for file changes with StatReloader
