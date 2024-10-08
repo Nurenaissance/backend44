@@ -289,7 +289,7 @@ def saveFlow(request):
                 'fields': dynamicModelFields
             }
             #get flow name from frontend, set model name to tenantID_flowName
-            url = 'http://localhost:8000/create-dynamic-model/'
+            url = 'backenreal-hgg2d7a0d9fzctgj.eastus-01.azurewebsites.net/create-dynamic-model/'
             headers = {
                 'Content-Type': 'application/json',
                 'X-Tenant-Id': 'll'
@@ -473,7 +473,7 @@ def insert_whatsapp_tenant_data(request):
                     model_name= flow_name
                     fields= dynamicModelFields
                     print("model name: ", model_name, fields)
-                    create_dynamic_model(model_name=model_name, fields=fields)
+                    create_dynamic_model(model_name=model_name, fields=fields,tenant_id=tenant_id)
 
                     #updating whatsapp_tenant_flow with flow_data and adj_list
                     query = '''

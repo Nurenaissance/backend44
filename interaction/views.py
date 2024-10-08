@@ -351,3 +351,103 @@ def save_whatsapp_conversations_to_messages(request):
             return Response({"error": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
     return Response({"message": "WhatsApp conversations saved to messages successfully."}, status=status.HTTP_201_CREATED)
+
+
+class GroupInteractionMessageView(generics.GenericAPIView):
+    def post(self, request, *args, **kwargs):
+        try:
+            tenant_id = request.headers.get('X-Tenant-ID')  # Extract tenant ID from headers
+            if not tenant_id:
+                return Response({"error": "Missing X-Tenant-ID header."}, status=status.HTTP_400_BAD_REQUEST)
+            
+            group_interaction_messages_into_conversations(tenant_id)  # Call the function to group messages
+            return Response({"message": "Messages grouped into conversations successfully."}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+
+from datetime import timedelta
+from .models import  Conversation
+from contacts.models import Contact
+from django.utils import timezone
+
+def group_interaction_messages_into_conversations(tenant_id):
+    try:
+        # Fetch only messages that haven't been mapped, ordered by sent_at
+        messages = Conversation.objects.filter(mapped=False).order_by('sent_at')
+        print(f"Total unmapped messages fetched: {messages.count()}")  # Log the number of fetched messages
+
+        if messages.count() == 0:
+            print("No unmapped messages found.")
+
+        # Group messages by user and platform
+        grouped_messages = {}
+        for message in messages:
+            key = (message.contact_id, message.source)
+            if key not in grouped_messages:
+                grouped_messages[key] = []
+            grouped_messages[key].append(message)
+
+        print(f"Total groups created: {len(grouped_messages)}")  # Log the number of groups
+
+        # Now process the grouped messages to create conversations
+        for (contact_id, source), message_group in grouped_messages.items():
+            print(f"Processing group for UserID={contact_id}, Platform={source}, Message count: {len(message_group)}")
+            current_conversation = []
+
+            # Sort the messages by sent_at
+            message_group.sort(key=lambda x: x.sent_at)
+
+            for message in message_group:
+                if not current_conversation:
+                    current_conversation.append(message)
+                else:
+                    last_message_time = current_conversation[-1].sent_at
+                    # Set a time threshold (e.g., 20 minutes)
+                    if message.sent_at - last_message_time <= timedelta(minutes=20):
+                        current_conversation.append(message)
+                    else:
+                        # Save the current conversation to the database
+                        save_interaction_conversation(current_conversation, contact_id, source, tenant_id)
+                        current_conversation = [message]
+
+            if current_conversation:
+                save_interaction_conversation(current_conversation, contact_id,source, tenant_id)
+
+            # After saving conversations, mark these messages as mapped
+            for msg in current_conversation:
+                msg.mapped = True
+                msg.save()
+                print(f"Marked message as mapped: {msg.id}")
+
+    except Exception as e:
+        print(f"Error occurred: {str(e)}")
+
+
+def save_interaction_conversation(message_group, contact_id, source, tenant_id):
+    try:
+
+        contact = Contact.objects.get(phone=contact_id, tenant_id=tenant_id)
+
+        # Combine messages into a single string
+        combined_messages = "\n".join([f"{message.sent_at}: {message.content}" for message in message_group])
+
+        # Create a unique conversation_id
+        conversation_id = f"{contact_id}_{source}_{timezone.now().timestamp()}"
+
+        # Create a new Conversation object
+        new_conversation = Conversation.objects.create(
+            user=message_group[0].sender,  # Set the user (or change as necessary)
+            conversation_id=conversation_id,
+            messages=combined_messages,  # Store the combined messages
+            platform=source,
+            contact_id=contact
+        )
+        
+        print(f"Conversation saved: ID={new_conversation.id}, UserID={contact_id}, Platform={source}")
+    
+    except Contact.DoesNotExist:
+        print(f"Contact not found for UserID={source}, TenantID={tenant_id}")
+    
+    except Exception as e:
+        print(f"Error while saving conversation: {str(e)}")
