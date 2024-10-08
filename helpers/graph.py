@@ -6,7 +6,7 @@ from neo4j import GraphDatabase
 def get_graphConnection(graph):
     try:
         # Retrieve environment variables
-        URI = "neo4j+s://363ace08.databases.neo4j.io"
+        URI = "neo4j+ssc://363ace08.databases.neo4j.io"
         USERNAME = "neo4j"
         PASSWORD = "pN-boAI3TjfcZD56acBM9THb4_5r5sOGGF7N59VElyg"
         

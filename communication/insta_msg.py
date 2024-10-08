@@ -85,62 +85,88 @@ def fetch_all_email_ids(request):
 
 from datetime import timedelta
 from .models import Message, Conversation
+from interaction.models import Conversation as interconv
+from contacts.models import Contact
 from django.utils import timezone
-def group_messages_into_conversations():
-    # Fetch only messages that haven't been mapped, ordered by sent_at
-    messages = Message.objects.filter(mapped=False).order_by('sent_at')
+def group_messages_into_conversations(tenant_id):
+    try:
+        # Fetch only messages that haven't been mapped, ordered by sent_at
+        messages = Message.objects.filter(mapped=False).order_by('sent_at')
+        print(f"Total unmapped messages fetched: {messages.count()}")  # Log the number of fetched messages
 
-    # Group messages by user and platform
-    grouped_messages = {}
-    for message in messages:
-        key = (message.userid, message.platform)
-        if key not in grouped_messages:
-            grouped_messages[key] = []
-        grouped_messages[key].append(message)
+        if messages.count() == 0:
+            print("No unmapped messages found.")
 
-    # Now process the grouped messages to create conversations
-    for (userid, platform), message_group in grouped_messages.items():
-        current_conversation = []
+        # Group messages by user and platform
+        grouped_messages = {}
+        for message in messages:
+            key = (message.userid, message.platform)
+            if key not in grouped_messages:
+                grouped_messages[key] = []
+            grouped_messages[key].append(message)
 
-        # Sort the messages by sent_at
-        message_group.sort(key=lambda x: x.sent_at)
+        print(f"Total groups created: {len(grouped_messages)}")  # Log the number of groups
 
-        for message in message_group:
-            if not current_conversation:
-                current_conversation.append(message)
-            else:
-                last_message_time = current_conversation[-1].sent_at
-                # Set a time threshold (e.g., 30 minutes)
-                if message.sent_at - last_message_time <= timedelta(minutes=30):
+        # Now process the grouped messages to create conversations
+        for (userid, platform), message_group in grouped_messages.items():
+            print(f"Processing group for UserID={userid}, Platform={platform}, Message count: {len(message_group)}")
+            current_conversation = []
+
+            # Sort the messages by sent_at
+            message_group.sort(key=lambda x: x.sent_at)
+
+            for message in message_group:
+                if not current_conversation:
                     current_conversation.append(message)
                 else:
-                    # Save the current conversation to the database
-                    save_conversation(current_conversation, userid, platform)
-                    current_conversation = [message]
+                    last_message_time = current_conversation[-1].sent_at
+                    # Set a time threshold (e.g., 20 minutes)
+                    if message.sent_at - last_message_time <= timedelta(minutes=20):
+                        current_conversation.append(message)
+                    else:
+                        # Save the current conversation to the database
+                        save_conversation(current_conversation, userid, platform, tenant_id)
+                        current_conversation = [message]
 
-        if current_conversation:
-            save_conversation(current_conversation, userid, platform)
+            if current_conversation:
+                save_conversation(current_conversation, userid, platform, tenant_id)
 
-        # After saving conversations, mark these messages as mapped
-        for msg in current_conversation:
-            msg.mapped = True
-            msg.save() 
+            # After saving conversations, mark these messages as mapped
+            for msg in current_conversation:
+                msg.mapped = True
+                msg.save()
+                print(f"Marked message as mapped: {msg.id}")
+
+    except Exception as e:
+        print(f"Error occurred: {str(e)}")
 
 
-def save_conversation(message_group, userid, platform):
-    # Create a conversation from the grouped messages
-    contact_id = message_group[0].userid  # Assuming contact_id is the same as userid for grouping
+def save_conversation(message_group, userid, platform, tenant_id):
+    try:
+        # Create a conversation from the grouped messages
+        contact_id = message_group[0].userid  # Assuming contact_id is the same as userid for grouping
 
-    # Combine messages into a single string
-    combined_messages = "\n".join([f"{message.sent_at}: {message.content}" for message in message_group])
+        contact = Contact.objects.get(phone=userid, tenant_id=tenant_id)
 
-    # Create a unique conversation_id (you can adjust this logic as needed)
-    conversation_id = f"{userid}_{platform}_{timezone.now().timestamp()}"
+        # Combine messages into a single string
+        combined_messages = "\n".join([f"{message.sent_at}: {message.content}" for message in message_group])
 
-    # Create a new Conversation object
-    Conversation.objects.create(
-        user=message_group[0].sender,  # Set the user (or change as necessary)
-        conversation_id=conversation_id,
-        messages=combined_messages,  # Store the combined messages
-        platform=platform,
-    )
+        # Create a unique conversation_id
+        conversation_id = f"{userid}_{platform}_{timezone.now().timestamp()}"
+
+        # Create a new Conversation object
+        new_conversation = Conversation.objects.create(
+            user=message_group[0].sender,  # Set the user (or change as necessary)
+            conversation_id=conversation_id,
+            messages=combined_messages,  # Store the combined messages
+            platform=platform,
+            contact_id=contact
+        )
+        
+        print(f"Conversation saved: ID={new_conversation.id}, UserID={userid}, Platform={platform}")
+    
+    except Contact.DoesNotExist:
+        print(f"Contact not found for UserID={userid}, TenantID={tenant_id}")
+    
+    except Exception as e:
+        print(f"Error while saving conversation: {str(e)}")

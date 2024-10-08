@@ -17,11 +17,12 @@ from rest_framework import viewsets
 from django.http import JsonResponse
 # from .utils import fetch_entity_details
 from interaction.models import Interaction
+from contacts.models import Contact
 from django.db.models import Count
 
 from django.views.decorators.csrf import csrf_exempt
 import json
-
+from communication.models import SentimentAnalysis
 from django.views.decorators.http import require_http_methods
 
 import re
@@ -208,13 +209,27 @@ def view_conversation(request, contact_id):
         # Query conversations for a specific contact_id
         source = request.GET.get('source', '')
         bpid = request.GET.get('bpid')
+        tenant = request.headers.get('X-Tenant-Id')
         conversations = Conversation.objects.filter(contact_id=contact_id,business_phone_number_id=bpid,source=source).values('message_text', 'sender').order_by('date_time')
-
         # Format data as per your requirement
         formatted_conversations = []
         for conv in conversations:
             formatted_conversations.append({'text': conv['message_text'], 'sender': conv['sender']})
-
+        
+        #for sentiment
+        contact = Contact.objects.get(phone=contact_id, tenant_id = tenant)
+        if contact:
+            print(contact)
+            contactID = contact.id
+            sentiment = SentimentAnalysis.objects.filter(contact_id_id = contactID).order_by('timestamp').first()
+            if sentiment:
+                dominant_emotion = sentiment.dominant_emotion
+                print("dominant emotion found: ", dominant_emotion)
+                formatted_conversations.append({'dominant_emotion': dominant_emotion})
+            else:
+                dominant_emotion = None
+                print("No dominant emotion found for contact id: ", contact_id)
+        
         return JsonResponse(formatted_conversations, safe=False)
 
     except Exception as e:
@@ -303,12 +318,17 @@ class GroupViewSet(viewsets.ModelViewSet):
 @api_view(['POST'])
 def save_whatsapp_conversations_to_messages(request):
     # Fetch all interaction conversations (or apply any filter if needed)
-    conversations = Conversation.objects.all()
+    conversations = Conversation.objects.filter(mapped=False)
+
 
     if not conversations:
         return Response({"message": "No WhatsApp conversations found."}, status=status.HTTP_404_NOT_FOUND)
 
     for conversation in conversations:
+        # Check if the content is empty
+        if not conversation.message_text:
+            print(f"Conversation {conversation.id} is empty and skipped.")
+            continue  # Skip to the next conversation if the content is empty
         # Prepare the message data
         message_data = {
             'sender': 3,
@@ -322,6 +342,10 @@ def save_whatsapp_conversations_to_messages(request):
         serializer = MessageSerializer(data=message_data)
         if serializer.is_valid():
             serializer.save()
+            conversation.mapped = True
+            conversation.save()
+             # Print confirmation message to the console
+            print(f"Conversation {conversation.id} saved to messages.") 
         else:
             # Return an error if serialization fails
             return Response({"error": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)

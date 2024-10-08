@@ -165,7 +165,8 @@ urlpatterns = [
     path('addrows/' , add_nodes, name="add nodes"),
     path('processrows/' ,process_nodes, name="process nodes"),
     path('test/', test, name="test"),
-    path('perform-topic-modelling/', topicviews.perform_topic_modelling, name='perform_topic_modeling'),
+    # path('perform-topic-modelling/', topicviews.perform_topic_modelling, name='perform_topic_modeling'),
+    path('topic-modelling/<str:conversation_id>/', topicviews.topic_modelling_view, name='topic_modelling'),
     path('email-campaigns/', campview.EmailCampaignViewSet.as_view({'get': 'list', 'post': 'create'}), name='email-campaign-list'),
     path('email-campaigns/<int:pk>/', campview.EmailCampaignViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='email-campaign-detail'),
     path('instagram-campaigns/', campview.InstagramCampaignViewSet.as_view({'get': 'list', 'post': 'create'}), name='instagram-campaign-list'),
@@ -201,8 +202,11 @@ urlpatterns = [
     path('group-messages/', commviews.GroupMessagesView.as_view(), name='group_messages'),
 
      # Sentiment Analysis URLs
-    path('sentiment-analyses/', commviews.SentimentAnalysisListCreateView.as_view(), name='sentiment-analysis-list-create'),
-    path('sentiment-analyses/<int:pk>/', commviews.SentimentAnalysisDetailView.as_view(), name='sentiment-analysis-detail'),
+    path('sentiment-analysis/', commviews.SentimentAnalysisListCreateView.as_view(), name='sentiment-analysis-list-create'),
+    path('sentiment-analysis/<int:pk>/', commviews.SentimentAnalysisDetailView.as_view(), name='sentiment-analysis-detail'),
+
+
+    path('api/sentiment-analysis/conversation/<str:conversation_id>/', commviews.analyze_sentiment_for_conversation, name='analyze_sentiment'),
 
     # Behavioral Metrics URLs
     path('behavioral-metrics/', commviews.BehavioralMetricsListCreateView.as_view(), name='behavioral-metrics-list-create'),
