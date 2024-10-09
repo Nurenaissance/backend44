@@ -17,11 +17,12 @@ from rest_framework import viewsets
 from django.http import JsonResponse
 # from .utils import fetch_entity_details
 from interaction.models import Interaction
+from contacts.models import Contact
 from django.db.models import Count
 
 from django.views.decorators.csrf import csrf_exempt
 import json
-
+from communication.models import SentimentAnalysis
 from django.views.decorators.http import require_http_methods
 
 import re
@@ -208,13 +209,27 @@ def view_conversation(request, contact_id):
         # Query conversations for a specific contact_id
         source = request.GET.get('source', '')
         bpid = request.GET.get('bpid')
+        tenant = request.headers.get('X-Tenant-Id')
         conversations = Conversation.objects.filter(contact_id=contact_id,business_phone_number_id=bpid,source=source).values('message_text', 'sender').order_by('date_time')
-
         # Format data as per your requirement
         formatted_conversations = []
         for conv in conversations:
             formatted_conversations.append({'text': conv['message_text'], 'sender': conv['sender']})
-
+        
+        #for sentiment
+        contact = Contact.objects.get(phone=contact_id, tenant_id = tenant)
+        if contact:
+            print(contact)
+            contactID = contact.id
+            sentiment = SentimentAnalysis.objects.filter(contact_id_id = contactID).order_by('timestamp').first()
+            if sentiment:
+                dominant_emotion = sentiment.dominant_emotion
+                print("dominant emotion found: ", dominant_emotion)
+                formatted_conversations.append({'dominant_emotion': dominant_emotion})
+            else:
+                dominant_emotion = None
+                print("No dominant emotion found for contact id: ", contact_id)
+        
         return JsonResponse(formatted_conversations, safe=False)
 
     except Exception as e:
@@ -407,8 +422,7 @@ def group_interaction_messages_into_conversations(tenant_id):
 
     except Exception as e:
         print(f"Error occurred: {str(e)}")
-
-
+        
 def save_interaction_conversation(message_group, contact_id, source, tenant_id):
     try:
 
@@ -425,14 +439,14 @@ def save_interaction_conversation(message_group, contact_id, source, tenant_id):
             user=message_group[0].sender,  # Set the user (or change as necessary)
             conversation_id=conversation_id,
             messages=combined_messages,  # Store the combined messages
-            platform=platform,
+            platform=source,
             contact_id=contact
         )
         
-        print(f"Conversation saved: ID={new_conversation.id}, UserID={userid}, Platform={platform}")
+        print(f"Conversation saved: ID={new_conversation.id}, UserID={contact_id}, Platform={source}")
     
     except Contact.DoesNotExist:
-        print(f"Contact not found for UserID={userid}, TenantID={tenant_id}")
+        print(f"Contact not found for UserID={source}, TenantID={tenant_id}")
     
     except Exception as e:
         print(f"Error while saving conversation: {str(e)}")

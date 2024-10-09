@@ -106,7 +106,6 @@ def create_dynamic_model(model_name, fields,tenant_id ,user=None):
             print("value error: ", e)
             return {'success': False, 'message': str(e)}
         
-        # Create model class
         try:
             model_class = type(model_name, (models.Model,), field_definitions)
             print("Model class: ", model_class)

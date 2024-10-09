@@ -1,12 +1,8 @@
-from django.http import JsonResponse, HttpResponseBadRequest
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-import requests, json, psycopg2
-from dynamic_entities.views import create_dynamic_model
-from django.db import DatabaseError
-from helpers.tables import get_db_connection
-from dynamic_entities.views import DynamicModelListView
-from rest_framework.test import APIRequestFactory
-
+import json
+from django.db import DatabaseError, connection
+from dynamic_entities.views import DynamicModelListView, create_dynamic_model
 
 
 def convert_flow(flow):
@@ -221,199 +217,6 @@ def convert_flow(flow):
         return None, None
 
 @csrf_exempt
-def saveFlow(request):
-    if request.method == 'POST':
-        try:
-            # Parse the JSON data from the request body
-            data = json.loads(request.body)
-            flow_data = data.get('node_data')
-            phone_number = data.get('phoneNumber', '917906511071')
-            print("Request body:", request.body)
-
-            if flow_data is None:
-                return HttpResponseBadRequest('Flow data is missing')
-            
-
-            # Optional: Uncomment this block to fetch the contact directly via Django ORM
-            # try:
-            #     contact = Contact.objects.get(phone=phone_number)
-            #     print("CONTACTS: ", contact)
-            # except Contact.DoesNotExist:
-            #     error_message = f"No contact found with phone number: {phone_number}"
-            #     print("Error:", error_message)
-            #     return JsonResponse({'error': error_message}, status=404)
-
-            # Convert the flow data into nodes and adjacency list
-
-            nodes, adjList, start, dynamicModelFields = convert_flow(flow_data)
-            currNode = 0
-            ai_mode = False
-            print("Flow converted")
-            print("Adjacency list:", adjList)
-            print("Nodes:", nodes)
-            print("Start: ", start)
-
-            nodes_json = json.dumps(nodes)
-            adjList_json = json.dumps(adjList)
-
-            connection = get_db_connection()
-            # Fetch the contact ID from the database using the phone number
-            with connection.cursor() as cursor:
-                cursor.execute("""
-                    SELECT id FROM contacts_contact WHERE phone = %s;
-                """, (phone_number,))
-                contact_row = cursor.fetchone()
-
-            if contact_row:
-                contact_id = contact_row[0]
-                print("Contact ID found:", contact_id)
-                insert_query = """
-                    INSERT INTO node_temps_flow (nodes, adj_list, contact_id, curr_node, ai_mode, start_node)
-                    VALUES (%s, %s, %s, %s, %s, %s)
-                    RETURNING id;
-                """
-                with connection.cursor() as cursor:
-                    cursor.execute(insert_query, (nodes_json, adjList_json, contact_id, currNode, ai_mode, start))
-                    flow_id = cursor.fetchone()[0]
-                    print("Data inserted successfully with Flow ID:", flow_id)
-                    connection.commit()
-            else:
-                print("No contact found")
-                return JsonResponse({'error': 'No contact found for the provided phone number'}, status=404)
-            dynamicModelFields.append({
-                            'field_name': 'phone_no',
-                            'field_type': 'bigint'
-                        })
-            dynamicModelPayload = {
-                'model_name': 'ModelName',
-                'fields': dynamicModelFields
-            }
-            #get flow name from frontend, set model name to tenantID_flowName
-            url = 'backenreal-hgg2d7a0d9fzctgj.eastus-01.azurewebsites.net/create-dynamic-model/'
-            headers = {
-                'Content-Type': 'application/json',
-                'X-Tenant-Id': 'll'
-            }
-            response = requests.post(url, json=dynamicModelPayload, headers=headers)
-            if response.status_code == 201:
-                print("dynamic model created succesfully")
-            else:
-                print("Error occurred while creating the dynamic model")
-                print(f"Status Code: {response.status_code}")
-                print(f"Response: {response.json()}")
-
-            print("Flow saved successfully")
-            return JsonResponse({'message': "Flow saved successfully"})
-
-        except json.JSONDecodeError as json_err:
-            print("JSONDecodeError:", json_err)
-            return HttpResponseBadRequest('Invalid JSON data')
-        except Exception as e:
-            print("Exception:", str(e))
-            return JsonResponse({'error': str(e)}, status=500)
-    else:
-        print("Invalid request method:", request.method)
-        return HttpResponseBadRequest('ONLY POST REQUEST ALLOWED')
-
-@csrf_exempt
-def get_flow(request):
-    try:
-        print("getflow")
-        data = json.loads(request.body)
-        phoneNumber = str(data.get('phone_number'))
-
-        if not phoneNumber:
-            return JsonResponse({'error': 'phone_number is required'}, status=400)
-        connection = get_db_connection()
-        with connection.cursor() as cursor:
-            cursor.execute("""
-                SELECT ntf.nodes, ntf.adj_list, ntf.curr_node, ntf.ai_mode
-                FROM node_temps_flow ntf
-                INNER JOIN contacts_contact c ON ntf.contact_id = c.id
-                WHERE c.phone = %s;
-            """, (phoneNumber,))
-            row = cursor.fetchone()
-
-        if row:
-            nodes, adj_list, curr_node, ai_mode = row
-            return JsonResponse({
-                'nodes': nodes,
-                'adj_list': adj_list,
-                'curr_node': curr_node,
-                'ai_mode': ai_mode
-            })
-        else:
-            return JsonResponse({'error': 'No data found for the given phone number'}, status=404)
-
-    except json.JSONDecodeError:
-        return JsonResponse({'error': 'Invalid JSON'}, status=400)
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
-        return JsonResponse({'error': 'An unexpected error occurred'}, status=500)
-    finally:
-        if connection:
-            connection.close()
-    
-@csrf_exempt
-def set_flow(request):
-    try:
-        data = json.loads(request.body)
-        phoneNumber = str(data.get('phone_number'))
-        curr_node = data.get('curr_node')
-        ai_mode = data.get('ai_mode')
-        connection = get_db_connection()
-        with connection.cursor() as cursor:
-            cursor.execute("""
-            SELECT id FROM contacts_contact WHERE phone = %s;
-        """, (phoneNumber,))
-        contact_row = cursor.fetchone()
-
-        if contact_row:
-            contact_id = contact_row[0]
-            print("Contact ID found:", contact_id)
-
-            update_query = """
-                UPDATE node_temps_flow
-                SET curr_node = %s, ai_mode = %s
-                WHERE contact_id = %s
-            """
-            cursor.execute(update_query, (curr_node, ai_mode, contact_id))
-            
-            connection.commit()
-            print("data updated")
-            return JsonResponse({"message": "Data updated successfully"})
-
-        else:
-            return JsonResponse({"error": "No contact found"}, status=404)
-
-    except json.JSONDecodeError:
-        return JsonResponse({"error": "Invalid JSON data"}, status=400)
-
-    except Exception as e:
-        return JsonResponse({"error": f"An unexpected error occurred at set flow: {str(e)}"}, status=500)
-
-    finally:
-        if connection:
-            connection.close()
-
-@csrf_exempt
-def create_whatsapp_tenant_table(request):
-    query = '''
-    CREATE TABLE IF NOT EXISTS whatsapp_tenant_data (
-        business_phone_number_id VARCHAR(255) PRIMARY KEY,
-        flow_data JSONB,
-        adj_list JSONB,
-        access_token VARCHAR(255),
-        created_at TIMESTAMPTZ DEFAULT NOW()
-    )
-    '''
-    connection = get_db_connection()
-    with connection.cursor() as cursor:
-        cursor.execute(query)
-    
-    return JsonResponse({'message': 'Table created successfully'})
-
-@csrf_exempt
 def insert_whatsapp_tenant_data(request):
     try:
         # Parse JSON data from the request body
@@ -430,7 +233,6 @@ def insert_whatsapp_tenant_data(request):
         node_data = data.get('node_data', None)
         flow_name = data.get('name')
 
-        connection = get_db_connection()
 
         if firstInsertFlag:
             try:
@@ -444,10 +246,10 @@ def insert_whatsapp_tenant_data(request):
                 '''
                 #insert fallback msg and count
                 
-                cursor = connection.cursor()
-                print("Executing query:", query, business_phone_number_id, access_token, account_id, tenant_id)
-                cursor.execute(query, [business_phone_number_id, access_token, account_id, tenant_id])
-                connection.commit()  # Commit the transaction
+                with connection.cursor() as cursor:
+                    print("Executing query:", query, business_phone_number_id, access_token, account_id, tenant_id)
+                    cursor.execute(query, [business_phone_number_id, access_token, account_id, tenant_id])
+                    connection.commit()  # Commit the transaction
                 print("Query executed successfully")
                 return JsonResponse({'message': 'Data inserted successfully'})
                 
@@ -509,11 +311,10 @@ def get_whatsapp_tenant_data(request):
             return JsonResponse({'error': 'business_phone_id query parameter is required'}, status=400)
 
         query = '''
-        SELECT business_phone_number_id, flow_data, adj_list, access_token, account_id, start, flow_name, fallback_message, fallback_count
+        SELECT business_phone_number_id, flow_data, adj_list, access_token, account_id, start, flow_name, fallback_message, fallback_count, tenant_id
         FROM whatsapp_tenant_data
         WHERE business_phone_number_id = %s
         '''
-        connection = get_db_connection()
         with connection.cursor() as cursor:
             cursor.execute(query, [business_phone_number_id])
             row = cursor.fetchone()
@@ -528,7 +329,8 @@ def get_whatsapp_tenant_data(request):
             'start' : row[5],
             'flow_name' : row[6],
             'fallback_msg': row[7],
-            'fallback_count': row[8]
+            'fallback_count': row[8],
+            'tenant_id': row[9]
         }
         return JsonResponse(data)
 
@@ -541,11 +343,7 @@ def get_whatsapp_tenant_data(request):
 @csrf_exempt
 def update_message_status(request):
     try:
-        # Print the raw request body for debugging
-        # print("Received request:", request)
-        # print("Request body:", request.body.decode('utf-8'))
         
-        # Parse JSON data from the request body
         data = json.loads(request.body)
         
         # Extract data from the JSON object
@@ -560,43 +358,36 @@ def update_message_status(request):
         broadcastGroup_id = data.get('bg_id')
 
         
-        connection = get_db_connection()
-        cursor = connection.cursor()
-        if broadcastGroup_id != None:
-            query = "UPDATE whatsapp_message_id SET broadcast_group = %s WHERE message_id = %s"
-            cursor.execute(query, [broadcastGroup_id, messageID])
-            connection.commit()
-        else:
-            query = """
-                INSERT INTO whatsapp_message_id (message_id, business_phone_number_id, sent, delivered, read, replied, failed, user_phone_number, broadcast_group)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
-                ON CONFLICT (message_id)
-                DO UPDATE SET
-                    sent = EXCLUDED.sent,
-                    delivered = EXCLUDED.delivered,
-                    read = EXCLUDED.read,
-                    failed = EXCLUDED.failed,
-                    replied = EXCLUDED.replied;
-            """
+        with connection.cursor() as cursor:
+            if broadcastGroup_id != None:
+                query = "UPDATE whatsapp_message_id SET broadcast_group = %s WHERE message_id = %s"
+                cursor.execute(query, [broadcastGroup_id, messageID])
+                connection.commit()
+            else:
+                query = """
+                    INSERT INTO whatsapp_message_id (message_id, business_phone_number_id, sent, delivered, read, replied, failed, user_phone_number, broadcast_group)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    ON CONFLICT (message_id)
+                    DO UPDATE SET
+                        sent = EXCLUDED.sent,
+                        delivered = EXCLUDED.delivered,
+                        read = EXCLUDED.read,
+                        failed = EXCLUDED.failed,
+                        replied = EXCLUDED.replied;
+                """
 
-            cursor.execute(query, [messageID, business_phone_number_id, isSent, isDelivered, isRead, isReplied, isFailed, phone_number, broadcastGroup_id])
-            connection.commit()
-            print("updated status for message id: ", messageID)
-            print(f"isSent: {isSent}, isDeli: {isDelivered}, isRead: {isRead}, isReplied: {isReplied} ", )
+                cursor.execute(query, [messageID, business_phone_number_id, isSent, isDelivered, isRead, isReplied, isFailed, phone_number, broadcastGroup_id])
+                connection.commit()
+                print("updated status for message id: ", messageID)
+                print(f"isSent: {isSent}, isDeli: {isDelivered}, isRead: {isRead}, isReplied: {isReplied} ", )
 
         return JsonResponse({'message': 'Data inserted successfully'})
-    except psycopg2.Error as e:
-        print("Database error:", e)
-        return JsonResponse({'error': str(e)}, status=500)
     except json.JSONDecodeError as e:
         print("JSON decode error:", e)
         return JsonResponse({'error': 'Invalid JSON format'}, status=400)
     except Exception as e:
         print("Exception:", e)
         return JsonResponse({'error': str(e)}, status=500)
-    finally:
-        if connection:
-            connection.close()
 
 @csrf_exempt
 def get_status(request):
@@ -606,7 +397,6 @@ def get_status(request):
             FROM whatsapp_message_id;
         """
         try:
-            connection = get_db_connection()
             with connection.cursor() as cursor:
                 cursor.execute(query)
                 rows = cursor.fetchall()
@@ -631,8 +421,6 @@ def get_status(request):
         except Exception as e:
             return JsonResponse({"error": f"An error occurred: {str(e)}"}, status=500)
 
-from contacts.views import ContactByTenantAPIView
-
 @csrf_exempt
 def get_bpid(request):
     try:
@@ -643,7 +431,6 @@ def get_bpid(request):
         
         query = "SELECT business_phone_number_id, account_id from whatsapp_tenant_data WHERE tenant_id = %s"
 
-        connection = get_db_connection()
         cursor = connection.cursor()
         
         cursor.execute(query, [tenant])
@@ -666,41 +453,3 @@ def get_bpid(request):
             connection.close()
         except:
             pass
-
-@csrf_exempt
-def get_tenant(request):
-    print("rcvd req: ", request.body)
-    try:
-        if not request.body:
-            return JsonResponse({"error": "Empty request body"}, status=400)
-
-        body = json.loads(request.body)
-
-        bpid = body.get('bpid')
-
-        if not bpid:
-            return JsonResponse({"error": "Missing 'bpid' parameter"}, status=400)
-        print(bpid)
-        query = "SELECT tenant_id FROM whatsapp_tenant_data WHERE business_phone_number_id = %s"
-        connection = get_db_connection()
-        cursor = connection.cursor()
-
-        cursor.execute(query, [bpid])
-        res = cursor.fetchone()
-        print(res)
-        if res is None:
-            return JsonResponse({"error": f"No tenant found for bpid {bpid}"}, status=404)
-        
-        return JsonResponse({
-            "tenant" : res[0]
-        })
-    
-    except Exception as e:
-        print("Error in get_tenant: ", e)
-        return JsonResponse({"error": "An error occurred while retrieving tenant", "details": str(e)}, status=500)
-
-    finally:
-        try:
-            connection.close()
-        except Exception as e:
-            print("Error closing connection: ", e)

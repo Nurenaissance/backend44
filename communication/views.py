@@ -171,7 +171,7 @@ def get_gradient(score):
         return "High"
     return "Unknown"
 
-@api_view(['POST'])  # Ensures the view only accepts POST requests
+@api_view(['POST']) 
 def analyze_sentiment_for_conversation(request, conversation_id):
     """Perform sentiment analysis for a specific conversation and store the result."""
     try:

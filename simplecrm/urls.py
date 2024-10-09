@@ -173,14 +173,11 @@ urlpatterns = [
     path('instagram-campaigns/<int:pk>/', campview.InstagramCampaignViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='instagram-campaign-detail'),
     path('whatsapp-campaigns/', campview.WhatsAppCampaignViewSet.as_view({'get': 'list', 'post': 'create'}), name='whatsapp-campaign-list'),
     path('whatsapp-campaigns/<int:pk>/', campview.WhatsAppCampaignViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='whatsapp-campaign-detail'),
-    path('save-flow/', wa_chat_views.saveFlow, name = "set whatsapp flow"),
     path('call-campaigns/', campview.CallCampaignViewSet.as_view({'get': 'list', 'post': 'create'}), name='call-campaign-list'),
     path('call-campaigns/<int:pk>/', campview.CallCampaignViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='call-campaign-detail'),
     path('emails/', inviews.EmailListAPIView.as_view(), name='email-list'),
     path('emails/<int:pk>/', inviews.EmailDetailAPIView.as_view(), name='email-detail'),
     path('sev/', prodview.simple_experience_view),
-    path('get-flow/', wa_chat_views.get_flow),
-    path('set-flow/', wa_chat_views.set_flow),
     path('insert-data/', wa_chat_views.insert_whatsapp_tenant_data),
     path('whatsapp_tenant/', wa_chat_views.get_whatsapp_tenant_data),
     path('save-messages/', imsg.save_messages, name='save-messages'),  # Save messages
@@ -202,8 +199,8 @@ urlpatterns = [
     path('group-messages/', commviews.GroupMessagesView.as_view(), name='group_messages'),
 
      # Sentiment Analysis URLs
-    path('sentiment-analyses/', commviews.SentimentAnalysisListCreateView.as_view(), name='sentiment-analysis-list-create'),
-    path('sentiment-analyses/<int:pk>/', commviews.SentimentAnalysisDetailView.as_view(), name='sentiment-analysis-detail'),
+    path('sentiment-analysis/', commviews.SentimentAnalysisListCreateView.as_view(), name='sentiment-analysis-list-create'),
+    path('sentiment-analysis/<int:pk>/', commviews.SentimentAnalysisDetailView.as_view(), name='sentiment-analysis-detail'),
 
 
     path('api/sentiment-analysis/conversation/<str:conversation_id>/', commviews.analyze_sentiment_for_conversation, name='analyze_sentiment'),
@@ -220,7 +217,6 @@ urlpatterns = [
     path('generate-reply/<str:conversation_id>/', commviews.GenerateReplyView.as_view(), name='generate_reply'),
 
     path('get-bpid/', wa_chat_views.get_bpid),
-    path('get-tenant/', wa_chat_views.get_tenant),
     path('user-data/', analyticsviews.userCreateListView.as_view(), name='add-user-data'),
     path('query-faiss/', vectorize.query , name='query-into-faiss-data'),\
     path('whatsapp-media-uploads/', vectorize.handle_media_uploads , name="return_json_object")
