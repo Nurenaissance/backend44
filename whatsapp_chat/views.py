@@ -303,6 +303,40 @@ def insert_whatsapp_tenant_data(request):
         return JsonResponse({'status': 'error', 'message': str(e)}, status=500)    
 
 @csrf_exempt
+def get_tenant(request):
+    print("rcvd req: ", request.body)
+    try:
+        if not request.body:
+            return JsonResponse({"error": "Empty request body"}, status=400)
+
+        body = json.loads(request.body)
+
+        bpid = body.get('bpid')
+
+        if not bpid:
+            return JsonResponse({"error": "Missing 'bpid' parameter"}, status=400)
+        print(bpid)
+        query = "SELECT tenant_id FROM whatsapp_tenant_data WHERE business_phone_number_id = %s"
+        
+        with connection.cursor() as cursor:
+
+            cursor.execute(query, [bpid])
+            res = cursor.fetchone()
+        print(res)
+        if res is None:
+            return JsonResponse({"error": f"No tenant found for bpid {bpid}"}, status=404)
+
+        return JsonResponse({
+            "tenant" : res[0]
+        })
+
+    except Exception as e:
+        print("Error in get_tenant: ", e)
+        return JsonResponse({"error": "An error occurred while retrieving tenant", "details": str(e)}, status=500)
+
+
+
+@csrf_exempt
 def get_whatsapp_tenant_data(request):
     try:
         business_phone_number_id = request.GET.get('business_phone_id')

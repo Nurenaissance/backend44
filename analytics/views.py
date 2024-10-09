@@ -156,7 +156,7 @@ class ExecuteQueryView(APIView):
     serializer_class = PromptSerializer
 
     def post(self, request, format=None):
-        tenant_id = request.headers.get('X-Tenant-ID')
+        tenant_id = request.headers.get('X-Tenant-Id')
         
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():

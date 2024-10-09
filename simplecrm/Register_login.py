@@ -12,6 +12,7 @@ from django.contrib.auth import logout
 from django.db import connections
 from django.db import connection, IntegrityError
 import logging
+from django.shortcuts import get_object_or_404
 logger = logging.getLogger(__name__)
 
 @csrf_exempt
@@ -70,6 +71,33 @@ def register(request):
     else:
         return JsonResponse({'msg': 'Method not allowed'}, status=405)
 
+
+from .models import CustomUser
+@csrf_exempt
+def change_password(request):
+    if request.method == 'POST':
+        print("req: ", request)
+        data = json.loads(request.body)
+        print(data)
+        username = data.get('username')
+        new_password = data.get('new_password')
+        print(username, new_password)
+        try:
+            # Retrieve the user by username
+            u = CustomUser.objects.get(username = username)
+            print(u)
+            # Set the new password
+            u.set_password(new_password)
+            u.save()
+            return JsonResponse({'message': 'Password changed successfully'}, status=200)
+
+        except CustomUser.DoesNotExist:
+            return JsonResponse({'error': 'User does not exist'}, status=404)
+
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+
+    return JsonResponse({'error': 'Invalid request method'}, status=400)
 
 
 class LoginView(APIView):

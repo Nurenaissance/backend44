@@ -47,7 +47,7 @@ def lead_stage(request, lead_id):
 
 @require_http_methods(["GET"])
 def all_stages(request):
-    tenant_id = request.headers.get('X-Tenant-ID')
+    tenant_id = request.headers.get('X-Tenant-Id')
     if not tenant_id:
         return JsonResponse({'error': 'Tenant ID is required in headers'}, status=400)
 

@@ -356,9 +356,9 @@ def save_whatsapp_conversations_to_messages(request):
 class GroupInteractionMessageView(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
         try:
-            tenant_id = request.headers.get('X-Tenant-ID')  # Extract tenant ID from headers
+            tenant_id = request.headers.get('X-Tenant-Id')  # Extract tenant ID from headers
             if not tenant_id:
-                return Response({"error": "Missing X-Tenant-ID header."}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({"error": "Missing X-Tenant-Id header."}, status=status.HTTP_400_BAD_REQUEST)
             
             group_interaction_messages_into_conversations(tenant_id)  # Call the function to group messages
             return Response({"message": "Messages grouped into conversations successfully."}, status=status.HTTP_200_OK)
