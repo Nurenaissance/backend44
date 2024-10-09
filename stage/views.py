@@ -16,7 +16,7 @@ import json
 
 
 def get_tenant_from_headers(request):
-    tenant_id = request.headers.get('X-Tenant-ID')
+    tenant_id = request.headers.get('X-Tenant-Id')
     if not tenant_id:
         return None
     try:

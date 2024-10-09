@@ -73,6 +73,7 @@ urlpatterns = [
     #path('admin/', admin.site.urls),
     path('register/', Reg.register, name='register'),  # Endpoint for user registration
     path('login/', Reg.LoginView.as_view(), name='login'), 
+    path('change-password/', Reg.change_password, name ='change-password'),
     path(r'accounts/', aviews.AccountListCreateAPIView.as_view(), name='account-list'),
     path('accounts/<int:pk>/', aviews.AccountDetailAPIView.as_view(), name='account-detail'),
     path("active_accounts/",get_most_active_accounts, name="most-active-entites"),
@@ -188,7 +189,7 @@ urlpatterns = [
     path('get-status/', wa_chat_views.get_status),
     path('conversations/', commviews.ConversationListCreateView.as_view(), name='conversation-list-create'),
     path('conversations/<int:pk>/', commviews.ConversationDetailView.as_view(), name='conversation-detail'),
-
+    path('get-tenant/', wa_chat_views.get_tenant),
     path('messages/', commviews.MessageListCreateView.as_view(), name='message-list-create'),
     path('messages/<int:pk>/', commviews.MessageDetailView.as_view(), name='message-detail'),
 

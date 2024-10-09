@@ -10493,3 +10493,638 @@ INFO 2024-10-09 11:38:15,635 basehttp "GET /contacts/ HTTP/1.1" 200 584
 INFO 2024-10-09 11:38:25,413 basehttp "GET /dynamic-models/ HTTP/1.1" 200 3482
 INFO 2024-10-09 11:38:25,953 basehttp "GET /dynamic-models/ HTTP/1.1" 200 3482
 INFO 2024-10-09 11:38:30,714 basehttp "POST /logout/ HTTP/1.1" 200 27
+INFO 2024-10-09 13:31:37,233 autoreload Watching for file changes with StatReloader
+INFO 2024-10-09 13:32:46,641 autoreload D:\Nuren AI\backend44\simplecrm\Register_login.py changed, reloading.
+INFO 2024-10-09 13:32:48,472 autoreload Watching for file changes with StatReloader
+WARNING 2024-10-09 13:33:08,250 log Not Found: /change-password/
+WARNING 2024-10-09 13:33:08,250 basehttp "POST /change-password/ HTTP/1.1" 404 21
+WARNING 2024-10-09 13:33:19,305 log Not Found: /change-password/
+WARNING 2024-10-09 13:33:19,307 basehttp "POST /change-password/ HTTP/1.1" 404 21818
+WARNING 2024-10-09 13:33:57,946 log Not Found: /change-password/
+WARNING 2024-10-09 13:33:57,947 basehttp "POST /change-password/ HTTP/1.1" 404 21818
+WARNING 2024-10-09 13:35:52,026 log Not Found: /change-password
+WARNING 2024-10-09 13:35:52,027 basehttp "POST /change-password HTTP/1.1" 404 21815
+WARNING 2024-10-09 13:35:55,669 log Not Found: /change-password/
+WARNING 2024-10-09 13:35:55,670 basehttp "POST /change-password/ HTTP/1.1" 404 21818
+WARNING 2024-10-09 13:36:21,614 log Not Found: /change-password/
+WARNING 2024-10-09 13:36:21,615 basehttp "POST /change-password/ HTTP/1.1" 404 21818
+INFO 2024-10-09 13:37:06,295 autoreload D:\Nuren AI\backend44\simplecrm\urls.py changed, reloading.
+INFO 2024-10-09 13:37:07,970 autoreload Watching for file changes with StatReloader
+WARNING 2024-10-09 13:37:29,236 log Not Found: /change-password/
+WARNING 2024-10-09 13:37:29,237 basehttp "POST /change-password/ HTTP/1.1" 404 32
+INFO 2024-10-09 13:44:11,868 basehttp "GET /get-user/tlb HTTP/1.1" 301 0
+INFO 2024-10-09 13:44:13,586 basehttp "GET /get-user/tlb/ HTTP/1.1" 200 149
+INFO 2024-10-09 13:45:34,492 autoreload D:\Nuren AI\backend44\simplecrm\Register_login.py changed, reloading.
+INFO 2024-10-09 13:45:36,084 autoreload Watching for file changes with StatReloader
+ERROR 2024-10-09 13:46:08,508 log Internal Server Error: /change-password/
+ERROR 2024-10-09 13:46:08,509 basehttp "POST /change-password/ HTTP/1.1" 500 55
+INFO 2024-10-09 13:46:23,806 autoreload D:\Nuren AI\backend44\simplecrm\Register_login.py changed, reloading.
+INFO 2024-10-09 13:46:25,454 autoreload Watching for file changes with StatReloader
+ERROR 2024-10-09 13:46:53,342 log Internal Server Error: /change-password/
+ERROR 2024-10-09 13:46:53,342 basehttp "POST /change-password/ HTTP/1.1" 500 55
+ERROR 2024-10-09 13:47:01,635 log Internal Server Error: /change-password/
+ERROR 2024-10-09 13:47:01,635 basehttp "POST /change-password/ HTTP/1.1" 500 55
+ERROR 2024-10-09 13:47:24,226 log Internal Server Error: /change-password/
+ERROR 2024-10-09 13:47:24,227 basehttp "POST /change-password/ HTTP/1.1" 500 55
+INFO 2024-10-09 13:47:24,300 autoreload D:\Nuren AI\backend44\simplecrm\Register_login.py changed, reloading.
+INFO 2024-10-09 13:47:25,854 autoreload Watching for file changes with StatReloader
+ERROR 2024-10-09 13:47:50,405 log Internal Server Error: /change-password/
+Traceback (most recent call last):
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\simplecrm\Register_login.py", line 79, in change_password
+    data = request.data
+          ^^^^^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'data'
+ERROR 2024-10-09 13:47:50,407 basehttp "POST /change-password/ HTTP/1.1" 500 70424
+INFO 2024-10-09 13:48:24,769 autoreload D:\Nuren AI\backend44\simplecrm\Register_login.py changed, reloading.
+INFO 2024-10-09 13:48:26,441 autoreload Watching for file changes with StatReloader
+ERROR 2024-10-09 13:48:57,981 log Internal Server Error: /change-password/
+Traceback (most recent call last):
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\simplecrm\Register_login.py", line 81, in change_password
+    username = data.get('username')
+               ^^^^^^^^
+AttributeError: 'bytes' object has no attribute 'get'
+ERROR 2024-10-09 13:48:57,985 basehttp "POST /change-password/ HTTP/1.1" 500 70661
+INFO 2024-10-09 13:49:18,521 autoreload D:\Nuren AI\backend44\simplecrm\Register_login.py changed, reloading.
+INFO 2024-10-09 13:49:20,142 autoreload Watching for file changes with StatReloader
+INFO 2024-10-09 13:50:01,064 autoreload D:\Nuren AI\backend44\simplecrm\Register_login.py changed, reloading.
+INFO 2024-10-09 13:50:02,625 autoreload Watching for file changes with StatReloader
+ERROR 2024-10-09 13:50:23,037 log Internal Server Error: /change-password/
+ERROR 2024-10-09 13:50:23,038 basehttp "POST /change-password/ HTTP/1.1" 500 51
+ERROR 2024-10-09 13:50:31,655 log Internal Server Error: /change-password/
+ERROR 2024-10-09 13:50:31,656 basehttp "POST /change-password/ HTTP/1.1" 500 51
+INFO 2024-10-09 13:51:45,802 autoreload D:\Nuren AI\backend44\simplecrm\Register_login.py changed, reloading.
+INFO 2024-10-09 13:51:47,339 autoreload Watching for file changes with StatReloader
+ERROR 2024-10-09 13:52:08,238 log Internal Server Error: /change-password/
+ERROR 2024-10-09 13:52:08,238 basehttp "POST /change-password/ HTTP/1.1" 500 51
+INFO 2024-10-09 13:52:30,247 autoreload D:\Nuren AI\backend44\simplecrm\Register_login.py changed, reloading.
+INFO 2024-10-09 13:52:31,835 autoreload Watching for file changes with StatReloader
+ERROR 2024-10-09 13:52:51,807 log Internal Server Error: /change-password/
+ERROR 2024-10-09 13:52:51,808 basehttp "POST /change-password/ HTTP/1.1" 500 51
+INFO 2024-10-09 13:55:10,417 autoreload D:\Nuren AI\backend44\simplecrm\Register_login.py changed, reloading.
+INFO 2024-10-09 13:55:12,140 autoreload Watching for file changes with StatReloader
+INFO 2024-10-09 13:55:34,813 basehttp "POST /change-password/ HTTP/1.1" 200 44
+INFO 2024-10-09 13:55:51,499 basehttp "OPTIONS /logout/ HTTP/1.1" 200 0
+WARNING 2024-10-09 13:55:53,388 log Not Found: /logout/
+WARNING 2024-10-09 13:55:53,389 basehttp "POST /logout/ HTTP/1.1" 404 21
+INFO 2024-10-09 13:56:37,780 autoreload Watching for file changes with StatReloader
+INFO 2024-10-09 13:57:13,471 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+WARNING 2024-10-09 13:57:15,424 log Unauthorized: /login/
+WARNING 2024-10-09 13:57:15,425 basehttp "POST /login/ HTTP/1.1" 401 29
+INFO 2024-10-09 13:57:25,104 basehttp "POST /login/ HTTP/1.1" 200 102
+INFO 2024-10-09 13:57:25,149 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-10-09 13:57:25,149 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 13:57:25,158 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 13:57:25,159 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-10-09 13:57:28,439 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-09 13:57:28,455 basehttp "GET /contacts/ HTTP/1.1" 200 584
+INFO 2024-10-09 13:57:28,458 basehttp "OPTIONS /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 0
+INFO 2024-10-09 13:57:30,064 basehttp "GET /contacts/ HTTP/1.1" 200 584
+INFO 2024-10-09 13:57:30,097 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-09 13:57:30,422 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 13:57:30,432 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-10-09 13:57:32,027 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 13:57:33,019 basehttp "GET /get-status/ HTTP/1.1" 200 1401948
+WARNING 2024-10-09 14:06:59,009 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:06:59,009 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:06:59,303 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:06:59,310 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:06:59,311 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:07:01,113 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:07:01,120 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:07:01,120 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+WARNING 2024-10-09 14:07:02,692 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:07:02,693 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:07:02,778 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:07:02,797 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:07:02,800 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:07:04,432 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:07:04,434 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:07:04,435 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:07:04,817 basehttp - Broken pipe from ('127.0.0.1', 60531)
+INFO 2024-10-09 14:07:04,818 basehttp - Broken pipe from ('127.0.0.1', 60521)
+INFO 2024-10-09 14:07:04,818 basehttp - Broken pipe from ('127.0.0.1', 60523)
+WARNING 2024-10-09 14:13:17,286 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:17,286 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:13:17,442 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:13:17,452 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:17,458 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:13:19,219 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:13:19,220 log Not Found: /whatsapp_convo_post/917982088587/
+WARNING 2024-10-09 14:13:19,221 basehttp "POST /whatsapp_convo_post/917982088587/?source=whatsapp HTTP/1.1" 404 21
+WARNING 2024-10-09 14:13:20,886 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:20,888 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:13:20,985 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:13:21,002 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:21,003 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:13:22,431 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:22,432 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:13:22,539 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:13:22,547 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:22,550 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:13:22,608 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:13:22,625 log Not Found: /whatsapp_convo_post/917982088587/
+WARNING 2024-10-09 14:13:22,626 basehttp "POST /whatsapp_convo_post/917982088587/?source=whatsapp HTTP/1.1" 404 21
+WARNING 2024-10-09 14:13:24,184 log Not Found: /whatsapp_convo_post/919643393874/
+WARNING 2024-10-09 14:13:24,184 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:13:24,201 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:13:24,520 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:24,520 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:13:24,609 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:13:24,626 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:24,628 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:13:25,583 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:25,584 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:13:25,666 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:13:25,673 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:25,674 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:13:26,221 log Not Found: /whatsapp_convo_post/917982088587/
+WARNING 2024-10-09 14:13:26,222 basehttp "POST /whatsapp_convo_post/917982088587/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:13:26,245 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:13:27,292 log Not Found: /whatsapp_convo_post/919643393874/
+WARNING 2024-10-09 14:13:27,293 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:13:27,333 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:13:28,772 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:28,773 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:13:28,860 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:13:28,874 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:28,876 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:13:29,173 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:29,174 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:13:29,284 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:13:29,292 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:29,294 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:13:30,481 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:13:30,483 log Not Found: /whatsapp_convo_post/919643393874/
+WARNING 2024-10-09 14:13:30,484 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:13:30,894 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:13:30,896 log Not Found: /whatsapp_convo_post/917982088587/
+WARNING 2024-10-09 14:13:30,897 basehttp "POST /whatsapp_convo_post/917982088587/?source=whatsapp HTTP/1.1" 404 21
+WARNING 2024-10-09 14:13:33,376 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:33,377 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:13:33,479 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:13:33,492 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:33,493 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:13:35,118 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:13:35,118 log Not Found: /whatsapp_convo_post/919643393874/
+WARNING 2024-10-09 14:13:35,119 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 404 21
+WARNING 2024-10-09 14:13:40,752 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:40,753 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:13:40,916 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:40,923 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:13:40,924 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:13:42,564 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:13:42,564 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:13:42,571 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:13:54,014 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:54,020 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:13:54,149 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:13:54,150 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:13:54,158 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:13:55,896 log Not Found: /whatsapp_convo_post/917982088587/
+WARNING 2024-10-09 14:13:55,897 basehttp "POST /whatsapp_convo_post/917982088587/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:13:55,918 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:14:03,186 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:14:03,188 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:14:03,341 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:14:03,342 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:14:03,343 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:14:04,979 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:14:04,988 log Not Found: /whatsapp_convo_post/919643393874/
+WARNING 2024-10-09 14:14:04,989 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 404 21
+WARNING 2024-10-09 14:14:25,399 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:14:25,400 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:14:25,526 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:14:25,528 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:14:25,534 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:14:27,314 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:14:27,348 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:14:27,349 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:15:04,122 autoreload D:\Nuren AI\backend44\analytics\views.py changed, reloading.
+INFO 2024-10-09 14:15:06,891 autoreload Watching for file changes with StatReloader
+INFO 2024-10-09 14:15:28,376 autoreload D:\Nuren AI\backend44\custom_fields\views.py changed, reloading.
+INFO 2024-10-09 14:15:30,282 autoreload Watching for file changes with StatReloader
+INFO 2024-10-09 14:15:59,041 autoreload D:\Nuren AI\backend44\interaction\views.py changed, reloading.
+INFO 2024-10-09 14:16:01,066 autoreload Watching for file changes with StatReloader
+INFO 2024-10-09 14:16:24,604 autoreload D:\Nuren AI\backend44\simplecrm\get_user.py changed, reloading.
+INFO 2024-10-09 14:16:26,764 autoreload Watching for file changes with StatReloader
+WARNING 2024-10-09 14:17:15,403 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:17:15,403 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:17:15,504 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:17:15,517 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:17:15,519 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:17:17,380 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:17:17,383 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:17:17,384 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+WARNING 2024-10-09 14:17:18,862 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:17:18,863 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:17:18,973 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:17:18,988 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:17:18,989 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:17:20,598 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:17:20,599 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:17:20,617 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:17:22,115 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:17:22,117 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:17:22,203 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:17:22,219 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:17:22,221 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:17:23,837 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:17:23,839 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:17:23,859 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:17:26,269 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:17:26,269 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:17:26,355 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:17:26,370 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:17:26,372 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:17:27,977 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:17:27,978 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:17:27,979 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:17:28,837 basehttp - Broken pipe from ('127.0.0.1', 63087)
+INFO 2024-10-09 14:17:28,838 basehttp - Broken pipe from ('127.0.0.1', 63096)
+INFO 2024-10-09 14:17:28,839 basehttp - Broken pipe from ('127.0.0.1', 63070)
+WARNING 2024-10-09 14:18:17,093 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:18:17,093 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:18:17,232 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:18:17,238 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:18:17,243 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:18:19,057 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:18:19,058 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:18:19,099 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:18:20,377 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:18:20,378 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:18:20,475 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:18:20,496 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:18:20,500 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:18:22,106 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:18:22,107 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:18:22,109 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:18:23,625 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:18:23,625 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:18:23,708 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:18:23,730 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:18:23,731 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:18:25,363 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:18:25,364 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:18:25,377 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:18:28,083 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:18:28,084 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:18:28,198 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:18:28,213 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:18:28,214 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:18:29,819 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:18:29,859 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:18:29,859 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:18:30,064 basehttp - Broken pipe from ('127.0.0.1', 63391)
+INFO 2024-10-09 14:18:30,065 basehttp - Broken pipe from ('127.0.0.1', 63403)
+INFO 2024-10-09 14:18:30,066 basehttp - Broken pipe from ('127.0.0.1', 63376)
+WARNING 2024-10-09 14:18:42,788 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:18:42,789 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:18:42,939 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:18:42,940 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:18:42,944 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:18:44,627 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:18:44,627 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:18:44,649 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:18:46,106 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:18:46,107 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:18:46,199 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:18:46,204 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:18:46,206 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:18:47,791 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:18:47,791 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:18:47,853 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:18:50,749 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:18:50,749 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:18:50,844 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:18:50,861 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:18:50,863 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:18:52,602 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:18:52,652 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:18:52,652 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+WARNING 2024-10-09 14:18:55,284 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:18:55,285 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:18:55,394 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:18:55,417 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:18:55,418 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:18:57,024 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:18:57,024 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:18:57,028 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:19:19,144 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:19:19,145 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:19:19,241 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:19:19,252 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:19:19,257 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:19:20,932 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:19:21,009 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:19:21,009 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+WARNING 2024-10-09 14:20:28,066 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:20:28,067 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:20:28,171 log Not Found: /get-tenant/
+INFO 2024-10-09 14:20:28,171 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:20:28,172 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:20:29,926 log Not Found: /whatsapp_convo_post/919643393874/
+WARNING 2024-10-09 14:20:29,927 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:20:29,936 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:20:44,594 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:20:44,594 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:20:44,666 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:20:44,673 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:20:44,677 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:20:46,376 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:20:46,379 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:20:46,380 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+WARNING 2024-10-09 14:20:53,696 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:20:53,697 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+WARNING 2024-10-09 14:20:53,826 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:20:53,826 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:20:53,827 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:20:55,504 log Not Found: /whatsapp_convo_post/917982088587/
+INFO 2024-10-09 14:20:55,506 basehttp - Broken pipe from ('127.0.0.1', 63662)
+INFO 2024-10-09 14:20:55,521 basehttp - Broken pipe from ('127.0.0.1', 63658)
+WARNING 2024-10-09 14:21:03,236 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:21:03,239 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:21:03,364 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+WARNING 2024-10-09 14:21:05,124 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:21:05,125 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:21:05,156 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:21:06,463 log Not Found: /get-tenant/
+WARNING 2024-10-09 14:21:06,463 basehttp "POST /get-tenant/ HTTP/1.1" 404 21943
+INFO 2024-10-09 14:21:06,558 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:21:08,197 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+WARNING 2024-10-09 14:21:08,202 log Not Found: /whatsapp_convo_post/919548265904/
+WARNING 2024-10-09 14:21:08,203 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 404 21
+INFO 2024-10-09 14:21:09,265 basehttp - Broken pipe from ('127.0.0.1', 63715)
+INFO 2024-10-09 14:21:09,266 basehttp - Broken pipe from ('127.0.0.1', 63727)
+INFO 2024-10-09 14:26:36,518 autoreload D:\Nuren AI\backend44\simplecrm\urls.py changed, reloading.
+INFO 2024-10-09 14:26:41,901 autoreload Watching for file changes with StatReloader
+INFO 2024-10-09 14:27:19,783 autoreload D:\Nuren AI\backend44\simplecrm\urls.py changed, reloading.
+INFO 2024-10-09 14:27:22,322 autoreload Watching for file changes with StatReloader
+INFO 2024-10-09 14:28:01,854 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-09 14:28:04,760 autoreload Watching for file changes with StatReloader
+INFO 2024-10-09 14:28:41,208 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:28:41,389 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:28:41,488 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:28:41,503 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:28:43,140 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:28:43,241 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:28:44,878 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:28:44,923 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:28:45,071 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:28:45,086 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:28:46,533 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:28:46,558 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:28:46,740 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:28:46,745 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:28:48,212 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:28:48,288 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:28:49,988 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:28:50,005 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:28:51,046 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:28:51,067 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:28:51,672 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:28:51,727 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:28:52,743 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:28:52,746 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:28:54,371 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:28:54,397 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:28:54,823 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:28:54,841 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:28:56,092 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:28:56,095 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:28:56,101 basehttp - Broken pipe from ('127.0.0.1', 50169)
+INFO 2024-10-09 14:28:56,102 basehttp - Broken pipe from ('127.0.0.1', 50221)
+INFO 2024-10-09 14:28:56,513 basehttp - Broken pipe from ('127.0.0.1', 50225)
+INFO 2024-10-09 14:28:56,515 basehttp - Broken pipe from ('127.0.0.1', 50175)
+INFO 2024-10-09 14:28:57,046 basehttp - Broken pipe from ('127.0.0.1', 50230)
+INFO 2024-10-09 14:29:48,120 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:29:48,243 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:29:48,513 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:29:48,537 basehttp "GET /whatsapp_tenant?business_phone_id=394345743768990 HTTP/1.1" 301 0
+INFO 2024-10-09 14:29:49,918 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:29:49,961 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:29:50,206 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 14:29:50,342 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:29:50,346 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:29:50,367 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:29:50,386 basehttp "GET /whatsapp_tenant?business_phone_id=394345743768990 HTTP/1.1" 301 0
+INFO 2024-10-09 14:29:51,903 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:29:52,021 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 14:29:52,026 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:29:52,053 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:29:53,082 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:29:53,102 basehttp "GET /whatsapp_tenant?business_phone_id=394345743768990 HTTP/1.1" 301 0
+INFO 2024-10-09 14:29:53,683 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:29:54,742 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:29:54,744 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 14:29:54,756 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:29:54,782 basehttp "GET /whatsapp_tenant?business_phone_id=394345743768990 HTTP/1.1" 301 0
+INFO 2024-10-09 14:29:56,413 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 14:29:56,453 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:29:57,867 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:29:57,889 basehttp "GET /whatsapp_tenant?business_phone_id=394345743768990 HTTP/1.1" 301 0
+INFO 2024-10-09 14:29:59,199 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:29:59,223 basehttp "GET /whatsapp_tenant?business_phone_id=394345743768990 HTTP/1.1" 301 0
+INFO 2024-10-09 14:29:59,530 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:29:59,563 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 14:30:00,885 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:30:00,937 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 14:30:03,657 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:30:03,682 basehttp "GET /whatsapp_tenant?business_phone_id=394345743768990 HTTP/1.1" 301 0
+INFO 2024-10-09 14:30:05,159 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:30:05,191 basehttp "GET /whatsapp_tenant?business_phone_id=394345743768990 HTTP/1.1" 301 0
+INFO 2024-10-09 14:30:05,376 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 14:30:05,376 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:30:06,861 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 14:30:06,888 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:30:24,611 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:30:24,623 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:30:26,277 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:30:27,953 basehttp "POST /whatsapp_convo_post/917982088587/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:30:29,450 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:30:29,470 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:30:31,127 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:30:31,136 basehttp "POST /whatsapp_convo_post/917982088587/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:30:32,581 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:30:32,598 basehttp "GET /whatsapp_tenant?business_phone_id=394345743768990 HTTP/1.1" 301 0
+INFO 2024-10-09 14:30:34,102 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:30:34,124 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:30:34,339 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 14:30:35,636 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:30:35,657 basehttp "GET /whatsapp_tenant?business_phone_id=394345743768990 HTTP/1.1" 301 0
+INFO 2024-10-09 14:30:35,799 basehttp "POST /whatsapp_convo_post/917982088587/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:30:35,829 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:30:35,888 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:30:37,285 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 14:30:37,401 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:30:40,351 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:30:40,362 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:30:42,033 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:30:43,787 basehttp "POST /whatsapp_convo_post/917982088587/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:31:11,230 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:31:11,253 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:31:12,938 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:31:12,980 basehttp "POST /whatsapp_convo_post/917982088587/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:33:48,325 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:33:48,423 basehttp "GET /whatsapp_tenant?business_phone_id=394345743768990 HTTP/1.1" 301 0
+INFO 2024-10-09 14:33:48,869 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:33:48,885 basehttp "GET /whatsapp_tenant?business_phone_id=394345743768990 HTTP/1.1" 301 0
+INFO 2024-10-09 14:33:50,098 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 14:33:50,555 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 14:33:51,815 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:33:52,155 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:34:09,826 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:34:09,839 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:34:09,939 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:34:09,957 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:34:11,474 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:34:11,621 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:34:13,126 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:34:13,283 basehttp "POST /whatsapp_convo_post/917982088587/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:34:13,879 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:34:13,905 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:34:15,540 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:34:15,590 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:35:31,583 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:35:33,288 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:36:12,981 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:36:14,717 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:36:22,028 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:36:23,726 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:36:31,494 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:36:34,804 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:37:33,473 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:37:36,781 basehttp "POST /whatsapp_convo_post/917982088587/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:37:40,790 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:37:44,136 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:40:39,142 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:40:39,240 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:40:40,869 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:40:42,514 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:41:07,991 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:41:08,052 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:41:09,782 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:41:09,802 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:46:01,751 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:46:03,425 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:46:58,826 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:46:58,884 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:47:00,521 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:47:00,561 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:47:04,181 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:47:04,181 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:47:04,684 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:47:04,723 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:47:05,731 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:47:05,921 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:47:06,421 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:47:06,531 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:47:06,541 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:47:06,664 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:47:07,361 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:47:07,661 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:47:08,083 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:47:08,186 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:47:08,187 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:47:08,321 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:49:40,005 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:49:40,064 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:49:41,697 basehttp "POST /whatsapp_convo_post/917982088587/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:49:41,737 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:49:43,101 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:49:43,117 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:49:44,770 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:49:44,795 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:49:49,913 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:49:49,925 basehttp "GET /whatsapp_tenant?business_phone_id=394345743768990 HTTP/1.1" 301 0
+INFO 2024-10-09 14:49:51,575 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 14:49:53,183 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:51:18,586 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:51:18,642 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:51:20,277 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:51:21,925 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:51:24,254 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:51:24,335 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:51:24,355 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:51:24,370 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:51:24,461 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:51:24,594 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:51:24,917 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:51:25,000 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:51:25,867 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:51:26,002 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:51:26,125 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:51:26,273 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:51:45,987 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:51:46,003 basehttp "GET /whatsapp_tenant?business_phone_id=394345743768990 HTTP/1.1" 301 0
+INFO 2024-10-09 14:51:47,644 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 14:51:49,410 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:51:50,319 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:51:50,326 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:51:51,892 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:51:51,921 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:51:52,501 basehttp "POST /whatsapp_convo_post/919643393874/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:51:52,508 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:51:52,604 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:51:53,360 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:51:54,225 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:51:55,018 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:51:55,239 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:51:55,242 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:52:13,146 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:52:13,157 basehttp "GET /whatsapp_tenant?business_phone_id=394345743768990 HTTP/1.1" 301 0
+INFO 2024-10-09 14:52:14,834 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 14:52:16,474 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:52:17,094 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:52:17,161 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:52:17,661 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:52:17,678 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:52:18,187 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:52:18,740 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:52:18,901 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:52:19,202 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:52:19,326 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:52:19,943 basehttp "POST /get-tenant/ HTTP/1.1" 200 32
+INFO 2024-10-09 14:52:21,538 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:52:22,021 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:52:22,190 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:52:22,509 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:52:22,596 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:52:23,174 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:52:24,013 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:52:24,023 basehttp "GET /whatsapp_tenant?business_phone_id=241683569037594 HTTP/1.1" 301 0
+INFO 2024-10-09 14:52:25,655 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 14:52:25,687 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:52:27,931 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:52:27,935 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:52:28,539 basehttp "POST /whatsapp_convo_post/919548265904/?source=whatsapp HTTP/1.1" 200 52
+INFO 2024-10-09 14:52:28,615 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:52:28,980 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:52:29,549 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:52:29,703 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:52:29,819 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:52:30,069 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:52:30,249 basehttp "POST /get-tenant/ HTTP/1.1" 200 16
+INFO 2024-10-09 14:52:30,660 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:52:31,189 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:52:31,344 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:52:31,454 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:52:31,719 basehttp "POST /set-status/ HTTP/1.1" 200 41
+INFO 2024-10-09 14:52:31,909 basehttp "POST /set-status/ HTTP/1.1" 200 41
