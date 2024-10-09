@@ -422,8 +422,7 @@ def group_interaction_messages_into_conversations(tenant_id):
 
     except Exception as e:
         print(f"Error occurred: {str(e)}")
-
-
+        
 def save_interaction_conversation(message_group, contact_id, source, tenant_id):
     try:
 

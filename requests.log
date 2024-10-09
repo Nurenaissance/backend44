@@ -9919,3 +9919,577 @@ INFO 2024-10-07 22:33:34,833 basehttp "POST /api/sentiment-analysis/conversation
 INFO 2024-10-07 22:41:21,392 autoreload D:\new_nurenai\04\backend44\communication\views.py changed, reloading.
 INFO 2024-10-07 22:41:22,833 autoreload Watching for file changes with StatReloader
 INFO 2024-10-07 22:43:32,148 basehttp "POST /api/sentiment-analysis/conversation/919868789610_whatsapp_1728246314.165662/ HTTP/1.1" 200 288
+INFO 2024-10-08 18:54:14,991 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 18:57:23,855 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 18:57:26,032 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 18:59:32,569 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 18:59:34,211 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:00:07,122 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 19:00:08,776 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:01:12,036 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 19:01:13,645 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:02:28,196 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 19:02:30,174 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:04:59,517 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 19:05:01,110 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:07:15,559 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 19:07:17,535 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:08:00,590 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 19:08:02,548 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:08:24,193 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 19:08:26,060 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:09:30,898 autoreload D:\Nuren AI\backend44\simplecrm\urls.py changed, reloading.
+INFO 2024-10-08 19:09:32,727 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:10:09,476 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 19:10:11,422 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:31:25,705 autoreload D:\Nuren AI\backend44\simplecrm\urls.py changed, reloading.
+INFO 2024-10-08 19:31:27,420 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:34:08,063 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 19:34:09,514 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:36:28,484 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 19:36:29,828 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:38:13,459 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 19:38:14,779 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:38:41,871 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 19:38:43,571 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:39:48,993 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-10-08 19:39:48,993 basehttp "OPTIONS /return-documents/10/undefined HTTP/1.1" 200 0
+INFO 2024-10-08 19:39:48,993 basehttp "OPTIONS /return-documents/10/undefined HTTP/1.1" 200 0
+INFO 2024-10-08 19:39:48,993 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-10-08 19:39:48,993 basehttp "OPTIONS /whatsapp_tenant/?business_phone_id= HTTP/1.1" 200 0
+INFO 2024-10-08 19:39:48,993 basehttp "OPTIONS /node-templates/ HTTP/1.1" 200 0
+WARNING 2024-10-08 19:39:49,026 log Bad Request: /whatsapp_tenant/
+WARNING 2024-10-08 19:39:49,028 basehttp "GET /whatsapp_tenant/?business_phone_id= HTTP/1.1" 400 58
+INFO 2024-10-08 19:39:49,031 basehttp "OPTIONS /whatsapp_tenant/?business_phone_id= HTTP/1.1" 200 0
+INFO 2024-10-08 19:39:49,035 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-08 19:39:49,038 basehttp "OPTIONS /node-templates/ HTTP/1.1" 200 0
+WARNING 2024-10-08 19:39:49,049 log Bad Request: /whatsapp_tenant/
+WARNING 2024-10-08 19:39:49,051 basehttp "GET /whatsapp_tenant/?business_phone_id= HTTP/1.1" 400 58
+INFO 2024-10-08 19:39:49,052 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+WARNING 2024-10-08 19:39:52,311 log Not Found: /return-documents/10/undefined
+WARNING 2024-10-08 19:39:52,311 basehttp "GET /return-documents/10/undefined HTTP/1.1" 404 21856
+WARNING 2024-10-08 19:39:52,332 log Not Found: /return-documents/10/undefined
+WARNING 2024-10-08 19:39:52,332 basehttp "GET /return-documents/10/undefined HTTP/1.1" 404 21856
+INFO 2024-10-08 19:39:52,489 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-08 19:39:52,517 basehttp "GET /node-templates/ HTTP/1.1" 200 4315
+INFO 2024-10-08 19:39:52,535 basehttp "GET /contacts/ HTTP/1.1" 200 593
+INFO 2024-10-08 19:39:54,141 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-08 19:39:54,175 basehttp "GET /contacts/ HTTP/1.1" 200 593
+INFO 2024-10-08 19:39:54,175 basehttp "GET /node-templates/ HTTP/1.1" 200 4315
+INFO 2024-10-08 19:39:59,860 basehttp "OPTIONS /whatsapp_convo_get/919548265904/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 0
+INFO 2024-10-08 19:40:02,287 basehttp "GET /whatsapp_convo_get/919548265904/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 49353
+INFO 2024-10-08 19:40:04,622 basehttp "GET /whatsapp_convo_get/919548265904/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 49353
+INFO 2024-10-08 19:40:11,083 basehttp "OPTIONS /insert-data/ HTTP/1.1" 200 0
+INFO 2024-10-08 19:40:13,534 basehttp "POST /insert-data/ HTTP/1.1" 200 40
+INFO 2024-10-08 19:43:30,849 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 19:43:32,329 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:44:32,086 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 19:44:33,461 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:44:50,932 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 19:44:52,251 autoreload Watching for file changes with StatReloader
+INFO 2024-10-08 19:45:51,716 autoreload D:\Nuren AI\backend44\whatsapp_chat\views.py changed, reloading.
+INFO 2024-10-08 19:45:53,056 autoreload Watching for file changes with StatReloader
+WARNING 2024-10-08 20:14:30,301 log Bad Request: /whatsapp_tenant/
+WARNING 2024-10-08 20:14:30,302 basehttp "GET /whatsapp_tenant/?business_phone_id= HTTP/1.1" 400 58
+WARNING 2024-10-08 20:14:30,307 log Bad Request: /whatsapp_tenant/
+WARNING 2024-10-08 20:14:30,308 basehttp "GET /whatsapp_tenant/?business_phone_id= HTTP/1.1" 400 58
+WARNING 2024-10-08 20:14:33,460 log Not Found: /return-documents/10/undefined
+WARNING 2024-10-08 20:14:33,461 basehttp "GET /return-documents/10/undefined HTTP/1.1" 404 21856
+WARNING 2024-10-08 20:14:33,474 log Not Found: /return-documents/10/undefined
+WARNING 2024-10-08 20:14:33,475 basehttp "GET /return-documents/10/undefined HTTP/1.1" 404 21856
+INFO 2024-10-08 20:14:33,674 basehttp "GET /contacts/ HTTP/1.1" 200 593
+INFO 2024-10-08 20:14:33,675 basehttp "GET /node-templates/ HTTP/1.1" 200 4315
+INFO 2024-10-08 20:14:33,699 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-08 20:14:34,573 basehttp "OPTIONS /whatsapp_convo_get/919643393874/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 0
+INFO 2024-10-08 20:14:35,270 basehttp "GET /node-templates/ HTTP/1.1" 200 4315
+INFO 2024-10-08 20:14:35,303 basehttp "GET /contacts/ HTTP/1.1" 200 593
+INFO 2024-10-08 20:14:35,322 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-08 20:14:36,902 basehttp "GET /whatsapp_convo_get/919643393874/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 29775
+INFO 2024-10-08 20:14:39,264 basehttp "GET /whatsapp_convo_get/919643393874/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 29775
+WARNING 2024-10-08 20:27:42,784 log Bad Request: /whatsapp_tenant/
+WARNING 2024-10-08 20:27:42,785 basehttp "GET /whatsapp_tenant/?business_phone_id= HTTP/1.1" 400 58
+WARNING 2024-10-08 20:27:42,797 log Bad Request: /whatsapp_tenant/
+WARNING 2024-10-08 20:27:42,797 basehttp "GET /whatsapp_tenant/?business_phone_id= HTTP/1.1" 400 58
+WARNING 2024-10-08 20:27:42,806 log Not Found: /return-documents/10/undefined
+WARNING 2024-10-08 20:27:42,807 basehttp "GET /return-documents/10/undefined HTTP/1.1" 404 21856
+WARNING 2024-10-08 20:27:42,823 log Not Found: /return-documents/10/undefined
+WARNING 2024-10-08 20:27:42,824 basehttp "GET /return-documents/10/undefined HTTP/1.1" 404 21856
+INFO 2024-10-08 20:27:44,534 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-08 20:27:44,534 basehttp "GET /node-templates/ HTTP/1.1" 200 4315
+INFO 2024-10-08 20:27:44,547 basehttp "GET /contacts/ HTTP/1.1" 200 593
+INFO 2024-10-08 20:27:46,138 basehttp "GET /node-templates/ HTTP/1.1" 200 4315
+INFO 2024-10-08 20:27:46,156 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-08 20:27:46,203 basehttp "GET /contacts/ HTTP/1.1" 200 593
+INFO 2024-10-08 20:27:48,042 basehttp "GET /whatsapp_convo_get/919643393874/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 29775
+INFO 2024-10-08 20:27:50,365 basehttp "GET /whatsapp_convo_get/919643393874/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 29775
+INFO 2024-10-08 20:32:24,446 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-08 20:32:24,454 basehttp "OPTIONS /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 0
+INFO 2024-10-08 20:32:26,068 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-08 20:32:26,074 basehttp "OPTIONS /get-user/three_little_birds HTTP/1.1" 200 0
+INFO 2024-10-08 20:32:26,077 basehttp "GET /get-user/three_little_birds HTTP/1.1" 301 0
+INFO 2024-10-08 20:32:26,079 basehttp "OPTIONS /get-user/three_little_birds/ HTTP/1.1" 200 0
+INFO 2024-10-08 20:32:26,081 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+WARNING 2024-10-08 20:32:27,702 log Not Found: /get-user/three_little_birds/
+WARNING 2024-10-08 20:32:27,703 basehttp "GET /get-user/three_little_birds/ HTTP/1.1" 404 5827
+INFO 2024-10-08 20:32:27,749 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-08 20:32:27,752 basehttp "OPTIONS /get-user/three_little_birds HTTP/1.1" 200 0
+WARNING 2024-10-08 20:32:29,404 log Not Found: /get-user/three_little_birds/
+WARNING 2024-10-08 20:32:29,404 basehttp "GET /get-user/three_little_birds/ HTTP/1.1" 404 5827
+INFO 2024-10-08 20:33:16,327 basehttp "OPTIONS /logout/ HTTP/1.1" 200 0
+INFO 2024-10-08 20:33:17,879 basehttp "POST /logout/ HTTP/1.1" 200 27
+INFO 2024-10-08 20:33:18,061 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+WARNING 2024-10-08 20:33:19,673 log Not Found: /get-bpid/
+WARNING 2024-10-08 20:33:19,674 basehttp "GET /get-bpid/ HTTP/1.1" 404 21
+WARNING 2024-10-08 20:33:21,289 log Not Found: /get-bpid/
+WARNING 2024-10-08 20:33:21,289 basehttp "GET /get-bpid/ HTTP/1.1" 404 21
+INFO 2024-10-08 20:33:33,905 basehttp "OPTIONS /verifyTenant/ HTTP/1.1" 200 0
+INFO 2024-10-08 20:33:35,596 basehttp "POST /verifyTenant/ HTTP/1.1" 200 17
+INFO 2024-10-08 20:33:57,677 basehttp "POST /verifyTenant/ HTTP/1.1" 200 17
+INFO 2024-10-08 20:34:24,143 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+INFO 2024-10-08 20:34:26,244 basehttp "POST /login/ HTTP/1.1" 200 85
+INFO 2024-10-08 20:34:26,315 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-08 20:34:26,316 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+ERROR 2024-10-08 20:34:44,961 log Internal Server Error: /contacts/
+Traceback (most recent call last):
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\base\base.py", line 282, in ensure_connection
+    self.connect()
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\base\base.py", line 263, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 215, in get_new_connection
+    connection = Database.connect(**conn_params)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "nurenaistore.postgres.database.azure.com" (137.116.93.194), port 5432 failed: FATAL:  password authentication failed for user "crm_tenant_maBtLdv"
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\generics.py", line 243, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\serializers.py", line 713, in to_representation
+    return [
+           ^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\models\query.py", line 394, in __iter__
+    self._fetch_all()
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\models\query.py", line 1866, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\models\query.py", line 87, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\models\sql\compiler.py", line 1393, in execute_sql
+    cursor = self.connection.cursor()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\base\base.py", line 323, in cursor
+    return self._cursor()
+           ^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\base\base.py", line 299, in _cursor
+    self.ensure_connection()
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\base\base.py", line 281, in ensure_connection
+    with self.wrap_database_errors:
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\base\base.py", line 282, in ensure_connection
+    self.connect()
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\base\base.py", line 263, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 215, in get_new_connection
+    connection = Database.connect(**conn_params)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: connection to server at "nurenaistore.postgres.database.azure.com" (137.116.93.194), port 5432 failed: FATAL:  password authentication failed for user "crm_tenant_maBtLdv"
+
+ERROR 2024-10-08 20:34:44,971 basehttp "GET /contacts/ HTTP/1.1" 500 205827
+INFO 2024-10-08 20:34:51,628 basehttp "POST /logout/ HTTP/1.1" 200 27
+WARNING 2024-10-08 20:34:53,388 log Not Found: /get-bpid/
+WARNING 2024-10-08 20:34:53,389 basehttp "GET /get-bpid/ HTTP/1.1" 404 21
+ERROR 2024-10-08 20:34:53,615 log Internal Server Error: /contacts/
+Traceback (most recent call last):
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\base\base.py", line 282, in ensure_connection
+    self.connect()
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\base\base.py", line 263, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 215, in get_new_connection
+    connection = Database.connect(**conn_params)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "nurenaistore.postgres.database.azure.com" (137.116.93.194), port 5432 failed: FATAL:  password authentication failed for user "crm_tenant_maBtLdv"
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\generics.py", line 243, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\rest_framework\serializers.py", line 713, in to_representation
+    return [
+           ^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\models\query.py", line 394, in __iter__
+    self._fetch_all()
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\models\query.py", line 1866, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\models\query.py", line 87, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\models\sql\compiler.py", line 1393, in execute_sql
+    cursor = self.connection.cursor()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\base\base.py", line 323, in cursor
+    return self._cursor()
+           ^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\base\base.py", line 299, in _cursor
+    self.ensure_connection()
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\base\base.py", line 281, in ensure_connection
+    with self.wrap_database_errors:
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\base\base.py", line 282, in ensure_connection
+    self.connect()
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\base\base.py", line 263, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 215, in get_new_connection
+    connection = Database.connect(**conn_params)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nuren AI\backend44\myenv\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: connection to server at "nurenaistore.postgres.database.azure.com" (137.116.93.194), port 5432 failed: FATAL:  password authentication failed for user "crm_tenant_maBtLdv"
+
+ERROR 2024-10-08 20:34:53,623 basehttp "GET /contacts/ HTTP/1.1" 500 211029
+WARNING 2024-10-08 20:34:55,047 log Not Found: /get-bpid/
+WARNING 2024-10-08 20:34:55,048 basehttp "GET /get-bpid/ HTTP/1.1" 404 21
+INFO 2024-10-09 10:41:28,532 autoreload Watching for file changes with StatReloader
+INFO 2024-10-09 10:41:57,731 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:41:59,819 basehttp "POST /login/ HTTP/1.1" 200 82
+INFO 2024-10-09 10:42:33,327 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:42:35,529 basehttp "POST /login/ HTTP/1.1" 200 102
+INFO 2024-10-09 10:43:57,944 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:44:00,184 basehttp "POST /login/ HTTP/1.1" 200 102
+INFO 2024-10-09 10:44:17,356 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:44:19,464 basehttp "POST /login/ HTTP/1.1" 200 102
+INFO 2024-10-09 10:44:34,941 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:44:37,124 basehttp "POST /login/ HTTP/1.1" 200 102
+INFO 2024-10-09 10:45:46,770 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:45:48,960 basehttp "POST /login/ HTTP/1.1" 200 102
+INFO 2024-10-09 10:46:02,846 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:46:04,915 basehttp "POST /login/ HTTP/1.1" 200 102
+INFO 2024-10-09 10:46:56,187 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:46:58,379 basehttp "POST /login/ HTTP/1.1" 200 102
+INFO 2024-10-09 10:46:58,437 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:46:58,438 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:46:58,445 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:46:58,446 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:47:01,735 basehttp "GET /contacts/ HTTP/1.1" 200 593
+INFO 2024-10-09 10:47:01,744 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-09 10:47:01,749 basehttp "OPTIONS /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 0
+INFO 2024-10-09 10:47:02,020 basehttp "GET /contacts/ HTTP/1.1" 200 593
+INFO 2024-10-09 10:47:02,024 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-09 10:47:03,391 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 10:47:03,706 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:47:04,459 basehttp "OPTIONS /logout/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:47:05,049 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 10:47:05,862 basehttp "POST /logout/ HTTP/1.1" 200 27
+INFO 2024-10-09 10:47:06,527 basehttp "GET /get-status/ HTTP/1.1" 200 1398557
+WARNING 2024-10-09 10:47:14,841 log Unauthorized: /login/
+WARNING 2024-10-09 10:47:14,841 basehttp "POST /login/ HTTP/1.1" 401 29
+WARNING 2024-10-09 10:47:18,225 log Unauthorized: /login/
+WARNING 2024-10-09 10:47:18,226 basehttp "POST /login/ HTTP/1.1" 401 29
+INFO 2024-10-09 10:47:27,688 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:47:29,967 basehttp "POST /login/ HTTP/1.1" 200 82
+INFO 2024-10-09 10:47:30,017 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:47:30,020 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:47:30,026 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:47:30,028 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 10:47:33,297 basehttp "GET /contacts/ HTTP/1.1" 200 9193
+INFO 2024-10-09 10:47:33,320 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-10-09 10:47:33,324 basehttp "OPTIONS /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 0
+INFO 2024-10-09 10:47:33,556 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-10-09 10:47:33,624 basehttp "GET /contacts/ HTTP/1.1" 200 9193
+INFO 2024-10-09 10:47:34,933 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 10:47:36,551 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 10:47:37,764 basehttp "GET /get-status/ HTTP/1.1" 200 1398557
+INFO 2024-10-09 11:19:10,927 autoreload Watching for file changes with StatReloader
+WARNING 2024-10-09 11:19:38,496 log Not Found: /logout/
+WARNING 2024-10-09 11:19:38,496 basehttp "POST /logout/ HTTP/1.1" 404 21
+INFO 2024-10-09 11:20:21,146 autoreload Watching for file changes with StatReloader
+INFO 2024-10-09 11:20:56,548 basehttp "POST /login/ HTTP/1.1" 200 102
+INFO 2024-10-09 11:20:59,910 basehttp "GET /contacts/ HTTP/1.1" 200 593
+INFO 2024-10-09 11:20:59,948 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-09 11:21:01,614 basehttp "GET /contacts/ HTTP/1.1" 200 593
+INFO 2024-10-09 11:21:01,626 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-09 11:21:01,774 basehttp "POST /logout/ HTTP/1.1" 200 27
+INFO 2024-10-09 11:21:01,901 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 11:21:03,675 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+WARNING 2024-10-09 11:21:09,075 log Unauthorized: /login/
+WARNING 2024-10-09 11:21:09,075 basehttp "POST /login/ HTTP/1.1" 401 29
+INFO 2024-10-09 11:21:12,895 basehttp "POST /login/ HTTP/1.1" 200 102
+INFO 2024-10-09 11:21:14,581 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-09 11:21:15,058 basehttp "GET /contacts/ HTTP/1.1" 200 100853
+INFO 2024-10-09 11:21:16,205 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-09 11:21:16,580 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 11:21:17,176 basehttp "GET /contacts/ HTTP/1.1" 200 100853
+INFO 2024-10-09 11:21:18,206 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 11:21:19,379 basehttp "GET /get-status/ HTTP/1.1" 200 1398557
+INFO 2024-10-09 11:21:26,403 basehttp "OPTIONS /logout/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:21:27,851 basehttp "POST /logout/ HTTP/1.1" 200 27
+INFO 2024-10-09 11:31:13,795 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+WARNING 2024-10-09 11:31:15,828 log Unauthorized: /login/
+WARNING 2024-10-09 11:31:15,828 basehttp "POST /login/ HTTP/1.1" 401 29
+INFO 2024-10-09 11:31:19,949 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:31:22,092 basehttp "POST /login/ HTTP/1.1" 200 82
+INFO 2024-10-09 11:31:22,151 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:31:22,152 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:31:22,167 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:31:22,169 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:31:25,128 basehttp "OPTIONS /logout/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:31:25,413 basehttp "GET /contacts/ HTTP/1.1" 200 9193
+INFO 2024-10-09 11:31:25,421 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-10-09 11:31:25,426 basehttp "OPTIONS /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 0
+INFO 2024-10-09 11:31:25,727 basehttp "GET /get-bpid/ HTTP/1.1" 200 96
+INFO 2024-10-09 11:31:25,730 basehttp "OPTIONS /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 0
+INFO 2024-10-09 11:31:25,752 basehttp "GET /contacts/ HTTP/1.1" 200 9193
+INFO 2024-10-09 11:31:27,040 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 11:31:27,051 basehttp "OPTIONS /get-status/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:31:27,344 basehttp "GET /whatsapp_tenant/?business_phone_id=241683569037594 HTTP/1.1" 200 4856
+INFO 2024-10-09 11:31:29,621 basehttp "POST /logout/ HTTP/1.1" 200 27
+INFO 2024-10-09 11:31:29,680 basehttp "GET /get-status/ HTTP/1.1" 200 1399123
+INFO 2024-10-09 11:32:16,239 basehttp "OPTIONS /login/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:32:18,465 basehttp "POST /login/ HTTP/1.1" 200 102
+INFO 2024-10-09 11:32:18,526 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:32:18,533 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:32:18,537 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:32:18,545 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:32:21,808 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-09 11:32:21,896 basehttp "GET /contacts/ HTTP/1.1" 200 593
+INFO 2024-10-09 11:32:22,026 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-09 11:32:22,123 basehttp "GET /contacts/ HTTP/1.1" 200 593
+INFO 2024-10-09 11:32:23,454 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 11:32:23,740 basehttp "GET /contacts/ HTTP/1.1" 200 593
+INFO 2024-10-09 11:32:25,088 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 11:32:25,341 basehttp "GET /contacts/ HTTP/1.1" 200 593
+INFO 2024-10-09 11:32:28,291 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-09 11:32:28,319 basehttp "GET /contacts/ HTTP/1.1" 200 593
+INFO 2024-10-09 11:32:29,904 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 11:32:29,915 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-09 11:32:29,952 basehttp "GET /contacts/ HTTP/1.1" 200 593
+INFO 2024-10-09 11:32:31,564 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 11:32:32,733 basehttp "GET /get-status/ HTTP/1.1" 200 1399123
+INFO 2024-10-09 11:32:39,014 basehttp "OPTIONS /update-contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:32:40,923 basehttp "PATCH /update-contacts/ HTTP/1.1" 200 43
+INFO 2024-10-09 11:32:42,695 basehttp "PATCH /update-contacts/ HTTP/1.1" 200 43
+INFO 2024-10-09 11:32:53,620 basehttp "GET /get-status/ HTTP/1.1" 200 1399123
+INFO 2024-10-09 11:32:59,462 basehttp "OPTIONS /return-documents/10/undefined HTTP/1.1" 200 0
+INFO 2024-10-09 11:32:59,464 basehttp "OPTIONS /whatsapp_tenant/?business_phone_id= HTTP/1.1" 200 0
+INFO 2024-10-09 11:32:59,468 basehttp "OPTIONS /node-templates/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:32:59,469 basehttp "OPTIONS /whatsapp_tenant/?business_phone_id= HTTP/1.1" 200 0
+INFO 2024-10-09 11:32:59,475 basehttp "OPTIONS /return-documents/10/undefined HTTP/1.1" 200 0
+WARNING 2024-10-09 11:32:59,476 log Bad Request: /whatsapp_tenant/
+INFO 2024-10-09 11:32:59,479 basehttp "OPTIONS /node-templates/ HTTP/1.1" 200 0
+WARNING 2024-10-09 11:32:59,483 basehttp "GET /whatsapp_tenant/?business_phone_id= HTTP/1.1" 400 58
+WARNING 2024-10-09 11:32:59,485 log Bad Request: /whatsapp_tenant/
+WARNING 2024-10-09 11:32:59,486 basehttp "GET /whatsapp_tenant/?business_phone_id= HTTP/1.1" 400 58
+WARNING 2024-10-09 11:32:59,660 log Not Found: /return-documents/10/undefined
+WARNING 2024-10-09 11:32:59,661 basehttp "GET /return-documents/10/undefined HTTP/1.1" 404 21856
+WARNING 2024-10-09 11:32:59,676 log Not Found: /return-documents/10/undefined
+WARNING 2024-10-09 11:32:59,677 basehttp "GET /return-documents/10/undefined HTTP/1.1" 404 21856
+INFO 2024-10-09 11:33:01,090 basehttp "GET /contacts/ HTTP/1.1" 200 584
+INFO 2024-10-09 11:33:01,122 basehttp "GET /node-templates/ HTTP/1.1" 200 4315
+INFO 2024-10-09 11:33:02,760 basehttp "GET /contacts/ HTTP/1.1" 200 584
+INFO 2024-10-09 11:33:02,788 basehttp "GET /node-templates/ HTTP/1.1" 200 4315
+INFO 2024-10-09 11:33:45,126 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:33:45,130 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:33:45,133 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:33:45,136 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:33:46,846 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-09 11:33:46,853 basehttp "OPTIONS /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 0
+INFO 2024-10-09 11:33:46,899 basehttp "GET /contacts/ HTTP/1.1" 200 584
+INFO 2024-10-09 11:33:46,911 basehttp "GET /contacts/ HTTP/1.1" 200 584
+INFO 2024-10-09 11:33:46,924 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-09 11:33:47,022 basehttp "OPTIONS /return-documents/10/undefined HTTP/1.1" 200 0
+INFO 2024-10-09 11:33:47,023 basehttp "OPTIONS /whatsapp_tenant/?business_phone_id= HTTP/1.1" 200 0
+INFO 2024-10-09 11:33:47,025 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:33:47,028 basehttp "OPTIONS /node-templates/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:33:47,029 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:33:47,032 basehttp "OPTIONS /return-documents/10/undefined HTTP/1.1" 200 0
+INFO 2024-10-09 11:33:47,038 basehttp "OPTIONS /whatsapp_tenant/?business_phone_id= HTTP/1.1" 200 0
+INFO 2024-10-09 11:33:47,039 basehttp "OPTIONS /node-templates/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:33:47,050 basehttp "OPTIONS /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 0
+WARNING 2024-10-09 11:33:47,054 log Bad Request: /whatsapp_tenant/
+WARNING 2024-10-09 11:33:47,057 basehttp "GET /whatsapp_tenant/?business_phone_id= HTTP/1.1" 400 58
+WARNING 2024-10-09 11:33:47,084 log Not Found: /return-documents/10/undefined
+WARNING 2024-10-09 11:33:47,086 basehttp "GET /return-documents/10/undefined HTTP/1.1" 404 21856
+WARNING 2024-10-09 11:33:47,095 log Bad Request: /whatsapp_tenant/
+WARNING 2024-10-09 11:33:47,096 basehttp "GET /whatsapp_tenant/?business_phone_id= HTTP/1.1" 400 58
+WARNING 2024-10-09 11:33:47,109 log Not Found: /return-documents/10/undefined
+WARNING 2024-10-09 11:33:47,112 basehttp "GET /return-documents/10/undefined HTTP/1.1" 404 21856
+INFO 2024-10-09 11:33:48,602 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 11:33:48,718 basehttp "GET /contacts/ HTTP/1.1" 200 584
+INFO 2024-10-09 11:33:48,753 basehttp "GET /contacts/ HTTP/1.1" 200 584
+INFO 2024-10-09 11:33:48,764 basehttp "GET /node-templates/ HTTP/1.1" 200 4315
+INFO 2024-10-09 11:33:48,794 basehttp "GET /node-templates/ HTTP/1.1" 200 4315
+INFO 2024-10-09 11:33:49,037 basehttp "GET /whatsapp_tenant/?business_phone_id=394345743768990 HTTP/1.1" 200 1166
+INFO 2024-10-09 11:35:20,215 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:35:20,217 basehttp "OPTIONS /return-documents/10/undefined HTTP/1.1" 200 0
+INFO 2024-10-09 11:35:20,225 basehttp "OPTIONS /node-templates/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:35:20,232 basehttp "OPTIONS /whatsapp_tenant/?business_phone_id=undefined HTTP/1.1" 200 0
+WARNING 2024-10-09 11:35:20,271 log Not Found: /return-documents/10/undefined
+WARNING 2024-10-09 11:35:20,274 basehttp "GET /return-documents/10/undefined HTTP/1.1" 404 21856
+INFO 2024-10-09 11:35:21,991 basehttp "GET /node-templates/ HTTP/1.1" 200 4315
+WARNING 2024-10-09 11:35:22,029 log Not Found: /whatsapp_tenant/
+INFO 2024-10-09 11:35:22,030 basehttp "GET /contacts/ HTTP/1.1" 200 584
+WARNING 2024-10-09 11:35:22,031 basehttp "GET /whatsapp_tenant/?business_phone_id=undefined HTTP/1.1" 404 65
+INFO 2024-10-09 11:37:28,165 basehttp "OPTIONS /get-bpid/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:37:28,165 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:37:28,168 basehttp "OPTIONS /return-documents/10/undefined HTTP/1.1" 200 0
+INFO 2024-10-09 11:37:28,169 basehttp "OPTIONS /whatsapp_tenant/?business_phone_id=undefined HTTP/1.1" 200 0
+INFO 2024-10-09 11:37:28,175 basehttp "OPTIONS /node-templates/ HTTP/1.1" 200 0
+WARNING 2024-10-09 11:37:28,205 log Not Found: /return-documents/10/undefined
+WARNING 2024-10-09 11:37:28,206 basehttp "GET /return-documents/10/undefined HTTP/1.1" 404 21856
+INFO 2024-10-09 11:37:29,939 basehttp "GET /node-templates/ HTTP/1.1" 200 4315
+WARNING 2024-10-09 11:37:29,944 log Not Found: /whatsapp_tenant/
+INFO 2024-10-09 11:37:29,946 basehttp "GET /get-bpid/ HTTP/1.1" 200 112
+INFO 2024-10-09 11:37:29,946 basehttp "GET /contacts/ HTTP/1.1" 200 584
+WARNING 2024-10-09 11:37:29,947 basehttp "GET /whatsapp_tenant/?business_phone_id=undefined HTTP/1.1" 404 65
+INFO 2024-10-09 11:37:30,669 basehttp "OPTIONS /whatsapp_convo_get/919643393874/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 0
+INFO 2024-10-09 11:37:30,680 basehttp "OPTIONS /whatsapp_convo_get/919643393874/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 0
+INFO 2024-10-09 11:37:32,976 basehttp "GET /whatsapp_convo_get/919643393874/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 29775
+INFO 2024-10-09 11:37:32,984 basehttp "GET /whatsapp_convo_get/919643393874/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 29775
+INFO 2024-10-09 11:37:39,990 basehttp "OPTIONS /whatsapp_convo_get/919548265904/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 0
+INFO 2024-10-09 11:37:40,088 basehttp "OPTIONS /whatsapp_convo_get/919548265904/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 0
+INFO 2024-10-09 11:37:42,359 basehttp "GET /whatsapp_convo_get/919548265904/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 49353
+INFO 2024-10-09 11:37:42,412 basehttp "GET /whatsapp_convo_get/919548265904/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 49353
+INFO 2024-10-09 11:37:45,007 basehttp "OPTIONS /whatsapp_convo_get/919643393874/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 0
+INFO 2024-10-09 11:37:47,321 basehttp "GET /whatsapp_convo_get/919643393874/?source=whatsapp&bpid=394345743768990 HTTP/1.1" 200 29775
+INFO 2024-10-09 11:37:54,178 basehttp "OPTIONS /node-templates/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:37:54,179 basehttp "OPTIONS /node-templates/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:37:54,182 basehttp "OPTIONS /node-templates/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:37:54,188 basehttp "OPTIONS /node-templates/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:37:55,911 basehttp "GET /node-templates/ HTTP/1.1" 200 4315
+INFO 2024-10-09 11:37:55,922 basehttp "GET /node-templates/ HTTP/1.1" 200 4315
+INFO 2024-10-09 11:37:55,940 basehttp "GET /node-templates/ HTTP/1.1" 200 4315
+INFO 2024-10-09 11:37:55,945 basehttp "GET /node-templates/ HTTP/1.1" 200 4315
+INFO 2024-10-09 11:38:07,844 basehttp "OPTIONS /dynamic-models/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:38:07,847 basehttp "OPTIONS /dynamic-models/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:38:13,710 basehttp "OPTIONS /get-all-user/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:38:13,711 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:38:13,716 basehttp "OPTIONS /get-all-user/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:38:13,718 basehttp "OPTIONS /contacts/ HTTP/1.1" 200 0
+INFO 2024-10-09 11:38:15,379 basehttp "GET /get-all-user/ HTTP/1.1" 200 151
+INFO 2024-10-09 11:38:15,390 basehttp "GET /get-all-user/ HTTP/1.1" 200 151
+INFO 2024-10-09 11:38:15,413 basehttp "GET /contacts/ HTTP/1.1" 200 584
+INFO 2024-10-09 11:38:15,635 basehttp "GET /contacts/ HTTP/1.1" 200 584
+INFO 2024-10-09 11:38:25,413 basehttp "GET /dynamic-models/ HTTP/1.1" 200 3482
+INFO 2024-10-09 11:38:25,953 basehttp "GET /dynamic-models/ HTTP/1.1" 200 3482
+INFO 2024-10-09 11:38:30,714 basehttp "POST /logout/ HTTP/1.1" 200 27
