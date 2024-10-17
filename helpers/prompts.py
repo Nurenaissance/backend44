@@ -1,13 +1,10 @@
 from .graph import get_graph_schema
 from .tables import get_tables_schema
 
-graph_path = r"simplecrm/Neo4j-a71a08f7-Created-2024-07-25.txt"
-graph_schema = get_graph_schema(graph=graph_path)
 table_schema = get_tables_schema()
 
 
 SYS_PROMPT_QD = f"""
-Given the Graph Schema : {graph_schema}
 And the Table Schema : {table_schema}
 Determine the question being asked would be most suitable answered by which document, table, graph or none of these.
 Return your response in single word stating 'Graph', 'Table' or 'None'.
