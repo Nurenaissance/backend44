@@ -63,6 +63,8 @@ from communication import insta_msg as imsg
 from communication import views as commviews
 from communication import prompting as commprom
 
+from django.contrib.auth import views as auth_views
+
 router = DefaultRouter()
 router.register(r'groups', inviews.GroupViewSet, basename='group')
 
@@ -100,7 +102,6 @@ urlpatterns = [
     path('get-user/<str:username>/', getuser.get_user_by_username, name='get_user'),
     path('get-all-user/', getuser.get_all_users, name='get_all_user'),
     path('createTenant/', tenview.tenant_list, name='tenant'),
-    path('verifyTenant/', tenview.verify_tenant, name='verify-tenant'),
     path('logout/', Reg.LogoutView.as_view(), name='logout'),
     path('campaign/', campview.CampaignViewSet.as_view(), name='campaigns'),
     path('campaign/<int:pk>/', campview.CampaignDetailAPIView.as_view(), name='campaigns'),
@@ -219,7 +220,9 @@ urlpatterns = [
 
     path('get-bpid/', wa_chat_views.get_bpid),
     path('user-data/', analyticsviews.userCreateListView.as_view(), name='add-user-data'),
-    path('query-faiss/', vectorize.query , name='query-into-faiss-data'),\
-    path('whatsapp-media-uploads/', vectorize.handle_media_uploads , name="return_json_object")
+    path('query-faiss/', vectorize.query , name='query-into-faiss-data'),
+    path('whatsapp-media-uploads/', vectorize.handle_media_uploads , name="return_json_object"),
+    
+    path('verifyTenant/', tenview.verify_tenant, name='verify-tenant'),
 ]
 urlpatterns += router.urls

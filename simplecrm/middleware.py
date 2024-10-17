@@ -21,17 +21,20 @@ class TenantMiddleware(MiddlewareMixin):
             '/track_open/',
             '/track_open_count/',
             '/track_click/',
-             '/create_table/',
-              '/insert_data/',
-               '/whatsapp_tenant/',
-               '/get-tenant/',
-               '/whatsapp-media-uploads/',
-               '/verifyTenant/'
+            '/create_table/',
+            '/insert_data/',
+            '/whatsapp_tenant/',
+            '/get-tenant/',
+            '/whatsapp-media-uploads/',
+            '/verifyTenant/',
+            '/change-password/',
+            '/password_reset/',
+            '/reset/'
         ]
         
         # Check if the request path starts with any of the paths to skip
         if any(request.path.startswith(path) for path in paths_to_skip):
-            logger.debug(f"Skipping tenant processing for path: {request.path}")
+            print(f"Skipping tenant processing for path: {request.path}")
             return
 
         tenant_id = request.headers.get('X-Tenant-Id')
